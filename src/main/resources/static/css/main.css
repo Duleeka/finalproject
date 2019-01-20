@@ -1,0 +1,261 @@
+
+	body{
+		margin: 0;
+		padding: 0;
+		font-family: sans-serif;
+		color: darkgrey;
+		background: url('bgimage.jpg');
+	}
+		/*FORM*/
+
+	* {
+	  box-sizing: border-box;
+	}
+
+	input[type=text], select, textarea {
+	  width: 50%;
+	  padding: 12px;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  resize: vertical;
+	}
+
+	label {
+	  padding: 12px 12px 12px 0;
+	  display: inline-block;
+	}
+
+	input[type=submit] {
+	  background-color: #4CAF50;
+	  color: white;
+	  padding: 12px 20px;
+	  border: none;
+	  border-radius: 4px;
+	  cursor: pointer;
+	  float: right;
+	}
+
+	input[type=submit]:hover {
+	  background-color: #45a049;
+	}
+
+	.container1 {
+	  border-radius: 5px;
+	  background-color: #f2f2f2;
+	  padding: 20px;
+	}
+
+	.col-25 {
+	  float: left;
+	  width: 25%;
+	  margin-top: 6px;
+	}
+
+	.col-75 {
+	  float: left;
+	  width: 75%;
+	  margin-top: 6px;
+	}
+
+/* Clear floats after the columns */
+	.row:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+	@media screen and (max-width: 600px) {
+	  .col-25, .col-75, input[type=submit] {
+	    width: 100%;
+	    margin-top: 0;
+	  }
+	}
+
+/*sidebar*/
+
+	.sidebar{
+		position: absolute;
+		width: 250px;
+		height: 100%;
+		background:rgb(0,0,0,0.8);
+		color: #fff;
+		
+		
+	}
+	.sidebar h2{
+		text-align: center;
+		margin: 0;
+		padding: 20px;
+		background: #2a2a2a;
+	}
+	.sidebar ul{
+		list-style: none;
+		padding: 0;
+		margin: 0; 
+	}
+	.sidebar li{
+		border: 1px solid #2a2a2a;
+		transition: all 0.3s;
+	}
+	.sidebar li:hover{
+		background: #444;
+		border-left: 5px solid #eee;
+	}
+	.sidebar a{
+		display: block;
+		color: #fff;
+		text-decoration: none;
+		padding: 10px;
+	}
+
+/*sidebar Latest info*/
+
+	.info ul{
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		line-height: 70px; 
+	}
+	.info li{
+		border: 5px solid #2a2a2a;
+		transition: all 0.3s;
+	}
+	.info li:hover{
+		background: #444;
+		border-left: 5px solid #eee;
+	}
+	.info a{
+		display: block;
+		color: #fff;
+		text-decoration: none;
+		padding: 10px;
+	}
+
+
+/*Header*/
+	h1{
+	color: white;
+
+	}
+
+	.container{
+		max-width: 960px;
+		width: 96%;
+		margin: auto;
+		background: rgb(0,0,0,0.8);
+	}
+	 header{
+	 	background: rgb(0,0,0,0.8);
+	 	margin-bottom: 20px;
+	 	overflow: hidden;
+	 }
+	 .logo{
+	 	float: left;
+	 	margin-top: 10px;
+	 }
+	nav{
+		float: right;
+		line-height:80px;
+
+	}
+	nav li{
+		display: inline-block;
+		padding: 20px 20px;
+		margin-left: 10px;
+		line-height: normal;
+		border: 5px solid #2a2a2a; 
+	}
+	nav li:hover{
+		background: #444;
+		border-left: 5px solid #eee;
+	}
+	nav a{
+		display: block;
+		color: #fff;
+		text-decoration: none;
+		padding: 10px;
+	}
+
+		
+/*Content*/
+	.Content{
+		border: 1px solid #111111;
+		background-color: rgb(0,0,0,0.8);
+		opacity: 20;
+		height: 700px;
+		border-radius: 10px;
+		margin-left: 350px;
+		margin-right: 75px;
+	}
+/*Table*/
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid black;
+  margin-top: 10px;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid black;
+}
+
+
+.form-inline {  
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.form-inline label {
+  margin: 5px 10px 5px 0;
+}
+
+.form-inline input {
+  vertical-align: middle;
+  margin: 5px  5px 0;
+  padding: 12px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  width: 30%;
+  margin-top: 10px;
+}
+
+.form-inline button {
+  padding: 12px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.form-inline button:hover {
+  background-color: royalblue;
+}
+
+@media (max-width: 800px) {
+  .form-inline input {
+    margin: 10px 0;
+  }
+  
+  .form-inline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+
+.input2 [type=text],select{
+	  width: 30%;
+	  padding: 12px;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  resize: vertical;
+	   margin: 5px 10px 5px 0;
+	}
+
