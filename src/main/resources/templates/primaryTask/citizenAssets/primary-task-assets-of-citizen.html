@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="no-js">
+
+<head th:include="common/commoncss::commoncss">
+    <link rel="stylesheet" type="text/css" th:href="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css}" >
+</head>
+
+<body class="animsition">
+<div class="page-wrapper">
+    <!-- MENU SIDEBAR-->
+    <aside class="menu-sidebar2" th:include="common/siderbar::siderbar"></aside>
+    <!-- END MENU SIDEBAR-->
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-container2">
+
+        <!-- HEADER DESKTOP-->
+        <header class="header-desktop2" th:include="common/header:: header"></header>
+        <!-- END HEADER DESKTOP-->
+
+        <!-- BREADCRUMB-->
+        <section class="au-breadcrumb m-t-75" th:include="primaryTask/citizenAssets/breadcrum::breadcrum"></section>
+        <!-- END BREADCRUMB-->
+
+        <!-- CONTENT-->
+        <!--<div class="main-content">-->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Assets of Citizen</strong>
+                        <small> Form</small>
+                    </div>
+                    <div class="card-body card-block">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="land_own" class=" form-control-label">Land Ownership</label>
+                                    <select id="land_own" name="land_own" class="form-control" >
+                                        <option value=""></option>
+                                        <option value="">aaaaaaaaaa</option>
+                                        <option value="">bbbbbbbbbb</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="land_name" class=" form-control-label">Land Name</label>
+                                    <input type="text" id="land_name" placeholder="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="land_size" class=" form-control-label">Land Size</label>
+                                    <input type="text" id="land_size" placeholder="" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="cultivation" class=" form-control-label">Main Cultivation</label>
+                                    <select id="cultivation" name="cultivation" class="form-control" >
+                                        <option value=""></option>
+                                        <option value="">aaaaaaaaaa</option>
+                                        <option value="">bbbbbbbbbb</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="water_faci" class=" form-control-label">Water Facility</label>
+                                    <select id="water_faci" name="water_faci" class="form-control" >
+                                        <option value=""></option>
+                                        <option value="">aaaaaaaaaa</option>
+                                        <option value="">bbbbbbbbbb</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="electricity" class=" form-control-label">Electricity</label>
+                                    <select id="electricity" name="electricity" class="form-control" >
+                                        <option value=""></option>
+                                        <option value="">aaaaaaaaaa</option>
+                                        <option value="">bbbbbbbbbb</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="toilet_faci" class=" form-control-label">Toilet Facility</label>
+                                    <select id="toilet_faci" name="toilet_faci" class="form-control" >
+                                        <option value=""></option>
+                                        <option value="">aaaaaaaaaa</option>
+                                        <option value="">bbbbbbbbbb</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="internet" class=" form-control-label">Internet Connections</label>
+                                    <select id="internet" name="internet" class="form-control" >
+                                        <option value=""></option>
+                                        <option value="">Yes</option>
+                                        <option value="">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="television" class=" form-control-label">Television</label>
+                                    <select id="television" name="television" class="form-control" >
+                                        <option value=""></option>
+                                        <option value="">Yes</option>
+                                        <option value="">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="computer" class=" form-control-label">Computers</label>
+                                    <select id="computer" name="computer" class="form-control" >
+                                        <option value=""></option>
+                                        <option value="">Yes</option>
+                                        <option value="">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="fixed_landline" class=" form-control-label">Fixed Landlines</label>
+                                    <select id="fixed_landline" name="fixed_landline" class="form-control" >
+                                        <option value=""></option>
+                                        <option value="">Yes</option>
+                                        <option value="">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="mobile" class=" form-control-label">Mobile Phones</label>
+                                    <select id="mobile" name="mobile" class="form-control" >
+                                        <option value=""></option>
+                                        <option value="">Yes</option>
+                                        <option value="">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="vehicle_own" class=" form-control-label">Vehicle Ownership</label>
+                                    <textarea  id="vehicle_own" placeholder="" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="card">
+                                <div class="card-body card-block">
+                                    <button type="save" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-dot-circle-o"></i> Save
+                                    </button>
+                                    <button type="reset" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-dot-circle-o"></i> Reset
+                                    </button>
+                                    <button type="cancel" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-ban"></i> Cancel
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- END CONTENT-->
+
+    <div th:include="common/footer::footer"></div>
+    <!-- END PAGE CONTAINER-->
+</div>
+</div>
+<div th:include="common/commonjs::commonjs"></div>
+<script type="text/javascript" th:src="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js}"></script>
+</body>
+<script th:inline="javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+</script>
+</html>
+<!-- end document-->

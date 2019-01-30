@@ -19,11 +19,19 @@
 	  border-radius: 4px;
 	  resize: vertical;
 	}
+	input[type=radio]{
+		width: 75%;
+		padding: 50px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		resize: both;
+	}
 
 	label {
 	  padding: 12px 12px 12px 0;
 	  display: inline-block;
 	}
+
 
 	input[type=submit] {
 	  background-color: #4CAF50;
@@ -191,9 +199,9 @@
 /*Table*/
 table {
   border-collapse: collapse;
-  border-spacing: 0;
+  border-spacing: 2;
   width: 100%;
-  border: 1px solid black;
+  border: 5px solid black;
   margin-top: 10px;
 }
 

@@ -24,11 +24,51 @@ public class AdministrativeTaskController {
     public String homePage(Model model) {
       //  model.addAttribute("person", new Person());
         Asset asset=new Asset();
-        asset.setName("wasantha");
+        asset.setName("dulika");
         asset.setAssetNo("no");
 
       //  assetService.create(asset);
         return "administrativeTask/gnProfile/administrative-task-basic-gn-profile";
     }
 
+/*Diary log controller*/
+
+
+    @RequestMapping(value = "/diarylog", method = RequestMethod.GET)
+    public String homePage1(Model model) {
+        //  model.addAttribute("person", new Person());
+        Asset asset=new Asset();
+        asset.setName("dulika");
+        asset.setAssetNo("no");
+
+        //  assetService.create(asset);
+        return "administrativeTask/diaryLog/administrative-task-diary-log";
+    }
+    /*end of Diary log controller*/
+
+    /*Division Detail controller*/
+    @RequestMapping(value = "/divisiondetail", method = RequestMethod.GET)
+    public String homePage2(Model model) {
+        //  model.addAttribute("person", new Person());
+        Asset asset=new Asset();
+        asset.setName("dulika");
+        asset.setAssetNo("no");
+
+        //  assetService.create(asset);
+        return "administrativeTask/gnDivision/administrative-task-gn-division-detail";
+    }
+    /*End of Division Detail controller*/
+
+    /*password change controller*/
+    @RequestMapping(value = "/changepassword", method = RequestMethod.GET)
+    public String homePage3(Model model) {
+        //  model.addAttribute("person", new Person());
+        Asset asset=new Asset();
+        asset.setName("dulika");
+        asset.setAssetNo("no");
+
+        //  assetService.create(asset);
+        return "administrativeTask/changePassword/administrative-task-change-password";
+    }
+    /*End of password change controller*/
 }
