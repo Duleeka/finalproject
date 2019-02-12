@@ -9,24 +9,24 @@ var ButtonUtil = function () {
      *********************************************************************/
     var getHomeBtnWithURL = function (mappingPrefix, id) {
         var modalId = "modal_" + mappingPrefix.replace(/\//g, '_') + "_" + id;
-        var htmlBtn =
-            "<div align='center'>" +
-            "<div class='btn-group'>" +
-            "<a class='btn btn-xs btn-blue dropdown-toggle btn-sm' data-toggle='dropdown' href='#'>" +
-            "<i class='fa fa-cog'></i> <span class='caret'></span>" +
-            "</a>" +
-            "<ul role='menu' class='dropdown-menu pull-right'>" +
-            "<li role='presentation'><a href='../" + mappingPrefix + "/edit?id=" + id + "' type='button' role='menuitem' tabindex='-1'><i class='fa fa-edit'></i> Edit</a></li>" +
-            "<li role='presentation'><a href='#" + modalId + "' data-toggle='modal' role='menuitem' tabindex='-1'><i class='fa fa-times'></i> Remove</a></li>" +
-            "</ul>" +
-            "</div>" +
-            "<div id='" + modalId + "' class='modal fade' tabindex='-1' data-backdrop='static' data-keyboard='false' style='display: none;'>" +
+
+        var htmlBtn =  '<div class="btn-group">'+
+          '  <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle btn btn-primary btn-sm"><i class="fa fa-cog"></i></button>'+
+          '  <div tabindex="-1" aria-hidden="true" role="menu" class="dropdown-menu">'+
+        '    <a type="button" href="../' + mappingPrefix + '/edit?id=' + id + '" tabindex="0" class="dropdown-item"><i class="fa fa-edit"></i> Edit</a>'+
+           ' <button type="button" data-toggle="modal" data-target="#' + modalId + '" tabindex="-1" class="dropdown-item"><i class="fa fa-times"></i> Delete</button>'+
+        '</div>'+
+        '</div>'+
+        '<div id="' + modalId + '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">' +
+           '<div class="modal-dialog modal-sm" role="document">'+
+            '<div class="modal-content">'+
             "<div class='modal-body'><p>Are You Sure? You want to delete ?</p></div>" +
             "<div class='modal-footer'>" +
             "<a data-dismiss='modal' class='btn btn-sm btn-blue'> Cancel </a> " +
             "<a href='../" + mappingPrefix + "/delete?id=" + id + "' type='button' class='btn btn-sm btn-red'> <i class='clip-remove'></i> Delete</a>" +
             "</div>" + "</div>" +
-            "</div>";
+        '</div>'+
+        '</div>'
         return htmlBtn;
     };
 
