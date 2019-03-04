@@ -19,17 +19,17 @@ public class AdministrativeTaskController {
 
     @Autowired
     AssetService assetService;
-
-    @RequestMapping(value = "/basicgnprofile", method = RequestMethod.GET)
-    public String homePage(Model model) {
-      //  model.addAttribute("person", new Person());
-        Asset asset=new Asset();
-        asset.setName("dulika");
-        asset.setAssetNo("no");
-
-      //  assetService.create(asset);
-        return "administrativeTask/gnProfile/administrative-task-basic-gn-profile";
-    }
+//
+//    @RequestMapping(value = "/basicgnprofile", method = RequestMethod.GET)
+//    public String homePage(Model model) {
+//      //  model.addAttribute("person", new Person());
+//        Asset asset=new Asset();
+//        asset.setName("dulika");
+//        asset.setAssetNo("no");
+//
+//      //  assetService.create(asset);
+//        return "administrativeTask/gnProfile/administrative-task-basic-gn-profile";
+//    }
 
 /*Diary log controller*/
 

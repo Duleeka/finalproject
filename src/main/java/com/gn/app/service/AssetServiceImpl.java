@@ -12,11 +12,11 @@ import org.springframework.stereotype.Service;
 public class AssetServiceImpl implements AssetService {
 
 
-   /*@Autowired
-    AssetDao assetDao;*/
+  // @Autowired
+  //  AssetDao assetDao;
 
     @Override
     public void create(Asset asset) {
-     /*  assetDao.save(asset);*/
+  //  assetDao.save(asset);
     }
 }

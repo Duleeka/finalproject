@@ -74,13 +74,6 @@ protected Date createdDate;
 		this.createdUser = createdUser;
 	}
 
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(final Date createdDate) {
-		this.createdDate = createdDate;
-	}
 
 	public User getUpdatedUser() {
 		return updatedUser;
@@ -90,6 +83,14 @@ protected Date createdDate;
 		this.updatedUser = updatedUser;
 	}*/
 
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(final Date createdDate) {
+		this.createdDate = createdDate;
+	}
 	public Date getUpdatedDate() {
 		return updatedDate;
 	}
