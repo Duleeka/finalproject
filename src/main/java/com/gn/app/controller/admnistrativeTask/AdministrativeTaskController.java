@@ -47,7 +47,7 @@ public class AdministrativeTaskController {
     /*end of Diary log controller*/
 
     /*Division Detail controller*/
-    @RequestMapping(value = "/divisiondetail", method = RequestMethod.GET)
+    @RequestMapping(value = "/gndivision", method = RequestMethod.GET)
     public String homePage2(Model model) {
         //  model.addAttribute("person", new Person());
         Asset asset=new Asset();
@@ -55,13 +55,54 @@ public class AdministrativeTaskController {
         asset.setAssetNo("no");
 
         //  assetService.create(asset);
-        return "administrativeTask/gnDivision/administrative-task-gn-division-detail";
+        return "administrativeTask/gnDivision/administrative-task-gn-division";
+    }
+    /*End of Division Detail controller*/
+
+
+    /*Division Detail controller*/
+    @RequestMapping(value = "/province", method = RequestMethod.GET)
+    public String homePage3(Model model) {
+        //  model.addAttribute("person", new Person());
+        Asset asset=new Asset();
+        asset.setName("dulika");
+        asset.setAssetNo("no");
+
+        //  assetService.create(asset);
+        return "administrativeTask/Province/administrative-task-province";
+    }
+    /*End of Division Detail controller*/
+
+
+    /*Division Detail controller*/
+    @RequestMapping(value = "/district", method = RequestMethod.GET)
+    public String homePage4(Model model) {
+        //  model.addAttribute("person", new Person());
+        Asset asset=new Asset();
+        asset.setName("dulika");
+        asset.setAssetNo("no");
+
+        //  assetService.create(asset);
+        return "administrativeTask/District/administrative-task-district";
+    }
+    /*End of Division Detail controller*/
+
+    /*Division Detail controller*/
+    @RequestMapping(value = "/dsoffice", method = RequestMethod.GET)
+    public String homePage5(Model model) {
+        //  model.addAttribute("person", new Person());
+        Asset asset=new Asset();
+        asset.setName("dulika");
+        asset.setAssetNo("no");
+
+        //  assetService.create(asset);
+        return "administrativeTask/DSOffice/administrative-task-ds-office";
     }
     /*End of Division Detail controller*/
 
     /*password change controller*/
     @RequestMapping(value = "/changepassword", method = RequestMethod.GET)
-    public String homePage3(Model model) {
+    public String homePage6(Model model) {
         //  model.addAttribute("person", new Person());
         Asset asset=new Asset();
         asset.setName("dulika");

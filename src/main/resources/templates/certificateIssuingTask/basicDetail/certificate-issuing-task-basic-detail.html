@@ -29,7 +29,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong>Basic Detail</strong>
+                        <strong>Certificate Issuing</strong>
                         <small> Form</small>
                     </div>
                     <div class="card-body card-block">
@@ -45,8 +45,9 @@
                                     <label for="certificate_type" class=" form-control-label">Type of Certificate</label>
                                     <select id="certificate_type" name="certificate_type" class="form-control" >
                                         <option value=""></option>
-                                        <option value="">aaaaaaaaaa</option>
-                                        <option value="">bbbbbbbbbb</option>
+                                        <option value="">Character Certificate</option>
+                                        <option value="">Residential Certificate</option>
+                                        <option value="">Death Registration Certificate</option>
                                     </select>
                                 </div>
                             </div>
@@ -66,31 +67,36 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="nic" class=" form-control-label">NIC</label>
-                                    <input type="text" id="nic" placeholder="" class="form-control">
+                                    <label for="name" class=" form-control-label">Name of Receiver</label>
+                                    <input type="text" id="name" placeholder="" class="form-control">
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row ">
-                            <div class="col-md-12">
+                            <div class="row">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="description" class=" form-control-label">Description</label>
-                                    <textarea  id="description" placeholder="" class="form-control"></textarea>
+                                    <label for="nic" class=" form-control-label">NIC of Receiver</label>
+                                    <input type="text" id="nic" placeholder="" class="form-control">
                                 </div>
                             </div>
-                            <div class="card">
-                                <div class="card-body card-block">
-                                    <button type="save" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-dot-circle-o"></i> Save
-                                    </button>
-                                    <button type="reset" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-dot-circle-o"></i> Reset
-                                    </button>
-                                    <button type="cancel" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-ban"></i> Cancel
-                                    </button>
-
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="status" class=" form-control-label">Status</label>
+                                    <select id="status" name="status" class="form-control" >
+                                        <option value=""></option>
+                                        <option value=""></option>
+                                        <option value=""></option>
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="row">
+                                <div class="card-body">
+                                    <button type="button" class="btn btn-primary">Save</button>
+                                    <button type="button" class="btn btn-primary">Reset</button>
+                                    <button type="button" class="btn btn-primary">View</button>
+                                    <button type="button" class="btn btn-primary">Cancel</button>
                                 </div>
                             </div>
                         </div>

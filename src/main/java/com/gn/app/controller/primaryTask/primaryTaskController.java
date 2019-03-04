@@ -51,7 +51,7 @@ public class primaryTaskController {
         return "primaryTask/citizenAssets/primary-task-assets-of-citizen";
     }
 
-    @RequestMapping(value = "/hhdonationRecord", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/hhdonationRecord", method = RequestMethod.GET)
     public String homePage9(Model model) {
         //  model.addAttribute("person", new Person());
         Asset asset = new Asset();
@@ -60,7 +60,7 @@ public class primaryTaskController {
 
         //  assetService.create(asset);
         return "primaryTask/donationRecord/primary-task-hh-donation-record";
-    }
+    }*/
 
     @RequestMapping(value = "/basicCitizenDetail", method = RequestMethod.GET)
     public String homePage10(Model model) {

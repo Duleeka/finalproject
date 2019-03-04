@@ -29,56 +29,90 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong>Citizen Detail</strong>
-                        <small> Form</small>
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+
+                                <a class="nav-link active " th:href="@{/primaryTask/basiccitizendetail}">Householder</a>
+                            </li>
+                            <li class="nav-item">
+
+                                <a class="nav-link " th:href="@{/primaryTask/hhdependentdetail}">Dependent</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/primaryTask/citizenpublicdonations}">Public Donations & Other</a>
+                            </li>
+
+                        </ul>
                     </div>
                     <div class="card-body card-block">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="Hno" class=" form-control-label">Householder No</label>
+                                    <label for="Hno" class=" form-control-label">Householder ID</label>
                                     <input type="text" id="Hno" placeholder="" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="relationship" class=" form-control-label">Relationship</label>
-                                    <select id="relationship" name="relationship" class="form-control" >
+                                    <label for="dom_name" class=" form-control-label">Domain Name</label>
+                                    <select id="dom_name" name="dom_name" class="form-control" >
                                         <option value=""></option>
-                                        <option value="">aaaaaaaaaa</option>
-                                        <option value="">bbbbbbbbbb</option>
+                                        <option value=""></option>
+                                        <option value=""></option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                            <div class="row">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="initials" class=" form-control-label">Initials</label>
+                                    <input type="text" id="initials" placeholder="" class="form-control">
+                                </div>
+                            </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="first_name" class=" form-control-label">First Name</label>
                                     <input type="text" id="first_name" placeholder="" class="form-control">
                                 </div>
                             </div>
+                        </div>
 
+                            <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="middle_name" class=" form-control-label">Middle Name</label>
                                     <input type="text" id="middle_name" placeholder="" class="form-control">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row ">
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="last_name" class=" form-control-label">Last Name</label>
                                     <input type="text" id="last_name" placeholder="" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="phone_no" class=" form-control-label">Phone Number</label>
-                                    <input type="text" id="phone_no" placeholder="" class="form-control">
-                                </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="eligibility" class=" form-control-label">Eligibility Type</label>
+                                        <select id="eligibility" name="eligibility" class="form-control" >
+                                            <option value=""></option>
+                                            <option value=""></option>
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="nic" class=" form-control-label">NIC</label>
+                                        <input type="text" id="nic" placeholder="" class="form-control">
+                                    </div>
+                                </div>
                         </div>
                         <div class="row ">
                             <div class="col-md-12">
@@ -108,12 +142,7 @@
                             </div>
                         </div>
                         <div class="row ">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="nic" class=" form-control-label">NIC</label>
-                                    <input type="text" id="nic" placeholder="" class="form-control">
-                                </div>
-                            </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="gender" class=" form-control-label">Gender</label>
@@ -125,16 +154,39 @@
                             </div>
                         </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="marital_status" class=" form-control-label">Marital Status</label>
+                                    <select id="marital_status" name="marital_status" class="form-control" >
+                                        <option value=""></option>
+                                        <option value=""></option>
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-
+                        <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="phone_no" class=" form-control-label">Phone Number</label>
+                                <input type="text" id="phone_no" placeholder="" class="form-control">
+                            </div>
+                        </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email" class=" form-control-label">Email Address</label>
+                                    <input type="text" id="email" placeholder="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
                             <div class="row ">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="nationality" class=" form-control-label">Nationality</label>
                                     <select id="nationality" name="nationality" class="form-control" >
                                         <option value=""></option>
-                                        <option value="">aaaaaaaaaa</option>
-                                        <option value="">bbbbbbbbbb</option>
+                                        <option value=""></option>
+                                        <option value=""></option>
                                     </select>
                                 </div>
                             </div>
@@ -143,8 +195,8 @@
                                         <label for="religion" class=" form-control-label">Religion</label>
                                         <select id="religion" name="religion" class="form-control" >
                                             <option value=""></option>
-                                            <option value="">aaaaaaaaaa</option>
-                                            <option value="">bbbbbbbbbb</option>
+                                            <option value=""></option>
+                                            <option value=""></option>
                                         </select>
                                     </div>
                                 </div>
@@ -156,32 +208,8 @@
                                     <label for="birth_dis" class=" form-control-label">Birth District</label>
                                     <select id="birth_dis" name="birth_dis" class="form-control" >
                                         <option value=""></option>
-                                        <option value="">aaaaaaaaaa</option>
-                                        <option value="">bbbbbbbbbb</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="prev_dis" class=" form-control-label">
-                                        Previous Resident District</label>
-                                    <select id="prev_dis" name="prev_dis" class="form-control" >
                                         <option value=""></option>
-                                        <option value="">aaaaaaaaaa</option>
-                                        <option value="">bbbbbbbbbb</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row ">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="reason" class=" form-control-label">Reason to Come</label>
-                                    <select id="reason" name="reason" class="form-control" >
                                         <option value=""></option>
-                                        <option value="">aaaaaaaaaa</option>
-                                        <option value="">bbbbbbbbbb</option>
                                     </select>
                                 </div>
                             </div>
@@ -191,69 +219,33 @@
                                         Highest Education Level</label>
                                     <select id="edu_level" name="edu_level" class="form-control" >
                                         <option value=""></option>
-                                        <option value="">aaaaaaaaaa</option>
-                                        <option value="">bbbbbbbbbb</option>
+                                        <option value=""></option>
+                                        <option value=""></option>
                                     </select>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row ">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="marital_status" class=" form-control-label">Marital Status</label>
-                                    <select id="marital_status" name="marital_status" class="form-control" >
-                                        <option value=""></option>
-                                        <option value="">aaaaaaaaaa</option>
-                                        <option value="">bbbbbbbbbb</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="health" class=" form-control-label">Healthiness</label>
-                                    <select id="health" name="health" class="form-control" >
-                                        <option value=""></option>
-                                        <option value="">aaaaaaaaaa</option>
-                                        <option value="">bbbbbbbbbb</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row ">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="eligibility" class=" form-control-label">Eligibility Type</label>
-                                    <select id="eligibility" name="eligibility" class="form-control" >
-                                        <option value=""></option>
-                                        <option value="">aaaaaaaaaa</option>
-                                        <option value="">bbbbbbbbbb</option>
-                                    </select>
-                                </div>
-                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="occupation" class=" form-control-label">Occupation</label>
                                     <input type="text" id="occupation" placeholder="" class="form-control">
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="income" class=" form-control-label">Income Status</label>
+                                    <input type="text" id="income" placeholder="" class="form-control">
+                                </div>
+                            </div>
+
                         </div>
                         <div class="row">
-
-                            <div class="card">
-                                <div class="card-body card-block">
-                                    <button type="save" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-dot-circle-o"></i> Save
-                                    </button>
-                                    <button type="reset" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-dot-circle-o"></i> Reset
-                                    </button>
-                                    <button type="cancel" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-ban"></i> Cancel
-                                    </button>
-
-                                </div>
+                            <div class="card-body">
+                                <button type="button" class="btn btn-primary">Save</button>
+                                <button type="button" class="btn btn-primary">Reset</button>
+                                <button type="button" class="btn btn-primary">Cancel</button>
                             </div>
                         </div>
 

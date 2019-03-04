@@ -32,17 +32,17 @@
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
 
-                                <a class="nav-link active " th:href="@{/primaryTask/Province}">Province</a>
+                                <a class="nav-link " th:href="@{/administrativeTask/province}">Province</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link " th:href="@{/primaryTask/District}">District</a>
+                                <a class="nav-link " th:href="@{/administrativeTask/district}">District</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " th:href="@{/primaryTask/DSOffice}">Divisional Secretariat Office </a>
+                                <a class="nav-link " th:href="@{/administrativeTask/dsoffice}">Divisional Secretariat Office </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " th:href="@{/primaryTask/gnDivision}">GN Division</a>
+                                <a class="nav-link active " th:href="@{/administrativeTask/gndivision}">GN Division</a>
                             </li>
                         </ul>
                     </div>
@@ -50,54 +50,25 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label for="gn_div_id" class=" form-control-label">GN Division ID</label>
+                                    <input type="text" id="gn_div_id" placeholder="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <label for="gn_div" class=" form-control-label">GN Division Name</label>
                                     <input type="text" id="gn_div" placeholder="" class="form-control">
                                 </div>
                             </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="ds_office" class=" form-control-label">Divisional Secretariat Office</label>
-                                <select id="ds_office" name="ds_office" class="form-control" >
-                                    <option value=""></option>
-                                    <option value="">Pujapitiya</option>
-                                    <option value="">Kirulapone</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        </div>
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="district" class=" form-control-label">District</label>
-                                    <select id="district" name="district" class="form-control" >
+                                    <label for="status" class=" form-control-label">Status</label>
+                                    <select id="status" name="status" class="form-control" >
                                         <option value=""></option>
-                                        <option value="">Kandy</option>
-                                        <option value="">Colombo</option>
+                                        <option value=""></option>
+                                        <option value=""></option>
                                     </select>
                                 </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="province" class=" form-control-label">Province</label>
-                                    <select id="province" name="province" class="form-control">
-                                        <option value=""></option>
-                                        <option value="">Central</option>
-                                        <option value="">Western</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="gn_name" class=" form-control-label">Grama Niladhari Name</label>
-                                    <input type="text" id="gn_name" placeholder="" class="form-control">
-                                </div>
-
                             </div>
                         </div>
                         <div class="row">
