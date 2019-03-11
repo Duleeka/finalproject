@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" >
 <!-- MENU SIDEBAR-->
 <aside class="menu-sidebar2" th:fragment="siderbar">
     <div class="logo">
@@ -157,6 +157,20 @@
                     </a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         </ul>
+                </li>
+                <li class="has-sub" >
+                    <a class="js-arrow" href="#" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                        <i class="fas fa-copy"></i>Settings
+                        <span class="arrow">
+                                    <i class="fas fa-angle-down"></i>
+                                </span>
+                    </a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a th:href="@{/user/}"><i class="far fa-window-maximize"></i>User</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </div>

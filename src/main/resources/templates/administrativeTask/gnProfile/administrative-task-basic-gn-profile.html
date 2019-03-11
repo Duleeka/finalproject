@@ -3,6 +3,7 @@
 
 <head th:include="common/commoncss::commoncss">
 	<link rel="stylesheet" type="text/css" th:href="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css}" >
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-datetimepicker.min.css}" >
 </head>
 
 <body class="animsition">
@@ -101,12 +102,13 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="datetimepicker1" class=" form-control-label">Date of Appointed</label>
-								<div class='input-group date' id='datetimepicker1'>
-									<input type='text' class="form-control" th:field="*{appointmentDate}"/>
-									<span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+								<div class="input-group" id="datetimepicker1">
+									<input id="appointmentDate" th:field="*{appointmentDate}" type="text"
+										   data-date-format="dd-mm-yyyy" data-date-viewmode="years" placeholder="Eg : 08-01-2020"
+										   class="form-control date-picker">
+									<span class="input-group-addon"> <i class="fa fa-calendar"></i></span>
 								</div>
+
 							</div>
 						</div>
 					</div>
@@ -143,11 +145,15 @@
 </div>
 <div th:include="common/commonjs::commonjs"></div>
 <script type="text/javascript" th:src="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/lib/bootstrap-datetimepicker.min.js}"></script>
 </body>
-<script th:inline="javascript">
-	$(function () {
-		$('#datetimepicker1').datetimepicker();
+<script >
+	$('#appointmentDate').datepicker({
+		autoclose: true,
+		container: '#datetimepicker1'
 	});
+
+
 </script>
 </html>
 <!-- end document-->

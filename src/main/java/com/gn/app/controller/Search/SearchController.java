@@ -1,7 +1,5 @@
 package com.gn.app.controller.Search;
 
-import com.gn.app.model.Asset;
-import com.gn.app.service.AssetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,17 +15,8 @@ public class SearchController {
 
     public static final String REQUEST_MAPPING_URL = "/search";
 
-    @Autowired
-    AssetService assetService;
-
     @RequestMapping(value = "/citizendetailage", method = RequestMethod.GET)
     public String homePage13(Model model) {
-        //  model.addAttribute("person", new Person());
-        Asset asset=new Asset();
-        asset.setName("dulika");
-        asset.setAssetNo("no");
-
-        //  assetService.create(asset);
         return "search-citizen-detail-age";
     }
 
