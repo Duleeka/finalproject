@@ -46,7 +46,35 @@
                             </li>
                         </ul>
                     </div>
+                    <form th:action="@{/gndivision/save}" th:object="${gnDomain}" th:method="post">
+                        <div class="card">
+                            <div class="card-body card-block">
+
+                                <a  th:href="@{/gndivision/add}" class="btn btn-primary">
+                                    <i class=""></i> New
+                                </a>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class=""></i> Save
+                                </button>
+                                <a  th:href="@{/gndivision/delete(id=${gnDomain.id})}"
+                                    th:disabled="${gnDomain.id} == null ? 'disabled'" class="btn btn-primary">
+                                    <i class=""></i> Delete
+                                </a>
+                                <a  th:href="@{/gndivision/}" class="btn btn-primary">
+                                    <i class=""></i> Cancel
+                                </a>
+
+                            </div>
+                        </div>
+
+                            <div class="card-header">
+                                <strong>Gn Division</strong>
+                                <small> Form</small>
+                            </div>
+
                     <div class="card-body card-block">
+                        <input type="hidden" id="id" name="id" th:field="*{id}"/>
+                        <input type="hidden" id="version" name="id" th:field="*{version}"/>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -71,18 +99,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="card-body">
-                                <button type="button" class="btn btn-primary">Save</button>
-                                <button type="button" class="btn btn-primary">Reset</button>
-                                <button type="button" class="btn btn-primary">View</button>
-                                <button type="button" class="btn btn-primary">Cancel</button>
-                            </div>
-                        </div>
-
 
                     </div>
+                    </form>
                 </div>
+
             </div>
         </div>
  <!-- END CONTENT-->
@@ -91,7 +112,7 @@
         <!-- END PAGE CONTAINER-->
    </div>
 </div>
-<div th:include="common/commonjs::commonjs"></div>
+    <div th:include="common/commonjs::commonjs"></div></div>
 </body>
 </html>
 <!-- end document-->

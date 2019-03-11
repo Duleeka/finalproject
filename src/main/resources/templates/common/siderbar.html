@@ -8,70 +8,42 @@
         </a>
     </div>
     <div class="menu-sidebar2__content js-scrollbar1">
-
-       <!--   <div class="account2">
-             <div class="image img-cir img-120">
-                 <img src="images/icon/avatar-big-01.jpg" alt="John Doe" />
-             </div>
-             <h4 class="name">john doe</h4>
-             <a href="#">Sign out</a>
-         </div>-->
+        <!--   <div class="account2">
+              <div class="image img-cir img-120">
+                  <img src="images/icon/avatar-big-01.jpg" alt="John Doe" />
+              </div>
+              <h4 class="name">john doe</h4>
+              <a href="#">Sign out</a>
+          </div>-->
         <nav class="navbar-sidebar2">
-
             <ul class="list-unstyled navbar__list">
-
-
-                <li class="active has-sub">
-                    <a class="js-arrow" href="#">
-                        <i class="fas fa-tachometer-alt"></i>Dashboard
-                        <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
-                    </a></li>
-
-                <li class="active has-sub">
-                    <a class="js-arrow" href="#">
-                        <i class="fas fa-home"></i>Home
-                        <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
-                    </a></li>
-
 
                 <!--start administrative task-->
                 <li class="active has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-address-book"></i>Administrative Task
+                        <i class="fas fa-tachometer-alt"></i>Administrative Task
                         <span class="arrow">
                                     <i class="fas fa-angle-down"></i>
                                 </span>
                     </a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
-
                         <li>
-<<<<<<< HEAD
-                            <a th:href="@{/administrativeTask/basicgnprofile}">
-                                <i class="fas fa-sign-in-alt"></i>Basic GN Profile</a>
-=======
                             <a th:href="@{/basicgnprofile/}">
                                 <i class="fas fa-tachometer-alt"></i>Basic GN Profile</a>
->>>>>>> a8e39571a75618be502e8e9a8aacc8ba12185443
                         </li>
                         <li>
-                            <a th:href="@{/administrativeTask/diarylog}">
-                                <i class="fas fa-sign-in-alt"></i>Diary Log</a>
+                            <a th:href="@{/diarylog/}">
+                                <i class="fas fa-tachometer-alt"></i>Diary Log</a>
                         </li>
                         <li>
-                            <a th:href="@{/administrativeTask/province}">
-                                <i class="fas fa-sign-in-alt"></i>Master Details</a>
+                            <a th:href="@{/gndivision/}">
+                                <i class="fas fa-tachometer-alt"></i>GN Division Details</a>
                         </li>
                         <li>
                             <a th:href="@{/administrativeTask/changepassword}">
-                                <i class="fas fa-sign-in-alt"></i>Change Password</a>
-
+                                <i class="fas fa-tachometer-alt"></i>Change Password</a>
                         </li>
                     </ul>
-
                 </li>
 
                 <!--end of administrative task-->
@@ -79,19 +51,19 @@
                 <!--start certificate issuing task-->
                 <li class="active has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-page4"></i>Certificate Issuing Task
+                        <i class="fas fa-tachometer-alt"></i>Certificate Issuing Task
                         <span class="arrow">
                                     <i class="fas fa-angle-down"></i>
                                 </span>
                     </a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
-                            <a th:href="@{/certificateIssuingTask/basicdetail}">
-                                <i class="fas fa-sign-in-alt"></i>Certificate Issuing</a>
+                            <a th:href="@{/basicdetail/}">
+                                <i class="fas fa-tachometer-alt"></i>Certificate Details</a>
                         </li>
                         <li>
-                            <a th:href="@{/certificateIssuingTask/deathregistration}">
-                                <i class="fas fa-sign-in-alt"></i>Death Registration</a>
+                            <a th:href="@{certificateIssuingTask/deathregistration}">
+                                <i class="fas fa-tachometer-alt"></i>Death Registration</a>
                         </li>
                     </ul>
                 </li>
@@ -101,62 +73,86 @@
                 <!--start primary task-->
                 <li class="active has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-page4"></i>Primary Task
-                        <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
+                        <i class="fas fa-tachometer-alt"></i>Primary Task
+                        <span class="arrow"><i class="fas fa-angle-down"></i></span>
                     </a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
-                            <a th:href="@{/primaryTask/basicCitizenDetail}">
-                                <i class="fas fa-sign-in-alt"></i>Citizen Detail</a>
+                            <a th:href="@{/primaryTask/basichhdetail}">
+                                <i class="fas fa-unlock-alt"></i>General Information</a>
                         </li>
                         <li>
                             <a th:href="@{/primaryTask/assetsofcitizen}">
-                                <i class="fas fa-sign-in-alt"></i>Assets of Citizen</a>
+                                <i class="fas fa-unlock-alt"></i>Assets of Citizen</a>
                         </li>
-                        <li>
-                            <a th:href="@{/primaryTask/citizenservices}">
-                                <i class="fas fa-sign-in-alt"></i>Citizen Service</a>
-                        </li>
+
                     </ul>
                 </li>
                 <!--end of primary task-->
 
-
-                <!--start search-->
+                <!--start citizen profile task-->
                 <li class="active has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="zmdi zmdi-search"></i>Search
+                        <i class="fas fa-tachometer-alt"></i>Citizen Profile Task
+                        <span class="arrow"><i class="fas fa-angle-down"></i></span>
+                    </a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a th:href="@{/basiccitizendetail/}">
+                                <i class="fas fa-unlock-alt"></i>Citizen Profile</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/hhdependentdetail/}">
+                                <i class="fas fa-unlock-alt"></i>Dependent Profile</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/citizenpublicdonations/}">
+                                <i class="fas fa-unlock-alt"></i>Public Donations</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/citizenwork/}">
+                                <i class="fas fa-unlock-alt"></i>Citizen Services</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <!--end of citizen profile task-->
+
+
+                <!--&lt;!&ndash;start search&ndash;&gt;
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="fas fa-desktop"></i>Search
                         <span class="arrow"><i class="fas fa-angle-down"></i></span>
                     </a>
 
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
                             <a th:href="@{/search/citizendetailage}">
-                                <i class="fas fa-sign-in-alt"></i>Citizen Detail</a>
+                                <i class="fas fa-comment-alt"></i>Citizen Detail</a>
                         </li>
 
                         <li>
                             <a href="badge.html">
-                                <i class="fas fa-sign-in-alt"></i>Diary Entries</a>
+                                <i class="fas fa-comment-alt"></i>Diary Entries</a>
                         </li>
                         <li>
                             <a href="tab.html">
-                                <i class="fas fa-sign-in-alt"></i>Householder Detail</a>
+                                <i class="far fa-window-maximize"></i>Householder Detail</a>
                         </li>
 
                     </ul>
-                </li>
-                <li class="active has-sub">
+                </li>-->
+                <!--<li class="has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="zmdi zmdi-file"></i>Report and Static
+                        <i class="fas fa-copy"></i>Report and Static
                         <span class="arrow">
                                     <i class="fas fa-angle-down"></i>
                                 </span>
                     </a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
-                        </ul>
+                    </ul>
+                </li>-->
             </ul>
         </nav>
     </div>

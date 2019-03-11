@@ -27,37 +27,49 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <ul class="nav nav-tabs">
-                            <li class="nav-item">
+                <form th:action="@{/hhdependentdetail/save}" th:object="${dependentDetail}" th:method="post">
+                    <div class="card">
+                        <div class="card-body card-block">
 
-                                <a class="nav-link " th:href="@{/primaryTask/basichhdetail}">Householder</a>
-                            </li>
-                            <li class="nav-item">
+                            <a  th:href="@{/hhdependentdetail/add}" class="btn btn-primary">
+                                <i class=""></i> New
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class=""></i> Save
+                            </button>
+                            <a  th:href="@{/hhdependentdetail/delete(id=${dependentDetail.deId})}"
+                                th:disabled="${dependentDetail.deId} ==null ? 'disabled'" class="btn btn-primary">
+                                <i class=""></i> Delete
+                            </a>
+                            <a  th:href="@{/hhdependentdetail/}" class="btn btn-primary">
+                                <i class=""></i> Cancel
+                            </a>
 
-                                <a class="nav-link active " th:href="@{/primaryTask/hhdependentdetail}">Dependent</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/primaryTask/citizenpublicdonations}">Public Donations & Other</a>
-                            </li>
-
-                        </ul>
+                        </div>
                     </div>
-                    <div class="card-body card-block">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Dependent Profile</strong>
+                            <small> Form</small>
+                        </div>
+                        <div class="card-body card-block">
+
+                            <input type="hidden" id="id" name="id" th:field="*{deId}"/>
+                            <input type="hidden" id="version" name="id" th:field="*{version}"/>
+
                         <div class="row">
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="Hno" class=" form-control-label">Householder ID</label>
-                                    <input type="text" id="Hno" placeholder="" class="form-control">
+                                    <input type="text" th:field="*{deFamilyNo}" id="Hno" placeholder="" class="form-control">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="initials" class=" form-control-label">Initials</label>
-                                    <input type="text" id="initials" placeholder="" class="form-control">
+                                    <input type="text" th:field="*{deInitials}" id="initials" placeholder="" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -65,14 +77,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="first_name" class=" form-control-label">First Name</label>
-                                    <input type="text" id="first_name" placeholder="" class="form-control">
+                                    <input type="text" id="first_name" th:field="*{deFirstName}" placeholder="" class="form-control">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="middle_name" class=" form-control-label">Middle Name</label>
-                                    <input type="text" id="middle_name" placeholder="" class="form-control">
+                                    <input type="text" id="middle_name" placeholder="" th:field="*{deMiddleName}" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -80,14 +92,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="last_name" class=" form-control-label">Last Name</label>
-                                    <input type="text" id="last_name" placeholder="" class="form-control">
+                                    <input type="text" id="last_name" placeholder="" th:field="*{deLastName}" class="form-control">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="eligibility" class=" form-control-label">Eligibility Type</label>
-                                    <select id="eligibility" name="eligibility" class="form-control" >
+                                    <select id="eligibility" name="eligibility" th:field="*{deEligibility}" class="form-control" >
                                         <option value=""></option>
                                         <option value=""></option>
                                         <option value=""></option>
@@ -99,21 +111,27 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="nic" class=" form-control-label">NIC</label>
-                                    <input type="text" id="nic" placeholder="" class="form-control">
+                                    <input type="text" id="nic" placeholder="" th:field="*{deNic}" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="age" class=" form-control-label">Age</label>
-                                    <input type="text" id="age" placeholder="" class="form-control">
+                                    <input type="text" id="age" placeholder="" th:field="*{deAge}" class="form-control">
                                 </div>
                             </div>
                         </div>
-                        <div class="row ">
-                            <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="address" class=" form-control-label">Address</label>
-                                    <textarea  id="address" placeholder="" class="form-control"></textarea>
+                                    <label for="relationship" class=" form-control-label">Relationship</label>
+                                    <input type="text" id="relationship" placeholder="" th:field="*{relationship}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="birth_district" class=" form-control-label">Birth District</label>
+                                    <input type="text" id="birth_district" placeholder="" th:field="*{deBirthDistrict}" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -122,7 +140,7 @@
                                 <div class="form-group">
                                     <label for="datetimepicker1" class=" form-control-label">Date of Birth</label>
                                     <div class='input-group date' id='datetimepicker1'>
-                                        <input type='text' class="form-control" />
+                                        <input type='text' id="dob"  th:field="*{deDateOfBirth}"class="form-control" />
                                         <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -134,9 +152,9 @@
                                 <div class="form-group">
                                     <label for="gender" class=" form-control-label">Gender</label>
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="radio" class="form-control-radio" id="gender" name="gender">Male
-                                            <input type="radio" class="form-control-radio" id="gender" name="gender">Female
+                                        <div class="form-group" id="gender">
+                                            <input type="radio" value="male" class="form-control-radio"  th:field="*{deGender}" name="gender">Male
+                                            <input type="radio" value="female" class="form-control-radio"  th:field="*{deGender}" name="gender">Female
                                         </div>
                                     </div>
                                 </div>
@@ -146,10 +164,10 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="marital_status" class=" form-control-label">Marital Status</label>
-                                    <select id="marital_status" name="marital_status" class="form-control" >
+                                    <select id="marital_status" name="marital_status" th:field="*{deMaritalStatus}" class="form-control" >
                                         <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
+                                        <option value="">aaaaaaa</option>
+                                        <option value="">aaaaaaaaaaaa</option>
                                     </select>
                                 </div>
                             </div>
@@ -157,7 +175,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="phone_no" class=" form-control-label">Phone Number</label>
-                                    <input type="text" id="phone_no" placeholder="" class="form-control">
+                                    <input type="text" id="phone_no" placeholder="" th:field="*{dePhoneNumber}" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -165,16 +183,16 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="email" class=" form-control-label">Email Address</label>
-                                    <input type="text" id="email" placeholder="" class="form-control">
+                                    <input type="text" id="email" placeholder="" th:field="*{deEmailAddress}" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="nationality" class=" form-control-label">Nationality</label>
-                                    <select id="nationality" name="nationality" class="form-control" >
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
+                                    <select id="nationality" name="nationality" th:field="*{deNationality}" class="form-control" >
+                                        <option value="">aaaaaaa</option>
+                                        <option value="">aaaaaaa</option>
+                                        <option value="">aaaaaaaaa</option>
                                     </select>
                                 </div>
                             </div>
@@ -183,20 +201,20 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="religion" class=" form-control-label">Religion</label>
-                                    <select id="religion" name="religion" class="form-control" >
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
+                                    <select id="religion" name="religion" th:field="*{deReligion}" class="form-control" >
+                                        <option value="">aaaaaaaa</option>
+                                        <option value="">aaaaaaa</option>
+                                        <option value="">aaaaaa</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="birth_dis" class=" form-control-label">Birth District</label>
-                                    <select id="birth_dis" name="birth_dis" class="form-control" >
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
+                                    <label for="prv_recidence" class=" form-control-label">Previouse Recidence Area</label>
+                                    <select id="prv_recidence" name="prev_recidence" th:field="*{dePreviousRecidenceArea}" class="form-control" >
+                                        <option value="">aaa</option>
+                                        <option value="">aaa</option>
+                                        <option value="">aaa</option>
                                     </select>
                                 </div>
                             </div>
@@ -206,17 +224,17 @@
                                 <div class="form-group">
                                     <label for="edu_level" class=" form-control-label">
                                         Highest Education Level</label>
-                                    <select id="edu_level" name="edu_level" class="form-control" >
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
+                                    <select id="edu_level" name="edu_level" th:field="*{deHighestEducationLevel}" class="form-control" >
+                                        <option value="">aaa</option>
+                                        <option value="">aaa</option>
+                                        <option value="">aaa</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="status" class=" form-control-label">Status</label>
-                                    <input type="text" id="status" placeholder="" class="form-control">
+                                    <input type="text" id="status" placeholder="" th:field="*{deStatus}"  class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -225,30 +243,26 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="occupation" class=" form-control-label">Occupation</label>
-                                    <input type="text" id="occupation" placeholder="" class="form-control">
+                                    <input type="text" id="occupation" placeholder="" th:field="*{deOccupation}" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="income" class=" form-control-label">Income Status</label>
-                                    <input type="text" id="income" placeholder="" class="form-control">
+                                    <input type="text" id="income" placeholder="" th:field="*{deIncome}" class="form-control">
                                 </div>
                             </div>
 
-                        </div>
-                        <div class="row">
-                            <div class="card-body">
-                                <button type="button" class="btn btn-primary">Save</button>
-                                <button type="button" class="btn btn-primary">Reset</button>
-                                <button type="button" class="btn btn-primary">Cancel</button>
-                            </div>
                         </div>
 
                     </div>
 
                 </div>
+                    </form>
             </div>
         </div>
+                </div>
+            </div>
 
     </div>
     <!-- END CONTENT-->
