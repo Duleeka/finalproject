@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="no-js">
+
+<head th:include="common/commoncss::commoncss">
+    <link rel="stylesheet" type="text/css" th:href="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css}" >
+</head>
+
+<body class="animsition">
+<div class="page-wrapper">
+    <!-- MENU SIDEBAR-->
+    <aside class="menu-sidebar2" th:include="common/siderbar::siderbar"></aside>
+    <!-- END MENU SIDEBAR-->
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-container2">
+
+        <!-- HEADER DESKTOP-->
+        <header class="header-desktop2" th:include="common/header:: header"></header>
+        <!-- END HEADER DESKTOP-->
+
+        <!-- BREADCRUMB-->
+        <section class="au-breadcrumb m-t-75" th:include="administrativeTask/gnDivision/breadcrum::breadcrum"></section>
+        <!-- END BREADCRUMB-->
+
+        <!-- CONTENT-->
+        <!--<div class="main-content">-->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+
+                                <a class="nav-link " th:href="@{/administrativeTask/province}">Province</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link active " th:href="@{/administrativeTask/district}">District</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " th:href="@{/administrativeTask/dsoffice}">Divisional Secretariat Office </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " th:href="@{/administrativeTask/gndivision}">GN Division</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body card-block">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="dist_id" class=" form-control-label">District ID</label>
+                                    <input type="text" id="dist_id" placeholder="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="dist_name" class=" form-control-label">District Name</label>
+                                    <input type="text" id="dist_name" placeholder="" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="status" class=" form-control-label">Status</label>
+                                    <select id="status" name="status" class="form-control" >
+                                        <option value=""></option>
+                                        <option value=""></option>
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="card-body">
+                                <button type="button" class="btn btn-primary">Save</button>
+                                <button type="button" class="btn btn-primary">Reset</button>
+                                <button type="button" class="btn btn-primary">View</button>
+                                <button type="button" class="btn btn-primary">Cancel</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END CONTENT-->
+
+        <div th:include="common/footer::footer"></div>
+        <!-- END PAGE CONTAINER-->
+    </div>
+</div>
+<div th:include="common/commonjs::commonjs"></div>
+</body>
+</html>
+<!-- end document-->

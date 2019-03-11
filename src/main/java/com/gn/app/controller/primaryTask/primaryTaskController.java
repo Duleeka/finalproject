@@ -17,37 +17,61 @@ public class primaryTaskController {
 
     @RequestMapping(value = "/basichhdetail", method = RequestMethod.GET)
     public String homePage6(Model model) {
+        //  model.addAttribute("person", new Person());
+
+
+        //  assetService.create(asset);
         return "primaryTask/basicHHDetail/primary-task-basic-hh-detail";
     }
 
-        @RequestMapping(value = "/hhdependentdetail", method = RequestMethod.GET)
-        public String homePage7(Model model) {
-            return "primaryTask/dependentDetail/primary-task-hh-dependent-detail";
-        }
+    @RequestMapping(value = "/hhdependentdetail", method = RequestMethod.GET)
+    public String homePage7(Model model) {
+        //  model.addAttribute("person", new Person());
+
+
+        //  assetService.create(asset);
+        return "primaryTask/dependentDetail/primary-task-hh-dependent-detail";
+    }
 
     @RequestMapping(value = "/assetsofcitizen", method = RequestMethod.GET)
     public String homePage8(Model model) {
+
+
+        //  assetService.create(asset);
         return "primaryTask/citizenAssets/primary-task-assets-of-citizen";
     }
 
     @RequestMapping(value = "/hhdonationRecord", method = RequestMethod.GET)
     public String homePage9(Model model) {
+        //  model.addAttribute("person", new Person());
+
+
+        //  assetService.create(asset);
         return "primaryTask/donationRecord/primary-task-hh-donation-record";
     }
 
     @RequestMapping(value = "/basicCitizenDetail", method = RequestMethod.GET)
     public String homePage10(Model model) {
+        //  model.addAttribute("person", new Person());
+
+
+        //  assetService.create(asset);
         return "primaryTask/basicCitizenDetail/primary-task-basic-citizen-detail";
     }
 
     @RequestMapping(value = "/citizenpublicdonations", method = RequestMethod.GET)
     public String homePage11(Model model) {
+        //  model.addAttribute("person", new Person());
 
+        //  assetService.create(asset);
         return "primaryTask/publicDonations/primary-task-citizen-public-donations";
     }
 
     @RequestMapping(value = "/citizenservices", method = RequestMethod.GET)
     public String homePage12(Model model) {
-           return "primaryTask/citizenServices/primary-task-citizen-services";
+        //  model.addAttribute("person", new Person());
+
+        //  assetService.create(asset);
+        return "primaryTask/citizenServices/primary-task-citizen-services";
     }
 }

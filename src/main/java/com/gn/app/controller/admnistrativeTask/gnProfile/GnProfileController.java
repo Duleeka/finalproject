@@ -28,16 +28,19 @@ public class GnProfileController {
         return "administrativeTask/gnProfile/home-view";
     }
 
+
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String newGnProfile(Model model) {
         setCommonData(model,new GnProfileDTO());
         return "administrativeTask/gnProfile/administrative-task-basic-gn-profile";
     }
+
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String editGnProfile(Model model, Integer id) {
         setCommonData(model,gnProfileService.findById(id));
         return "administrativeTask/gnProfile/administrative-task-basic-gn-profile";
     }
+
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveGnProfile(Model model, @ModelAttribute GnProfileDTO dto ) {
@@ -53,7 +56,8 @@ public class GnProfileController {
         return "redirect:/basicgnprofile/";
     }
 
-    private void setCommonData(Model model, GnProfileDTO dto) {
+    private void setCommonData(Model model, GnProfileDTO dto)
+    {
         model.addAttribute("gnProfile",dto);
     }
 }

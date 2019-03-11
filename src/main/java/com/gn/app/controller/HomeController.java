@@ -1,5 +1,6 @@
 package com.gn.app.controller;
 
+
 import com.gn.app.model.Settings.User;
 import com.gn.app.service.AdministrativeTask.GnProfile.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Component
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class HomeController {
+
 
 
     @Autowired
@@ -48,6 +50,5 @@ public class HomeController {
     public String loginPage(Model model) {
         return "login";
     }
-
 
 }
