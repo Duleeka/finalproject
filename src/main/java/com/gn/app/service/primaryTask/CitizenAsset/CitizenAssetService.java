@@ -1,11 +1,20 @@
 package com.gn.app.service.primaryTask.CitizenAsset;
 
-import com.gn.app.model.primaryTask.CitizenAsset.CitizenAsset;
+import com.gn.app.dto.primaryTask.CitizenAsset.CitizenAssetDTO;
+import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
+import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 
-/**
- * Created by hp on 1/7/2019.
- */
+import java.util.List;
+
 public interface CitizenAssetService {
 
-    void create(CitizenAsset asset);
+    DataTablesOutput<CitizenAssetDTO> findAllDataTable(DataTablesInput input);
+
+    List<CitizenAssetDTO> findAll();
+
+    CitizenAssetDTO create(CitizenAssetDTO citizenAsset);
+
+    CitizenAssetDTO findById(Integer id);
+
+    void delete(Integer id);
 }

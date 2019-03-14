@@ -18,7 +18,7 @@
         <!-- END HEADER DESKTOP-->
 
         <!-- BREADCRUMB-->
-        <section class="au-breadcrumb m-t-75" th:include="primaryTask/citizenAssets/breadcrum::breadcrum"></section>
+        <section class="au-breadcrumb m-t-75" th:include="settings/donationregister/breadcrum::breadcrum"></section>
         <!-- END BREADCRUMB-->
 
         <!-- CONTENT-->
@@ -29,7 +29,7 @@
                 <div class="card">
                     <div class="card-body card-block">
 
-                        <a  th:href="@{/assetsofcitizen/add}" class="btn btn-primary">
+                        <a  th:href="@{/donationregister/add}" class="btn btn-primary">
                             <i class=""></i> New
                         </a>
                         <button class="btn btn-primary">
@@ -38,7 +38,7 @@
                         <button  class="btn btn-primary">
                             <i class=""></i> Delete
                         </button>
-                        <a  th:href="@{/assetsofcitizen/}" class="btn btn-primary">
+                        <a  th:href="@{/donationregister/}" class="btn btn-primary">
                             <i class=""></i> Cancel
                         </a>
 
@@ -46,19 +46,18 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <strong>Citizen Asset</strong>
+                        <strong>Citizen Public Donation & Other</strong>
                         <small> Home</small>
                     </div>
                     <div class="card-body card-block">
-                        <table class="table table-borderless table-striped table-earning" id="tbl_assets">
+                        <table class="table table-borderless table-striped table-earning" id="tbl_donation_register">
                             <thead>
                             <tr>
                                 <th class="first-th"> #</th>
                                 <th class="hidden-xs">Householder No</th>
-                                <th class="hidden-xs">Asset Id</th>
-                                <th class="hidden-xs">Land Name</th>
-                                <th class="hidden-xs">House Ownership</th>
-                                <th class="hidden-xs">Status</th>
+                                <th class="hidden-xs">Donation Type</th>
+                                <th class="hidden-xs">Valid From</th>
+                                <th class="hidden-xs">Valid Till</th>
                                 <th class="last-th">More</th>
                             </tr>
                             </thead>
@@ -84,11 +83,11 @@
 <script type="text/javascript" th:src="@{//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js}"></script>
 <script type="text/javascript" th:src="@{//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/lib/jquery.spring-friendly.js}"></script>
-<script type="text/javascript" th:src="@{/js/app/PrimaryTask/CitizenAsset/home-view.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/Settings/donationRegister/home-view.js}"></script>
 <script>
     jQuery(document).ready(function() {
         //Main.init();
-        CitizenAssetHome.init();
+        DonationRegisterHome.init();
     });
 </script>
 </body>

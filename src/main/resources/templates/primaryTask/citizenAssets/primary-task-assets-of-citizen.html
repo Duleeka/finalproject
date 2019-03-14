@@ -27,7 +27,10 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <!--<form th:action="@{/assetsofcitizen/save}" th:object="${diaryLog}" th:method="post">
+
+                <form th:action="@{/assetsofcitizen/save}" th:object="${citizenAsset}" th:method="post">
+
+
                     <div class="card">
                         <div class="card-body card-block">
 
@@ -37,8 +40,8 @@
                             <button type="submit" class="btn btn-primary">
                                 <i class=""></i> Save
                             </button>
-                            <a  th:href="@{/assetsofcitizen/delete(id=${diaryLog.taskId})}"
-                                th:disabled="${diaryLog.taskId} == null ? 'disabled'" class="btn btn-primary">
+                            <a  th:href="@{/assetsofcitizen/delete(id=${citizenAsset.id})}"
+                                th:disabled="${citizenAsset.id} == null ? 'disabled'" class="btn btn-primary">
                                 <i class=""></i> Delete
                             </a>
                             <a  th:href="@{/assetsofcitizen/}" class="btn btn-primary">
@@ -46,123 +49,201 @@
                             </a>
 
                         </div>
-                    </div>-->
+                    </div>
                     <div class="card">
                         <div class="card-header">
                             <strong>Citizen Asset</strong>
                             <small> Form</small>
                         </div>
+
+                        <!--START OF LAND PROPERTY DETAILS-->
                         <div class="card-body card-block">
 
-                            <!--<input type="hidden" id="id" name="id" th:field="*{taskId}"/>
-                            <input type="hidden" id="version" name="id" th:field="*{version}"/>-->
-                        <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="Hno" class=" form-control-label">Householder ID</label>
-                                <input type="text" id="Hno" placeholder="" class="form-control">
-                            </div>
-                        </div>
-                            <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="nic" class=" form-control-label">NIC</label>
-                                <input type="text" id="nic" placeholder="" class="form-control">
-                            </div>
-                        </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="land_name" class=" form-control-label">Land Name</label>
-                                    <input type="text" id="land_name" placeholder="" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="land_size" class=" form-control-label">Land Size</label>
-                                    <input type="text" id="land_size" placeholder="" class="form-control">
-                                </div>
-                            </div>
+                            <input type="hidden" id="id" name="id" th:field="*{id}"/>
+                            <input type="hidden" id="version" name="id" th:field="*{version}"/>
 
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="land_own" class=" form-control-label">Land Ownership</label>
-                                    <select id="land_own" name="land_own" class="form-control" >
-                                        <option value=""></option>
-                                        <option value="">aaaaaaaaaa</option>
-                                        <option value="">bbbbbbbbbb</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="cultivation" class=" form-control-label">Main Cultivation</label>
-                                    <select id="cultivation" name="cultivation" class="form-control" >
-                                        <option value=""></option>
-                                        <option value="">aaaaaaaaaa</option>
-                                        <option value="">bbbbbbbbbb</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="water_faci" class=" form-control-label">Water Facility</label>
-                                    <select id="water_faci" name="water_faci" class="form-control" >
-                                        <option value=""></option>
-                                        <option value="">aaaaaaaaaa</option>
-                                        <option value="">bbbbbbbbbb</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="electricity" class=" form-control-label">Electricity</label>
-                                    <select id="electricity" name="electricity" class="form-control" >
-                                        <option value=""></option>
-                                        <option value="">aaaaaaaaaa</option>
-                                        <option value="">bbbbbbbbbb</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="toilet_faci" class=" form-control-label">Toilet Facility</label>
-                                    <select id="toilet_faci" name="toilet_faci" class="form-control" >
-                                        <option value=""></option>
-                                        <option value="">aaaaaaaaaa</option>
-                                        <option value="">bbbbbbbbbb</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="status" class=" form-control-label">Status</label>
-                                        <textarea  id="status" placeholder="" class="form-control"></textarea>
+                                        <label for="hh_no" class=" form-control-label">Householder No</label>
+                                        <select id="hh_no" name="land_own" th:field="*{householderId}" class="form-control" >
+                                            <option value=""></option>
+                                            <option value=""></option>
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="land_name" class=" form-control-label">Land Name</label>
+                                        <input type="text" id="land_name" placeholder="" th:field="*{landName}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="land_size" class=" form-control-label">Land Size</label>
+                                        <input type="text" id="land_size" placeholder=""  th:field="*{landSize}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="land_type" class=" form-control-label">Land Type</label>
+                                        <select id="land_type" name="land_type"  th:field="*{landType}" class="form-control" >
+                                            <option value="">faddy</option>
+                                            <option value=""></option>
+                                            <option value=""></option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
 
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="status" class=" form-control-label">Status</label>
+                                        <textarea  id="status" placeholder=""  th:field="*{assetStatus}" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--END OF LAND PROPERTY DETAIL-->
 
+                        <!--TAB START-->
 
+                        <div class="card-body card-block">
+                            <div class="card">
+                                <div class="card-header">
+                                    <ul class="nav nav-tabs">
+                                        <li class="nav-item"><a class="nav-link " data-toggle="tab" href="#tab_buiding_property">Building Property</a> </li>
+                                        <li class="nav-item"><a class="nav-link " data-toggle="tab" href="#tab_other_facility">Other Facilities</a> </li>
 
+                                    </ul>
+                                </div>
+                            </div>
 
+                            <div class="tab-content">
+                                <div id="tab_buiding_property" class="tab-pane fade in active">
+                                    <!--START OF BUILDING PROPERTIES-->
+                                    <div class="card-body card-block">
 
-                    </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="house_own" class=" form-control-label">House Ownership</label>
+                                                    <select id="house_own" name="house_own"  th:field="*{houseOwnership}" class="form-control" >
+                                                        <option value=""></option>
+                                                        <option value=""></option>
+                                                        <option value=""></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="house_type" class=" form-control-label">House Type</label>
+                                                    <select id="house_type" name="house_type"  th:field="*{houseType}" class="form-control" >
+                                                        <option value=""></option>
+                                                        <option value=""></option>
+                                                        <option value=""></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="roof_type" class=" form-control-label">Roof Type</label>
+                                                    <select id="roof_type" name="roof_type"  th:field="*{roofType}" class="form-control" >
+                                                        <option value=""></option>
+                                                        <option value=""></option>
+                                                        <option value=""></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="wall_type" class=" form-control-label">Wall Type</label>
+                                                    <select id="wall_type" name="wall_type"  th:field="*{wallType}" class="form-control" >
+                                                        <option value=""></option>
+                                                        <option value=""></option>
+                                                        <option value=""></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="description" class=" form-control-label">Description</label>
+                                                        <textarea  id="description" placeholder=""  th:field="*{description}" class="form-control"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--END OF BUILDING PROPERTIES-->
 
-                </div>
-                </form>
+                                <div id="tab_other_facility" class="tab-pane fade in active">
+                                    <!--START OF OTHER FACILITY-->
+                                    <div class="card-body card-block">
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="cultivation" class=" form-control-label">Main Cultivation</label>
+                                                    <select id="cultivation" name="cultivation"  th:field="*{mainCultivation}" class="form-control" >
+                                                        <option value=""></option>
+                                                        <option value=""></option>
+                                                        <option value=""></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="water_faci" class=" form-control-label">Water Facility</label>
+                                                    <select id="water_faci" name="water_faci"  th:field="*{waterFacility}" class="form-control" >
+                                                        <option value=""></option>
+                                                        <option value=""></option>
+                                                        <option value=""></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="electricity" class=" form-control-label">Electricity</label>
+                                                    <select id="electricity" name="electricity"  th:field="*{electricity}" class="form-control" >
+                                                        <option value=""></option>
+                                                        <option value=""></option>
+                                                        <option value=""></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="toilet_faci" class=" form-control-label">Toilet Facility</label>
+                                                    <select id="toilet_faci" name="toilet_faci"  th:field="*{toiletFacility}" class="form-control" >
+                                                        <option value=""></option>
+                                                        <option value=""></option>
+                                                        <option value=""></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--END OF OTHER FACILITY-->
+                                </div>
+                            </div>
+
+                            </div>
+
+                        </div>
+
+                </form></div>
+
             </div>
         </div>
 
