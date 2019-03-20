@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(CitizenDetailRestController.REQUEST_MAPPING_URL)
 public class CitizenDetailRestController {
 
-    public static final String REQUEST_MAPPING_URL ="/restapi/basicitizendetail";
+    public static final String REQUEST_MAPPING_URL ="/restapi/citizendetail";
 
     @Autowired
     CitizenDetailService citizenDetailService;

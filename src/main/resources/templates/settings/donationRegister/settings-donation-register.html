@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="no-js">
 
 <head th:include="common/commoncss::commoncss">
-    <link rel="stylesheet" type="text/css" th:href="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css}" >
+    <link rel="stylesheet" type="text/css"
+          th:href="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css}">
 </head>
 
 <body class="animsition">
@@ -35,15 +36,15 @@
                         <div class="card">
                             <div class="card-body card-block">
 
-                                <a  th:href="@{/donationregister/add}" class="btn btn-primary"><i class=""></i> New</a>
+                                <a th:href="@{/donationregister/add}" class="btn btn-primary"><i class=""></i> New</a>
 
                                 <button type="submit" class="btn btn-primary"><i class=""></i> Save</button>
 
-                                <a  th:href="@{/donationregister/delete(id=${donationRegister.id})}"
-                                    th:disabled="${donationRegister.id} ==null ? 'disabled'" class="btn btn-primary">
+                                <a th:href="@{/donationregister/delete(id=${donationRegister.id})}"
+                                   th:disabled="${donationRegister.id} ==null ? 'disabled'" class="btn btn-primary">
                                     <i class=""></i> Delete</a>
 
-                                <a  th:href="@{/donationregister/}" class="btn btn-primary"><i class=""></i> Cancel</a>
+                                <a th:href="@{/donationregister/}" class="btn btn-primary"><i class=""></i> Cancel</a>
 
                             </div>
                         </div>
@@ -54,83 +55,72 @@
                             </div>
 
 
-
                             <!--START OF CITIZEN DONATION DETAIL-->
 
-<div class="card-body card-block">
+                            <div class="card-body card-block">
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="donation_type" class=" form-control-label">Type of Donation</label>
-                <input type="text" id="donation_type" th:field="*{donationType}" placeholder="" class="form-control">
-            </div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="datetimepicker1" class=" form-control-label">Received Date</label>
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='date' th:field="*{receivedDate}" class="form-control" />
-                    <span class="input-group-addon">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="donation_type" class=" form-control-label">Type of
+                                                Donation</label>
+                                            <input type="text" id="donation_type" th:field="*{donationType}"
+                                                   placeholder="" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="datetimepicker1" class=" form-control-label">Valid From</label>
+                                            <div class='input-group date' id='datetimepicker1'>
+                                                <input type='date' th:field="*{validFrom}" class="form-control"/>
+                                                <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="datetimepicker1" class=" form-control-label">Valid From</label>
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='date' th:field="*{validFrom}" class="form-control" />
-                    <span class="input-group-addon">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="datetimepicker2" class=" form-control-label">Valid Till</label>
+                                            <div class='input-group date' id='datetimepicker2'>
+                                                <input type='date' th:field="*{validTo}" class="form-control"/>
+                                                <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="datetimepicker2" class=" form-control-label">Valid Till</label>
-                <div class='input-group date' id='datetimepicker2'>
-                    <input type='date' th:field="*{validTill}" class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="form-group">
-                <label for="description" class=" form-control-label">Description</label>
-                <textarea  id="description" placeholder="" th:field="*{description}" class="form-control"></textarea>
-            </div>
-        </div>
-    </div>
-</div>
-<!--END OF CITIZEN PUBLIC DONATION DETAIL-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="description" class=" form-control-label">Description</label>
+                                            <textarea id="description" placeholder="" th:field="*{description}"
+                                                      class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--END OF CITIZEN PUBLIC DONATION DETAIL-->
 
-</div>
                         </div>
- </form>
-                </div>
-</div>
+                </form>
+            </div>
+        </div>
 
-</div>
+    </div>
 
 
-<!-- END CONTENT-->
-<div th:include="common/footer::footer"></div>
-<!-- END PAGE CONTAINER-->
+    <!-- END CONTENT-->
+    <div th:include="common/footer::footer"></div>
+    <!-- END PAGE CONTAINER-->
 </div>
 </div>
 <div th:include="common/commonjs::commonjs"></div>
-<script type="text/javascript" th:src="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript"
+        th:src="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js}"></script>
 
 <script th:inline="javascript">
     $(function () {

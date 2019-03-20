@@ -1,6 +1,5 @@
 package com.gn.app.service.citizenProfileTask.CitizenDetail;
 
-import com.gn.app.dao.administrativeTask.GnDomain.GnDomainDao;
 import com.gn.app.dao.citizenProfileTask.CitizenDetail.CitizenDetailDao;
 import com.gn.app.dto.citizenProfileTask.CitizenDetail.CitizenDetailDTO;
 import com.gn.app.mappers.citizenProfileTask.CitizenDetail.CitizenDetailMapper;
@@ -10,6 +9,7 @@ import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -26,6 +26,7 @@ public class CitizenDetailServiceImpl implements CitizenDetailService {
 
 
     @Override
+    @Transactional(readOnly = true)
     public DataTablesOutput<CitizenDetailDTO> findAllDataTable (DataTablesInput input) {
 
         DataTablesOutput<CitizenDetail> output= citizenDetailDao.findAll(input);

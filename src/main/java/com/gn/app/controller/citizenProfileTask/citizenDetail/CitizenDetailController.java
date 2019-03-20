@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Controller
 @RequestMapping(CitizenDetailController.REQUEST_MAPPING_URL)
 public class CitizenDetailController {
 
-    public static final String REQUEST_MAPPING_URL = "/basiccitizendetail";
+    public static final String REQUEST_MAPPING_URL = "/citizendetail";
 
     @Autowired
     CitizenDetailService citizenDetailService;
@@ -26,19 +25,19 @@ public class CitizenDetailController {
 */
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String homePage(Model model) { return "citizenProfileTask/basicCitizenDetail/home-view";}
+    public String homePage(Model model) { return "citizenProfileTask/CitizenDetail/home-view";}
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String newCitizenDetail(Model model){
         setCommonData(model, new CitizenDetailDTO());
-        return "citizenProfileTask/basicCitizenDetail/primary-task-basic-citizen-detail";
+        return "citizenProfileTask/CitizenDetail/citizen-profile-task-citizen-detail";
     }
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String editCitizenDetail(Model model, Integer id ) {
         setCommonData(model,citizenDetailService.findById(id));
-        return "citizenProfileTask/basicCitizenDetail/primary-task-basic-citizen-detail";
+        return "citizenProfileTask/CitizenDetail/citizen-profile-task-citizen-detail";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -46,13 +45,13 @@ public class CitizenDetailController {
         citizenDetailService.create(dto);
         setCommonData(model,dto);
 
-        return "citizenProfileTask/basicCitizenDetail/primary-task-basic-citizen-detail";
+        return "citizenProfileTask/CitizenDetail/citizen-profile-task-citizen-detail";
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String deleteCitizenDetail(Model model, Integer id){
         citizenDetailService.delete(id);
-        return "redirect:/basiccitizendetail/";
+        return "redirect:/citizendetail/";
     }
 private void setCommonData(Model model, CitizenDetailDTO dto) {
         model.addAttribute("citizenDetail",dto);
@@ -63,5 +62,6 @@ private void setCommonData(Model model, CitizenDetailDTO dto) {
         model.addAttribute("dsOffices", DsOffice.getALLDsOffice());
         model.addAttribute("relationships",Relationship.getALLRelationship());
         model.addAttribute("domains", citizenDetailService.findAll());
+        model.addAttribute("certificates",citizenDetailService.findAll());
     }
 }

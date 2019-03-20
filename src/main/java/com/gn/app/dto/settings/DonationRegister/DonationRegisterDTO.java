@@ -2,14 +2,15 @@ package com.gn.app.dto.settings.DonationRegister;
 
 import com.gn.app.dto.BaseDTO;
 
+import java.util.Date;
+
 public class DonationRegisterDTO extends BaseDTO {
 
 
     private Integer id;
     private String donationType;
-    private String receivedDate;
-    private String validFrom;
-    private String validTill;
+    private String  validFrom;
+    private String  validTo;
     private String description;
 
     public Integer getId() {
@@ -28,14 +29,6 @@ public class DonationRegisterDTO extends BaseDTO {
         this.donationType = donationType;
     }
 
-    public String getReceivedDate() {
-        return receivedDate;
-    }
-
-    public void setReceivedDate(String receivedDate) {
-        this.receivedDate = receivedDate;
-    }
-
     public String getValidFrom() {
         return validFrom;
     }
@@ -44,12 +37,12 @@ public class DonationRegisterDTO extends BaseDTO {
         this.validFrom = validFrom;
     }
 
-    public String getValidTill() {
-        return validTill;
+    public String getValidTo() {
+        return validTo;
     }
 
-    public void setValidTill(String validTill) {
-        this.validTill = validTill;
+    public void setValidTo(String validTo) {
+        this.validTo = validTo;
     }
 
     public String getDescription() {

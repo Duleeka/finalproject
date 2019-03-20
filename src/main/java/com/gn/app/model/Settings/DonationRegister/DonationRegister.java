@@ -3,9 +3,10 @@ package com.gn.app.model.Settings.DonationRegister;
 import com.gn.app.model.BaseModel;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
-@Table(name = "tbl_donation")
+@Table(name = "tbl_donation_register")
 public class DonationRegister extends BaseModel {
 
     private static final long serialVersionUID = 3466843752790052309L;
@@ -19,14 +20,11 @@ public class DonationRegister extends BaseModel {
     @Column(name = "donation_type")
     private String donationType;
 
-    @Column(name = "received_date")
-    private String receivedDate;
-
     @Column(name = "valid_from")
-    private String validFrom;
+    private String  validFrom;
 
-    @Column(name = "valid_till")
-    private String validTill;
+    @Column(name = "valid_to")
+    private String  validTo;
 
     @Column(name = "description")
     private String description;
@@ -47,14 +45,6 @@ public class DonationRegister extends BaseModel {
         this.donationType = donationType;
     }
 
-    public String getReceivedDate() {
-        return receivedDate;
-    }
-
-    public void setReceivedDate(String receivedDate) {
-        this.receivedDate = receivedDate;
-    }
-
     public String getValidFrom() {
         return validFrom;
     }
@@ -63,12 +53,12 @@ public class DonationRegister extends BaseModel {
         this.validFrom = validFrom;
     }
 
-    public String getValidTill() {
-        return validTill;
+    public String getValidTo() {
+        return validTo;
     }
 
-    public void setValidTill(String validTill) {
-        this.validTill = validTill;
+    public void setValidTo(String validTo) {
+        this.validTo = validTo;
     }
 
     public String getDescription() {

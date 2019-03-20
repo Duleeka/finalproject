@@ -2,6 +2,7 @@ package com.gn.app.controller.citizenProfileTask.donationDetail;
 
 
 import com.gn.app.dto.citizenProfileTask.DonationDetail.DonationDetailDTO;
+import com.gn.app.service.citizenProfileTask.CitizenDetail.CitizenDetailService;
 import com.gn.app.service.citizenProfileTask.DonationDetail.DonationDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,8 @@ public class DonationDetailController {
     @Autowired
     DonationDetailService donationDetailService;
 
+    @Autowired
+    CitizenDetailService citizenDetailService;
    /* @Autowired
     GnDomainService gnDomainService;
 */
@@ -53,6 +56,9 @@ public class DonationDetailController {
         return "redirect:/donationdetail/";
     }
     private void setCommonData(Model model, DonationDetailDTO dto) {
+
         model.addAttribute("donationDetail", dto);
+        model.addAttribute("householders", citizenDetailService.findAll());
+        model.addAttribute("donations", donationDetailService.findAll());
     }
 }

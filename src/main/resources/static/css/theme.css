@@ -322,7 +322,7 @@ section {
 }
 
 .page-content--bge5 {
-    background: #e5e5e5;
+    background: #999999;
     height: 100vh;
 }
 
@@ -348,14 +348,16 @@ section {
     -moz-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
+    color: #ffffff;
 }
 
 .login-checkbox label input[type="checkbox"] {
     margin-right: 8px;
+    color: #ffffff;
 }
 
 .login-checkbox > label > a {
-    color: #ff2e44;
+    color: #330000;
 }
 
 @media (max-width: 991px) {
@@ -372,10 +374,11 @@ section {
 
 .login-form .form-group label {
     display: block;
+    color: #ffffff;
 }
 
 .login-content {
-    background: #fff;
+    background: #666666;
     padding: 30px 30px 20px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -452,15 +455,15 @@ section {
 
 .au-btn:hover {
     color: #fff;
-    background: #3868cd;
+    background:  #4272d7;
 }
 
 .au-btn--blue2 {
-    background: #00aced;
+    background:  #4272d7;
 }
 
 .au-btn--blue2:hover {
-    background: #00a2e3;
+    background: #ffffff;
 }
 
 .au-btn--block {
@@ -475,14 +478,15 @@ section {
 
 .au-btn--blue {
     background: #4272d7;
+    color: #fff;
 }
 
 .au-btn--green {
-    background: #63c76a;
+    background: #333333;
 }
 
 .au-btn--green:hover {
-    background: #59bd60;
+    background:#a9b3c9;
 }
 
 .au-btn-plus {
@@ -826,12 +830,12 @@ section {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    background: #4272d7;
+    background: #666666;
     margin-left: -3px;
 }
 
 .au-btn--submit:hover {
-    background: #3868cd;
+    background: #666666;
 }
 
 .au-btn--submit > i {
@@ -2131,8 +2135,9 @@ section {
     -moz-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    background: #365cad;
+    background: #4272d7;
     padding: 0 35px;
+
 }
 
 @media (max-width: 991px) {
@@ -3438,7 +3443,7 @@ section {
 }
 
 .au-task__item--primary .au-task__item-inner {
-    border-left: 3px solid #4272d7;
+    border-left: 3px solid #666666;
 }
 
 .au-task__item--success .au-task__item-inner {
@@ -4227,9 +4232,9 @@ section {
 }
 
 .table-earning thead th {
-    background: #333;
+    background: #000000;
     font-size: 16px;
-    color: #fff;
+    color:#fff;
     vertical-align: middle;
     font-weight: 400;
     text-transform: capitalize;

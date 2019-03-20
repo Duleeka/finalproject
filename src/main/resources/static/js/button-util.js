@@ -4,17 +4,21 @@
 
 var ButtonUtil = function () {
 
-    /*********************************************************************
-     * Home Button With URL
-     *********************************************************************/
+    /*
+      Home Button With URL
+     */
     var getHomeBtnWithURL = function (mappingPrefix, id) {
         var modalId = "modal_" + mappingPrefix.replace(/\//g, '_') + "_" + id;
 
         var htmlBtn =  '<div class="btn-group">'+
-          '  <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle btn btn-primary btn-sm"><i class="fa fa-cog"></i></button>'+
-          '  <div tabindex="-1" aria-hidden="true" role="menu" class="dropdown-menu">'+
-        '    <a type="button" href="../' + mappingPrefix + '/edit?id=' + id + '" tabindex="0" class="dropdown-item"><i class="fa fa-edit"></i> Edit</a>'+
-           ' <button type="button" data-toggle="modal" data-target="#' + modalId + '" tabindex="-1" class="dropdown-item"><i class="fa fa-times"></i> Delete</button>'+
+          '  <button type="button" aria-haspopup="true" aria-expanded="false" class="au-btn--blue">' + '<i class=""></i></button>'+
+
+          '  <div tabindex="-1" aria-hidden="true" role="menu" class="">'+
+        '    <a type="button" href="../' + mappingPrefix + '/edit?id=' + id + '" tabindex="0" class="">' +
+            '<i class="fa fa-edit"></i> Edit</a>'+
+            
+          /* ' <button type="button" data-toggle="modal" data-target="#' + modalId + '" tabindex="-1" class="dropdown-item">' +
+            '<i class="fa fa-times"></i> Delete</button>'+*/
         '</div>'+
         '</div>'+
         '<div id="' + modalId + '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">' +

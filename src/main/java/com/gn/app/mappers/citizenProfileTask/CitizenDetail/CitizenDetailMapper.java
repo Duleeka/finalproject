@@ -22,8 +22,9 @@ public class CitizenDetailMapper extends GenericMapper<CitizenDetail, CitizenDet
     public CitizenDetailDTO domainToDto(CitizenDetail citizenDetail) throws Exception{
         CitizenDetailDTO dto = new CitizenDetailDTO();
         dto.setId(citizenDetail.getId());
+        dto.setVersion(citizenDetail.getVersion());
         dto.setCitizenFamilyNo(citizenDetail.getCitizenFamilyNo());
-        dto.setHouseholder(citizenDetail.getHouseholder());
+        dto.setIsHouseholder(citizenDetail.getHouseholder());
         dto.setCitizenStatus(citizenDetail.getCitizenStatus());
         dto.setRelationship(citizenDetail.getRelationship());
         dto.setVersion(citizenDetail.getVersion());
@@ -32,7 +33,7 @@ public class CitizenDetailMapper extends GenericMapper<CitizenDetail, CitizenDet
         dto.setCitizenMiddleName(citizenDetail.getCitizenMiddleName());
         dto.setCitizenLastName(citizenDetail.getCitizenLastName());
         dto.setNic(citizenDetail.getNic());
-        dto.setCitizenDateOfBirth(citizenDetail.getCitizenDateOfBirth());
+       // dto.setCitizenDateOfBirth(citizenDetail.getCitizenDateOfBirth());
         dto.setCitizenGender(citizenDetail.getCitizenGender());
         dto.setMaritalStatus(citizenDetail.getMaritalStatus());
         dto.setPhoneNumber(citizenDetail.getPhoneNumber());
@@ -49,17 +50,15 @@ public class CitizenDetailMapper extends GenericMapper<CitizenDetail, CitizenDet
         dto.setPreviousResidentialArea(citizenDetail.getPreviousResidentialArea());
         dto.setReasonToChangeResidentialArea(citizenDetail.getReasonToChangeResidentialArea());
 
+        dto.setDeathPlace(citizenDetail.getDeathPlace());
+        dto.setDeathReason(citizenDetail.getDeathReason());
+/*
+        dto.setDateOfDeath(citizenDetail.getDateOfDeath());
+*/
+
 
         dto.setHighestEducationLevel(citizenDetail.getHighestEducationLevel());
         dto.setLanguageProficiency(citizenDetail.getLanguageProficiency());
-
-
-       /* dto.setDDonationType(citizenDetail.getDDonationType());
-        dto.setDReceivingAmount(citizenDetail.getDReceivingAmount());
-        dto.setDAccountNumber(citizenDetail.getDAccountNumber());
-        dto.setDReceivedDate(citizenDetail.getDReceivedDate());
-        dto.setDStatus(citizenDetail.getDStatus());
-        dto.setDDescription(citizenDetail.getDDescription());*/
 
 
         return dto;
@@ -77,7 +76,11 @@ public class CitizenDetailMapper extends GenericMapper<CitizenDetail, CitizenDet
         dto.setCitizenFirstName(citizenDetail.getCitizenFirstName());
         dto.setCitizenLastName(citizenDetail.getCitizenLastName());
         dto.setNic(citizenDetail.getNic());
-        dto.setPhoneNumber(citizenDetail.getPhoneNumber());
+
+
+       /* dto.setDeathPlace(citizenDetail.getDeathPlace());
+        dto.setDeathReason(citizenDetail.getDeathReason());
+        dto.setDateOfDeath(citizenDetail.getDateOfDeath());*/
         return dto;
 
     }
@@ -85,7 +88,7 @@ public class CitizenDetailMapper extends GenericMapper<CitizenDetail, CitizenDet
     public void dtoToDomain(CitizenDetailDTO dto, CitizenDetail citizenDetail) throws Exception{
         citizenDetail.setId(dto.getId());
         citizenDetail.setCitizenFamilyNo(dto.getCitizenFamilyNo());
-        citizenDetail.setHouseholder(dto.getHouseholder());
+        citizenDetail.setHouseholder(dto.getIsHouseholder());
         citizenDetail.setCitizenStatus(dto.getCitizenStatus());
         citizenDetail.setRelationship(dto.getRelationship());
         citizenDetail.setVersion(dto.getVersion());
@@ -94,7 +97,9 @@ public class CitizenDetailMapper extends GenericMapper<CitizenDetail, CitizenDet
         citizenDetail.setCitizenMiddleName(dto.getCitizenMiddleName());
         citizenDetail.setCitizenLastName(dto.getCitizenLastName());
         citizenDetail.setNic(dto.getNic());
+/*
         citizenDetail.setCitizenDateOfBirth(dto.getCitizenDateOfBirth());
+*/
         citizenDetail.setCitizenGender(dto.getCitizenGender());
         citizenDetail.setMaritalStatus(dto.getMaritalStatus());
         citizenDetail.setPhoneNumber(dto.getPhoneNumber());
@@ -111,17 +116,16 @@ public class CitizenDetailMapper extends GenericMapper<CitizenDetail, CitizenDet
         citizenDetail.setPreviousResidentialArea(dto.getPreviousResidentialArea());
         citizenDetail.setReasonToChangeResidentialArea(dto.getReasonToChangeResidentialArea());
 
+        citizenDetail.setDeathPlace(dto.getDeathPlace());
+        citizenDetail.setDeathReason(dto.getDeathReason());
+        //citizenDetail.setDateOfDeath(dto.getDateOfDeath());
+
 
         citizenDetail.setHighestEducationLevel(dto.getHighestEducationLevel());
         citizenDetail.setLanguageProficiency(dto.getLanguageProficiency());
 
 
-        /*citizenDetail.setDDonationType(dto.getDDonationType());
-        citizenDetail.setDReceivingAmount(dto.getDReceivingAmount());
-        citizenDetail.setDAccountNumber(dto.getDAccountNumber());
-        citizenDetail.setDReceivedDate(dto.getDReceivedDate());
-        citizenDetail.setDStatus(dto.getDStatus());
-        citizenDetail.setDDescription(dto.getDDescription());*/
+
 
     }
 

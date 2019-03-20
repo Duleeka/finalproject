@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="no-js">
+
+<head th:include="common/commoncss::commoncss">
+<link rel="stylesheet" type="text/css" th:href="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css}" >
+</head>
+
+<body class="animsition">
+<div class="page-wrapper">
+<!-- MENU SIDEBAR-->
+<aside class="menu-sidebar2" th:include="common/siderbar::siderbar"></aside>
+<!-- END MENU SIDEBAR-->
+
+<!-- PAGE CONTAINER-->
+<div class="page-container2">
+
+<!-- HEADER DESKTOP-->
+<header class="header-desktop2" th:include="common/header:: header"></header>
+<!-- END HEADER DESKTOP-->
+
+<!-- BREADCRUMB-->
+<section class="au-breadcrumb m-t-75" th:include="citizenProfileTask/citizenDetail/breadcrum::breadcrum"></section>
+<!-- END BREADCRUMB-->
+
+<!-- CONTENT-->
+<!--<div class="main-content">-->
+
+
+    <div class="row">
+        <div class="col-lg-12">
+
+
+ <!--START OF CITIZEN DETAIL FORM-->
+            <div class="card">
+
+            <form th:action="@{/citizendetail/save}" th:object="${citizenDetail}" th:method="post">
+                <div class="card">
+                    <div class="card-body card-block">
+
+                        <a  th:href="@{/citizendetail/add}" class="btn btn-primary"><i class=""></i> New</a>
+
+                        <button type="submit" class="btn btn-primary"><i class=""></i> Save</button>
+
+                        <a  th:href="@{/citizendetail/delete(id=${citizenDetail.id})}"
+                            th:disabled="${citizenDetail.id} ==null ? 'disabled'" class="btn btn-primary">
+                            <i class=""></i> Delete</a>
+
+                        <a  th:href="@{/citizendetail/}" class="btn btn-primary"><i class=""></i> Cancel</a>
+
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Citizen Profile</strong>
+                        <small> Form</small>
+                    </div>
+
+ <!--START OF CITIZEN BASIC DETAIL-->
+
+                    <div class="card-body card-block">
+
+                        <input type="hidden" id="id" name="id" th:field="*{id}"/>
+                        <input type="hidden" id="version" name="id" th:field="*{version}"/>
+
+                        <div class="row">
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="family_no" class=" form-control-label">Householder No</label>
+                        <input type="text" id="family_no" placeholder="" th:field="*{citizenFamilyNo}" class="form-control">
+                    </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-control-label" >Householder</label>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" th:field="*{isHouseholder}" id="householder1">
+                                <label class="custom-control-label"  for="householder1">Yes</label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" >Current Status</label>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" onclick="statusChange(this);" class="custom-control-input" th:field="*{citizenStatus}" id="status2">
+                                        <label class="custom-control-label" for="status2">Dead</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="relationship" class=" form-control-label">Relationship</label>
+                                    <select id="relationship" name="relationship" th:field="*{relationship}" class="form-control" >
+                                        <option th:each="relationship:${relationships}"
+                                                th:value="${relationship.relId}" th:text="${relationship.relType}">
+                                        </option>  මියගිය
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="initials"  class=" form-control-label">Initials</label>
+                            <input type="text" id="initials" th:field="*{citizenInitials}" placeholder="" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="first_name"  class=" form-control-label">First Name</label>
+                            <input type="text" id="first_name" th:field="*{citizenFirstName}" placeholder="" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                        <div class="row">
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="middle_name"  class=" form-control-label">Middle Name</label>
+                            <input type="text" id="middle_name" th:field="*{citizenMiddleName}" placeholder="" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="last_name"  class=" form-control-label">Last Name</label>
+                            <input type="text" id="last_name" th:field="*{citizenLastName}" placeholder="" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                        <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="c_nic"  class=" form-control-label">NIC</label>
+                            <input type="text" id="c_nic" th:field="*{nic}" placeholder="" class="form-control">
+                        </div>
+                    </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="datetimepicker1"  class=" form-control-label">Date of Birth</label>
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' th:field="*{citizenDateOfBirth}" class="form-control" />
+                            <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+ <!--END OF CITIZEN BASIC DETAIL-->
+
+<!--TAB START-->
+                    <div class="card-body card-block">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item"><a class="nav-link " data-toggle="tab" href="#tab_general">General</a> </li>
+                                <li class="nav-item"><a class="nav-link " data-toggle="tab" href="#tab_location">Location</a> </li>
+                                <li class="nav-item"><a class="nav-link " data-toggle="tab" href="#tab_education">Education</a> </li>
+                                <li class="nav-item"><a class="nav-link " data-toggle="tab" href="#tab_death_detail">Death Record</a> </li>
+
+                            </ul></div>
+
+                    <div class="tab-content">
+
+                        <div id="tab_general" class="tab-pane fade in active">
+                            <!--START OF CITIZEN GENERAL DETAIL-->
+                            <div class="card-body card-block">
+
+                                <div class="row ">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="gender"  class=" form-control-label">Gender</label>
+                                            <select id="gender" name="gender" th:field="*{citizenGender}" class="form-control" >
+                                                <option th:each="gender:${genders}"
+                                                        th:value="${gender.genId}" th:text="${gender.genName}">
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="marital_status"  class=" form-control-label">Marital Status</label>
+                                            <select id="marital_status" name="marital_status" th:field="*{maritalStatus}" class="form-control" >
+                                                <option th:each="maritalStatus:${maritalStatuses}"
+                                                        th:value="${maritalStatus.id}" th:text="${maritalStatus.name}">
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="phone_no"  class=" form-control-label">Phone Number</label>
+                                            <input type="text" id="phone_no" placeholder="" th:field="*{phoneNumber}" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="email"  class=" form-control-label">Email Address</label>
+                                            <input type="text" id="email" placeholder="" th:field="*{citizenEmailAddress}" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--END OF CITIZEN GENERAL DETAIL-->
+                        </div>
+
+                        <div id="tab_location" class="tab-pane fade">
+
+                                <!--START OF CITIZEN LOCATION DETAIL-->
+
+                                <div class="card-body card-block">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="div_name"  class=" form-control-label">GN Division</label>
+                                                <select id="div_name" name="div_name" th:field="*{citizenGnDivision}" class="form-control" >
+
+                                                    <option th:each="province:${provinces}"
+                                                            th:value="${province.id}" th:text="${province.name}"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="birth_place"  class=" form-control-label">Birth District</label>
+                                                <select id="birth_place" name="birth_place" th:field="*{citizenBirthDistrict}" class="form-control" >
+                                                    <option th:each="district:${districts}"
+                                                            th:value="${district.distId}" th:text="${district.distName}"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="address"  class=" form-control-label" >Address</label>
+                                                <textarea  id="address" placeholder="" th:field="*{citizenAddress}" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="residence_area"  class=" form-control-label">Previous Residence Area</label>
+                                                <select id="residence_area" name="residence_area" th:field="*{previousResidentialArea}" class="form-control" >
+                                                    <option th:each="dsOffice:${dsOffices}"
+                                                            th:value="${dsOffice.dsOfficeId}" th:text="${dsOffice.dsOfficeName}"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="reason_to_change"  class=" form-control-label" >Reason To Change Residential Area</label>
+                                                <textarea  id="reason_to_change" placeholder="" th:field="*{reasonToChangeResidentialArea}" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></div>
+
+                        <!--END OF CITIZEN LOCATION DETAIL-->
+
+
+                        <div id="tab_education" class="tab-pane fade">
+                            <!--START OF CITIZEN EDUCATION DETAIL-->
+
+                            <div class="card-body card-block">
+
+                                <div class="row ">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="edu_level"  class=" form-control-label">
+                                                Highest Education Level</label>
+                                            <select id="edu_level" name="edu_level" th:field="*{highestEducationLevel}" class="form-control" >
+                                                <option value=""></option>
+                                                <option value="Al"></option>
+                                                <option value="Ol"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="sinhala"  class=" form-control-label">Sinhala Language Proficiency</label>
+                                            <select id="sinhala" name="sinhala" th:field="*{languageProficiency}" class="form-control" >
+                                                <option value=""></option>
+                                                <option value="Yes"></option>
+                                                <option value="No"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="english"  class=" form-control-label">English Language Proficiency</label>
+                                            <select id="english" name="english" th:field="*{languageProficiency}" class="form-control" >
+                                                <option value=""></option>
+                                                <option value="Married"></option>
+                                                <option value="Unmarried"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="tamil"  class=" form-control-label">Tamil Language Proficiency</label>
+                                            <select id="tamil" name="tamil" th:field="*{languageProficiency}" class="form-control" >
+                                                <option value=""></option>
+                                                <option value="Yes"></option>
+                                                <option value="No"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--END OF CITIZEN EDUCATION DETAIL-->
+
+                        </div>
+
+                        <div id="tab_other" class="tab-pane fade ">
+                            <!--START OF CITIZEN EXTRA DETAIL-->
+
+                            <div class="card-body card-block">
+                                <div class="row ">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="nationality"  class=" form-control-label">Nationality</label>
+                                            <select id="nationality" name="nationality" th:field="*{citizenNationality}" class="form-control" >
+                                                <option value=""></option>
+                                                <option value=""></option>
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="religion"  class=" form-control-label">Religion</label>
+                                            <select id="religion" name="religion" th:field="*{citizenReligion}" class="form-control" >
+                                                <option value=""></option>
+                                                <option value=""></option>
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row ">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="occupation" class=" form-control-label">Occupation</label>
+                                            <input type="text" id="occupation" placeholder="" th:field="*{citizenOccupation}" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="income"  class=" form-control-label">Income Level</label>
+                                            <input type="text" id="income" placeholder="" th:field="*{citizenIncome}" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--END OF CITIZEN EXTRA DETAIL-->
+                        </div>
+
+                        <div id="tab_death_detail" class="tab-pane fade">
+
+                            <!--START OF DIED CITIZEN DETAIL-->
+                            <div class="card-body card-block">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="datetimepicker1" class=" form-control-label">Date of Death</label>
+                                            <div class='input-group date' id='datetimepicker1'>
+                                                <input type='text'  th:disabled="*{citizenStatus}==false" th:field="*{dateOfDeath}" class="form-control" />
+                                                <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="place"  class=" form-control-label">Death Place</label>
+                                            <input type="text" id="place" placeholder="" th:disabled="${citizenDetail.citizenStatus} ==false" th:field="*{deathPlace}" class="form-control">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row ">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="death_reason" class=" form-control-label">Reason for Death </label>
+                                            <textarea  id="death_reason" placeholder="" th:disabled="${citizenDetail.citizenStatus} ==false" th:field="*{deathReason}"  class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>-->
+                            <!--END OF DIED CITIZEN DETAIL-->
+
+                        </div>
+                    </div>
+
+<!--TAB END-->
+                </div>
+                    </div></div></form></div>
+
+<!--END OD CITIZEN DETAIL FORM-->
+
+                </div>
+            </div>
+        </div>
+
+</div>
+
+
+<!-- END CONTENT-->
+    <div th:include="common/footer::footer"></div>
+<!-- END PAGE CONTAINER-->
+</div>
+</div>
+<div th:include="common/commonjs::commonjs"></div>
+        <script type="text/javascript" th:src="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js}"></script>
+
+        <script type="text/javascript" th:src="@{/js/app/CitizenProfileTask/deathCitizenDetail.js}"></script>
+
+
+        <script th:inline="javascript">
+        $(function () {
+        $('#datetimepicker1').datetimepicker();
+        });
+        </script>
+</body>
+</html>
+<!-- end document-->

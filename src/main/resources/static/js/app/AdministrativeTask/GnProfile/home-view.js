@@ -158,7 +158,7 @@ var GnProfileHome = function () {
                 }
             }],
             oLanguage: {
-                sLengthMenu: "Show _MENU_ Rows",
+                sLengthMenu: " _MENU_",
                 sSearch: "",
                 oPaginate: {
                     sPrevious: "&laquo;",
@@ -173,17 +173,21 @@ var GnProfileHome = function () {
                 [5, 10, 15, 20, "All"] // change per page values here
             ],
             // set the initial value
-            iDisplayLength: 10,
+
+            iDisplayLength: 5,
             sPaginationType: "full_numbers",
             sPaging: 'pagination',
 
         });
+
         $('#tbl_basic_gn_profile_wrapper .dataTables_filter input').addClass("form-control input-sm").attr("placeholder", "Search");
+
         // modify table search input
         $('#tbl_basic_gn_profile_wrapper .dataTables_length select').addClass("m-wrap small");
         // modify table per page dropdown
         $('#tbl_basic_gn_profile_wrapper .dataTables_length select').select2();
-        // initialzie select2 dropdown
+
+        // initialize select2 dropdown
         $('#tbl_basic_gn_profile_column_toggler input[type="checkbox"]').change(function () {
             /* Get the DataTables object again - this is not a recreation, just a get of the object */
             var iCol = parseInt($(this).attr("data-column"));

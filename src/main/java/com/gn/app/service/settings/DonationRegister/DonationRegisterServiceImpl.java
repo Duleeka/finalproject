@@ -2,12 +2,10 @@ package com.gn.app.service.settings.DonationRegister;
 
 
 import com.gn.app.dao.settings.DonationRegister.DonationRegisterDao;
-import com.gn.app.dto.citizenProfileTask.DonationDetail.DonationDetailDTO;
 import com.gn.app.dto.settings.DonationRegister.DonationRegisterDTO;
-import com.gn.app.mappers.citizenProfileTask.DonationDetail.DonationDetailMapper;
 import com.gn.app.mappers.settings.DonationRegister.DonationRegisterMapper;
 import com.gn.app.model.Settings.DonationRegister.DonationRegister;
-import com.gn.app.model.citizenProfileTask.DonationDetail.DonationDetail;
+import com.gn.app.service.settings.DonationRegister.DonationRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;

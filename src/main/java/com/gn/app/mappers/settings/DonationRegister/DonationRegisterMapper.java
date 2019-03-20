@@ -26,9 +26,8 @@ public class DonationRegisterMapper extends GenericMapper<DonationRegister,Donat
         dto.setId(donationRegister.getId());
         dto.setVersion(donationRegister.getVersion());
         dto.setDonationType(donationRegister.getDonationType());
-       dto.setReceivedDate(donationRegister.getReceivedDate());
         dto.setValidFrom(donationRegister.getValidFrom());
-        dto.setValidTill(donationRegister.getValidTill());
+        dto.setValidTo(donationRegister.getValidTo());
         dto.setDescription(donationRegister.getDescription());
         return dto;
     }
@@ -38,10 +37,10 @@ public class DonationRegisterMapper extends GenericMapper<DonationRegister,Donat
         DonationRegisterDTO dto = new DonationRegisterDTO();
         dto.setId(donationRegister.getId());
         dto.setDonationType(donationRegister.getDonationType());
-        dto.setReceivedDate(donationRegister.getReceivedDate());
         dto.setValidFrom(donationRegister.getValidFrom());
-        dto.setValidTill(donationRegister.getValidTill());
+        dto.setValidTo(donationRegister.getValidTo());
         dto.setDescription(donationRegister.getDescription());
+
         return dto;
     }
 
@@ -50,9 +49,8 @@ public class DonationRegisterMapper extends GenericMapper<DonationRegister,Donat
         donationRegister.setId(dto.getId());
         donationRegister.setVersion(dto.getVersion());
         donationRegister.setDonationType(dto.getDonationType());
-        donationRegister.setReceivedDate(dto.getReceivedDate());
         donationRegister.setValidFrom(dto.getValidFrom());
-        donationRegister.setValidTill(dto.getValidTill());
+        donationRegister.setValidTo(dto.getValidTo());
         donationRegister.setDescription(dto.getDescription());
 
     }

@@ -1,7 +1,12 @@
 package com.gn.app.dto.citizenProfileTask.CitizenDetail;
 
+import com.gn.app.constant.District;
+import com.gn.app.constant.Gender;
+import com.gn.app.constant.MaritalStatus;
+import com.gn.app.constant.Relationship;
 import com.gn.app.dto.BaseDTO;
 
+import java.util.Date;
 
 
 public class CitizenDetailDTO extends BaseDTO {
@@ -9,16 +14,16 @@ public class CitizenDetailDTO extends BaseDTO {
     private Integer id;
     private Boolean isHouseholder;
     private String citizenFamilyNo;
-    private Boolean citizenStatus;
-    private String relationship;
+    private Boolean citizenStatus=Boolean.FALSE;
+    private Relationship relationship;
     private String citizenInitials;
     private String citizenFirstName;
     private String citizenMiddleName;
     private String citizenLastName;
     private String nic;
-    private String citizenDateOfBirth;
-    private String citizenGender;
-    private String maritalStatus;
+    private Date citizenDateOfBirth;
+    private Gender citizenGender;
+    private MaritalStatus maritalStatus;
     private Integer phoneNumber;
     private String citizenEmailAddress;
     private String citizenOccupation;
@@ -28,19 +33,17 @@ public class CitizenDetailDTO extends BaseDTO {
 
     private String citizenAddress;
     private String citizenGnDivision;
-    private String citizenBirthDistrict;
-    private String previousResidentialArea;
+    private District citizenBirthDistrict;
+    private District previousResidentialArea;
     private String reasonToChangeResidentialArea;
 
     private String highestEducationLevel;
     private String languageProficiency;
 
-    /*private String dDonationType;
-    private Double dReceivingAmount;
-    private Integer dAccountNumber;
-    private String dReceivedDate;
-    private String dStatus;
-    private String dDescription;*/
+    private String deathPlace;
+    private String deathReason;
+    private Date dateOfDeath;
+
 
 
     public Integer getId() {
@@ -51,11 +54,11 @@ public class CitizenDetailDTO extends BaseDTO {
         this.id = id;
     }
 
-    public Boolean getHouseholder() {
+    public Boolean getIsHouseholder() {
         return isHouseholder;
     }
 
-    public void setHouseholder(Boolean householder) {
+    public void setIsHouseholder(Boolean householder) {
         isHouseholder = householder;
     }
 
@@ -75,11 +78,11 @@ public class CitizenDetailDTO extends BaseDTO {
         this.citizenStatus = citizenStatus;
     }
 
-    public String getRelationship() {
+    public Relationship getRelationship() {
         return relationship;
     }
 
-    public void setRelationship(String relationship) {
+    public void setRelationship(Relationship relationship) {
         this.relationship = relationship;
     }
 
@@ -123,27 +126,23 @@ public class CitizenDetailDTO extends BaseDTO {
         this.nic = nic;
     }
 
-    public String getCitizenDateOfBirth() {
+    public Date getCitizenDateOfBirth() {
         return citizenDateOfBirth;
     }
 
-    public void setCitizenDateOfBirth(String citizenDateOfBirth) {
-        this.citizenDateOfBirth = citizenDateOfBirth;
-    }
-
-    public String getCitizenGender() {
+    public Gender getCitizenGender() {
         return citizenGender;
     }
 
-    public void setCitizenGender(String citizenGender) {
+    public void setCitizenGender(Gender citizenGender) {
         this.citizenGender = citizenGender;
     }
 
-    public String getMaritalStatus() {
+    public MaritalStatus getMaritalStatus() {
         return maritalStatus;
     }
 
-    public void setMaritalStatus(String maritalStatus) {
+    public void setMaritalStatus(MaritalStatus maritalStatus) {
         this.maritalStatus = maritalStatus;
     }
 
@@ -211,19 +210,19 @@ public class CitizenDetailDTO extends BaseDTO {
         this.citizenGnDivision = citizenGnDivision;
     }
 
-    public String getCitizenBirthDistrict() {
+    public District getCitizenBirthDistrict() {
         return citizenBirthDistrict;
     }
 
-    public void setCitizenBirthDistrict(String citizenBirthDistrict) {
+    public void setCitizenBirthDistrict(District citizenBirthDistrict) {
         this.citizenBirthDistrict = citizenBirthDistrict;
     }
 
-    public String getPreviousResidentialArea() {
+    public District getPreviousResidentialArea() {
         return previousResidentialArea;
     }
 
-    public void setPreviousResidentialArea(String previousResidentialArea) {
+    public void setPreviousResidentialArea(District previousResidentialArea) {
         this.previousResidentialArea = previousResidentialArea;
     }
 
@@ -252,4 +251,27 @@ public class CitizenDetailDTO extends BaseDTO {
     }
 
 
+    public String getDeathPlace() {
+        return deathPlace;
+    }
+
+    public void setDeathPlace(String deathPlace) {
+        this.deathPlace = deathPlace;
+    }
+
+    public String getDeathReason() {
+        return deathReason;
+    }
+
+    public void setDeathReason(String deathReason) {
+        this.deathReason = deathReason;
+    }
+
+    public Date getDateOfDeath() {
+        return dateOfDeath;
+    }
+
+    public void setDateOfDeath(Date dateOfDeath) {
+        this.dateOfDeath = dateOfDeath;
+    }
 }

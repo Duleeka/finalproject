@@ -25,20 +25,20 @@ public class CitizenAssetController {
     public String homePage(Model model) { return "primaryTask/citizenAssets/home-view";}
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String newCitizenAsset(Model model){
+    public String newCitizenAssets(Model model){
         setCommonData(model,new CitizenAssetDTO());
         return "primaryTask/citizenAssets/primary-task-assets-of-citizen";
     }
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String editCitizenAsset(Model model, Integer id ) {
+    public String editCitizenAssets(Model model, Integer id ) {
         setCommonData(model,citizenAssetService.findById(id));
         return "primaryTask/citizenAssets/primary-task-assets-of-citizen";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveCitizenAsset(Model model, @ModelAttribute CitizenAssetDTO dto) {
+    public String saveCitizenAssets(Model model, @ModelAttribute CitizenAssetDTO dto) {
         citizenAssetService.create(dto);
         setCommonData(model,dto);
 
@@ -46,7 +46,7 @@ public class CitizenAssetController {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    public String deleteCitizenAsset(Model model, Integer id){
+    public String deleteCitizenAssets(Model model, Integer id){
         citizenAssetService.delete(id);
         return "redirect:/assetsofcitizen/";
     }
