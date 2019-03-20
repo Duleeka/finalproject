@@ -103,12 +103,18 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="datetimepicker1" class=" form-control-label">Date of Appointed</label>
-								<div class="input-group" id="datetimepicker1">
+								<div class="input-group date" data-provide="datepicker">
+									<input type="text" class="form-control" id="appointmentDate" th:field="*{appointmentDate}">
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-th"></span>
+									</div>
+								</div>
+<!--								<div class="input-group" id="datetimepicker1">
 									<input id="appointmentDate" th:field="*{appointmentDate}" type="text"
 										   data-date-format="dd-mm-yyyy" data-date-viewmode="years" placeholder="Eg : 08-01-2020"
 										   class="form-control date-picker">
 									<span class="input-group-addon"> <i class="fa fa-calendar"></i></span>
-								</div>
+								</div>-->
 
 							</div>
 
@@ -147,10 +153,11 @@
 <script type="text/javascript" th:src="@{/js/lib/bootstrap-datetimepicker.min.js}"></script>
 </body>
 <script th:inline="javascript">
-	$('#appointmentDate').datepicker({
-		autoclose: true,
-		container: '#datetimepicker1'
+	$('.datepicker').datepicker({
+		format: 'mm/dd/yyyy',
+		startDate: '-3d'
 	});
+
 </script>
 </html>
 <!-- end document-->
