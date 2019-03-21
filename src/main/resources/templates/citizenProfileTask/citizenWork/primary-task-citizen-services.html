@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="no-js">
 
 <head th:include="common/commoncss::commoncss">
-    <link rel="stylesheet" type="text/css" th:href="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css}" >
+    <link rel="stylesheet" type="text/css"
+          th:href="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css}">
 </head>
 
 <body class="animsition">
@@ -19,7 +20,8 @@
         <!-- END HEADER DESKTOP-->
 
         <!-- BREADCRUMB-->
-        <section class="au-breadcrumb m-t-75" th:include="primaryTask/citizenWork/breadcrum::breadcrum"></section>
+        <section class="au-breadcrumb m-t-75"
+                 th:include="citizenProfileTask/citizenWork/breadcrum::breadcrum"></section>
         <!-- END BREADCRUMB-->
 
         <!-- CONTENT-->
@@ -27,21 +29,21 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <form th:action="@{/citizenwork/save}" th:object="${citizenWork}" th:method="post">
+                <form th:action="@{/citizenservices/save}" th:object="${citizenWork}" th:method="post">
                     <div class="card">
                         <div class="card-body card-block">
 
-                            <a  th:href="@{/citizenwork/add}" class="btn btn-primary">
+                            <a th:href="@{/citizenservices/add}" class="btn btn-primary">
                                 <i class=""></i> New
                             </a>
                             <button type="submit" class="btn btn-primary">
                                 <i class=""></i> Save
                             </button>
-                            <a  th:href="@{/citizenwork/delete(id=${citizenWork.getsId()})}"
-                                th:disabled="${citizenWork.getsId()} == null ? 'disabled'" class="btn btn-primary">
+                            <a th:href="@{/citizenservices/delete(id=${citizenWork.getId()})}"
+                               th:disabled="${citizenWork.getId()} == null ? 'disabled'" class="btn btn-primary">
                                 <i class=""></i> Delete
                             </a>
-                            <a  th:href="@{/citizenwork/}" class="btn btn-primary">
+                            <a th:href="@{/citizenservices/}" class="btn btn-primary">
                                 <i class=""></i> Cancel
                             </a>
 
@@ -54,73 +56,87 @@
                         </div>
                         <div class="card-body card-block">
 
-                            <input type="hidden" id="id" name="id" th:field="*{sId}"/>
+                            <input type="hidden" id="id" name="id" th:field="*{id}"/>
                             <input type="hidden" id="version" name="id" th:field="*{version}"/>
-                    <div class="card-body card-block">
-                        <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="receiver_name" class=" form-control-label">Receiver Name</label>
-                                <input type="text" id="receiver_name" placeholder="" th:field="*{sReceiverName}" class="form-control">
-                            </div>
-                        </div>
+                            <div class="card-body card-block">
 
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="C_nic" class=" form-control-label">NIC</label>
-                                    <input type="text" id="C_nic" placeholder="" th:field="*{nic}" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="service_type" class=" form-control-label">Service Type</label>
-                                    <select id="service_type" name="service_type" th:field="*{sType}" class="form-control" >
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="datetimepicker" class=" form-control-label">Register Date</label>
-                                    <div class='input-group date' id='datetimepicker'>
-                                        <input type='text' th:field="*{sRegisteredDate}" class="form-control" />
-                                        <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="service_no" class=" form-control-label">Service No</label>
+                                            <input type="text" id="service_no" th:value="${serviceNo}"
+                                                   th:field="*{cwServiceNo}" class="form-control"/>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="service_type" class=" form-control-label">Service Type</label>
+                                            <select id="service_type" name="service_type" th:field="*{cwServiceType}"
+                                                    class="form-control">
+                                                <option th:each="service:${services}"
+                                                        th:value="${service.id}" th:text="${service.serviceType}">
+                                                </option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="row ">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="description" class=" form-control-label">Description</label>
-                                    <textarea  id="description" placeholder="" th:field="*{sDescription}" class="form-control"></textarea>
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="c_nic" class=" form-control-label">NIC</label>
+                                            <select id="c_nic" placeholder="" th:field="*{citizenId}"
+                                                    class="form-control">
+                                                <option th:each="citizen:${citizens}"
+                                                        th:value="${citizen.id}" th:text="${citizen.nic}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="datetimepicker" class=" form-control-label">Received
+                                                Date</label>
+                                            <div class='input-group date' id='datetimepicker'>
+                                                <input type='text' th:field="*{receivedDate}" class="form-control"/>
+                                                <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+
+                                <div class="row ">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="description" class=" form-control-label">Description</label>
+                                            <textarea id="description" placeholder="" th:field="*{serviceDescription}"
+                                                      class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
+
                         </div>
-
                     </div>
-
-                </div>
-            </div>
                 </form>
+            </div>
+
         </div>
+        <!-- END CONTENT-->
 
+        <div th:include="common/footer::footer"></div>
+        <!-- END PAGE CONTAINER-->
     </div>
-    <!-- END CONTENT-->
-
-    <div th:include="common/footer::footer"></div>
-    <!-- END PAGE CONTAINER-->
-</div>
 </div>
 <div th:include="common/commonjs::commonjs"></div>
-<script type="text/javascript" th:src="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript"
+        th:src="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js}"></script>
 </body>
 <script th:inline="javascript">
     $(function () {

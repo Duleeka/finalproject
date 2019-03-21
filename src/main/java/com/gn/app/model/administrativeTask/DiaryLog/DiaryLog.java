@@ -28,9 +28,11 @@ import java.util.Date;
        private String status;
 
        @Column(name = "start_date")
+       @Temporal(TemporalType.DATE)
        private Date startDate;
 
        @Column(name = "finish_date")
+       @Temporal(TemporalType.DATE)
        private Date finishDate;
 
 

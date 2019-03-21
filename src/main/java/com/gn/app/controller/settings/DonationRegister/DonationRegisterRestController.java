@@ -2,7 +2,9 @@ package com.gn.app.controller.settings.DonationRegister;
 
 
 import com.gn.app.dto.citizenProfileTask.DonationDetail.DonationDetailDTO;
+import com.gn.app.dto.settings.DonationRegister.DonationRegisterDTO;
 import com.gn.app.service.citizenProfileTask.DonationDetail.DonationDetailService;
+import com.gn.app.service.settings.DonationRegister.DonationRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
@@ -17,10 +19,10 @@ public class DonationRegisterRestController {
     public static final String REQUEST_MAPPING_URL ="/restapi/donationregister";
 
     @Autowired
-    DonationDetailService donationDetailService;
+    DonationRegisterService donationRegisterService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public DataTablesOutput<DonationDetailDTO> homePage(DataTablesInput input){
-        return donationDetailService.findAllDataTable(input);
+    public DataTablesOutput<DonationRegisterDTO> homePage(DataTablesInput input){
+        return donationRegisterService.findAllDataTable(input);
     }
 }

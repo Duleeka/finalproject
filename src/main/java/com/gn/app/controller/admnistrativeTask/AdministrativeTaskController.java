@@ -33,7 +33,7 @@ public class AdministrativeTaskController {
     @RequestMapping(value = "/gndivision", method = RequestMethod.GET)
     public String homePage2(Model model) {
 
-        return "administrativeTask/gnDivision/administrative-task-gn-division";
+        return "administrativeTask/gnDivisionRegister/administrative-task-gn-division";
 
     }
 

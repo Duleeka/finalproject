@@ -43,6 +43,7 @@ public class CitizenAssetMapper extends GenericMapper<CitizenAsset, CitizenAsset
     @Override
     public CitizenAssetDTO domainToDtoForDataTable(CitizenAsset citizenAsset) throws Exception {
         CitizenAssetDTO dto = new CitizenAssetDTO();
+        dto.setId(citizenAsset.getId());
         dto.setHouseholderId(citizenAsset.getHouseholderId());
         dto.setAssetId(citizenAsset.getAssetId());
         dto.setLandName(citizenAsset.getLandName());

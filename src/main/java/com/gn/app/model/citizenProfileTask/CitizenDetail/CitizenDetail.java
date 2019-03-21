@@ -1,10 +1,15 @@
 package com.gn.app.model.citizenProfileTask.CitizenDetail;
 
 
+import com.gn.app.constant.District;
+import com.gn.app.constant.Gender;
+import com.gn.app.constant.MaritalStatus;
+import com.gn.app.constant.Relationship;
 import com.gn.app.model.BaseModel;
 
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "tbl_citizen")
@@ -27,7 +32,7 @@ public class CitizenDetail extends BaseModel {
     private Boolean citizenStatus;
 
     @Column(name = "relationship")
-    private String relationship;
+    private Relationship relationship;
 
     @Column(name = "citizen_initials")
     private String citizenInitials;
@@ -44,14 +49,14 @@ public class CitizenDetail extends BaseModel {
     @Column(name = "nic")
     private String nic;
 
-    @Column(name = "citizen_date_of_birth")
-    private String citizenDateOfBirth;
+    //@Column(name = "citizen_date_of_birth")
+    //private Date citizenDateOfBirth;
 
     @Column(name = "citizen_gender")
-    private String citizenGender;
+    private Gender citizenGender;
 
     @Column(name = "marital_status")
-    private String maritalStatus;
+    private MaritalStatus maritalStatus;
 
     @Column(name = "phone_number")
     private Integer phoneNumber;
@@ -81,10 +86,10 @@ public class CitizenDetail extends BaseModel {
     private String citizenGnDivision;
 
     @Column(name = "citizen_birth_district")
-    private String citizenBirthDistrict;
+    private District citizenBirthDistrict;
 
     @Column(name = "previous_residential_area")
-    private String previousResidentialArea;
+    private District previousResidentialArea;
 
     @Column(name = "reason_to_change_residential_area")
     private String reasonToChangeResidentialArea;
@@ -95,6 +100,22 @@ public class CitizenDetail extends BaseModel {
 
     @Column(name = "language_proficiency")
     private String languageProficiency;
+
+    @Column(name = "death_place")
+    private String deathPlace;
+
+    @Column(name = "death_reason")
+    private String deathReason;
+
+/*
+    @Column(name = "date_of_death")
+*/
+/*
+    @Temporal(TemporalType.DATE)
+*/
+/*
+    private Date dateOfDeath;
+*/
 
 
 
@@ -155,11 +176,11 @@ public class CitizenDetail extends BaseModel {
         this.citizenStatus = citizenStatus;
     }
 
-    public String getRelationship() {
+    public Relationship getRelationship() {
         return relationship;
     }
 
-    public void setRelationship(String relationship) {
+    public void setRelationship(Relationship relationship) {
         this.relationship = relationship;
     }
 
@@ -203,27 +224,19 @@ public class CitizenDetail extends BaseModel {
         this.nic = nic;
     }
 
-    public String getCitizenDateOfBirth() {
-        return citizenDateOfBirth;
-    }
-
-    public void setCitizenDateOfBirth(String citizenDateOfBirth) {
-        this.citizenDateOfBirth = citizenDateOfBirth;
-    }
-
-    public String getCitizenGender() {
+    public Gender getCitizenGender() {
         return citizenGender;
     }
 
-    public void setCitizenGender(String citizenGender) {
+    public void setCitizenGender(Gender citizenGender) {
         this.citizenGender = citizenGender;
     }
 
-    public String getMaritalStatus() {
+    public MaritalStatus getMaritalStatus() {
         return maritalStatus;
     }
 
-    public void setMaritalStatus(String maritalStatus) {
+    public void setMaritalStatus(MaritalStatus maritalStatus) {
         this.maritalStatus = maritalStatus;
     }
 
@@ -275,11 +288,6 @@ public class CitizenDetail extends BaseModel {
         this.citizenReligion = citizenReligion;
     }
 
-    public String getHighestEducationLevel() {
-        return highestEducationLevel;
-    }
-
-
     public String getCitizenAddress() {
         return citizenAddress;
     }
@@ -296,19 +304,19 @@ public class CitizenDetail extends BaseModel {
         this.citizenGnDivision = citizenGnDivision;
     }
 
-    public String getCitizenBirthDistrict() {
+    public District getCitizenBirthDistrict() {
         return citizenBirthDistrict;
     }
 
-    public void setCitizenBirthDistrict(String citizenBirthDistrict) {
+    public void setCitizenBirthDistrict(District citizenBirthDistrict) {
         this.citizenBirthDistrict = citizenBirthDistrict;
     }
 
-    public String getPreviousResidentialArea() {
+    public District getPreviousResidentialArea() {
         return previousResidentialArea;
     }
 
-    public void setPreviousResidentialArea(String previousResidentialArea) {
+    public void setPreviousResidentialArea(District previousResidentialArea) {
         this.previousResidentialArea = previousResidentialArea;
     }
 
@@ -320,6 +328,9 @@ public class CitizenDetail extends BaseModel {
         this.reasonToChangeResidentialArea = reasonToChangeResidentialArea;
     }
 
+    public String getHighestEducationLevel() {
+        return highestEducationLevel;
+    }
 
     public void setHighestEducationLevel(String highestEducationLevel) {
         this.highestEducationLevel = highestEducationLevel;
@@ -333,7 +344,6 @@ public class CitizenDetail extends BaseModel {
         this.languageProficiency = languageProficiency;
     }
 
-
     /*public String getCDomainName() {
         return cDomainName;
     }
@@ -342,7 +352,21 @@ public class CitizenDetail extends BaseModel {
         this.cDomainName = cDomainName;
     }*/
 
+    public String getDeathPlace() {
+        return deathPlace;
+    }
 
+    public void setDeathPlace(String deathPlace) {
+        this.deathPlace = deathPlace;
+    }
+
+    public String getDeathReason() {
+        return deathReason;
+    }
+
+    public void setDeathReason(String deathReason) {
+        this.deathReason = deathReason;
+    }
 
 
 }

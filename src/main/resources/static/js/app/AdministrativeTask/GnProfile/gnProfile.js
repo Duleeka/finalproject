@@ -5,8 +5,16 @@ jQuery(document).ready(function() {
 
     $("#userRole").select2({
         allowClear: true,
-        placeholder: "Select a User Role",
+        placeholder: "Select a User Role"
 
     });
+    $(function () {
+        $(".date").datetimepicker({
+            Default: true
+        })
+    });
+
+
+
 
 });

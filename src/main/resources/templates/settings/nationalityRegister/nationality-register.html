@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" class="no-js">
+
+<head th:include="common/commoncss::commoncss">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css}">
+</head>
+
+<body class="animsition">
+<div class="page-wrapper">
+    <!-- MENU SIDEBAR-->
+    <aside class="menu-sidebar2" th:include="common/siderbar::siderbar"></aside>
+    <!-- END MENU SIDEBAR-->
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-container2">
+
+        <!-- HEADER DESKTOP-->
+        <header class="header-desktop2" th:include="common/header:: header"></header>
+        <!-- END HEADER DESKTOP-->
+
+        <!-- BREADCRUMB-->
+        <section class="au-breadcrumb m-t-75" th:include="settings/nationalityRegister/breadcrum::breadcrum"></section>
+        <!-- END BREADCRUMB-->
+
+        <!-- CONTENT-->
+        <!--<div class="main-content">-->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <form th:action="@{/nationalityregister/save}" th:object="${nationalityRegister}" th:method="post">
+                    <div class="card">
+                        <div class="card-body card-block">
+
+                            <a th:href="@{/nationalityregister/add}" class="btn btn-primary">
+                                <i class=""></i> New
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class=""></i> Save
+                            </button>
+                            <a th:href="@{/nationalityregister/delete(id=${nationalityRegister.id})}"
+                               th:disabled="${nationalityRegister.id} == null ? 'disabled'" class="btn btn-primary">
+                                <i class=""></i> Delete
+                            </a>
+                            <a th:href="@{/nationalityregister/}" class="btn btn-primary">
+                                <i class=""></i> Cancel
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Nationality Registration</strong>
+                            <small> Form</small>
+                        </div>
+
+
+                        <div class="card-body card-block">
+                            <input type="hidden" id="id" name="id" th:field="*{id}"/>
+                            <input type="hidden" id="version" name="id" th:field="*{version}"/>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="nationality_type" class=" form-control-label">Nationality
+                                            Type</label>
+                                        <input type="text" id="nationality_type" placeholder=""
+                                               th:field="*{nationalityType}"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="description" class=" form-control-label">Description</label>
+                                        <textarea id="description" placeholder="" th:field="*{nationalityDescription}"
+                                                  class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!-- END CONTENT-->
+
+    <div th:include="common/footer::footer"></div>
+    <!-- END PAGE CONTAINER-->
+</div>
+</div>
+<div th:include="common/commonjs::commonjs"></div>
+</div>
+</body>
+</html>
+<!-- end document-->

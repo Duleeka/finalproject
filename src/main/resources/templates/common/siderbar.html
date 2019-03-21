@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" >
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 <!-- MENU SIDEBAR-->
 <aside class="menu-sidebar2" th:fragment="siderbar">
     <div class="logo">
         <a href="#">
-            <!--<img src="images/icon/logo-white.png" alt="Cool Admin" />-->
+            <img src="images/icon/sidebar-logo.png" alt="E-GN" />
         </a>
     </div>
     <div class="menu-sidebar2__content js-scrollbar1">
@@ -35,40 +36,12 @@
                             <a th:href="@{/diarylog/}">
                                 <i class="fas fa-tachometer-alt"></i>Diary Log</a>
                         </li>
-                        <li>
-                            <a th:href="@{/gndivision/}">
-                                <i class="fas fa-tachometer-alt"></i>GN Division Details</a>
-                        </li>
-                        <li>
-                            <a th:href="@{/administrativeTask/changepassword}">
-                                <i class="fas fa-tachometer-alt"></i>Change Password</a>
-                        </li>
+
                     </ul>
                 </li>
 
                 <!--end of administrative task-->
 
-                <!--start certificate issuing task-->
-                <li class="active has-sub">
-                    <a class="js-arrow" href="#">
-                        <i class="fas fa-tachometer-alt"></i>Certificate Issuing Task
-                        <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
-                    </a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                        <li>
-                            <a th:href="@{/basicdetail/}">
-                                <i class="fas fa-tachometer-alt"></i>Certificate Details</a>
-                        </li>
-                        <li>
-                            <a th:href="@{certificateIssuingTask/deathregistration}">
-                                <i class="fas fa-tachometer-alt"></i>Death Registration</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <!--end of certificate issuing task-->
 
                 <!--start primary task-->
                 <li class="active has-sub">
@@ -78,13 +51,15 @@
                     </a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
-                            <a th:href="@{/primaryTask/basichhdetail}">
-                                <i class="fas fa-unlock-alt"></i>General Information</a>
-                        </li>
-                        <li>
                             <a th:href="@{/assetsofcitizen/}">
                                 <i class="fas fa-unlock-alt"></i>Assets of Citizen</a>
                         </li>
+
+                        <li>
+                            <a th:href="@{/basicdetail/}">
+                                <i class="fas fa-tachometer-alt"></i>Certificate Issuing</a>
+                        </li>
+
 
                     </ul>
                 </li>
@@ -98,7 +73,7 @@
                     </a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
-                            <a th:href="@{/basiccitizendetail/}">
+                            <a th:href="@{/citizendetail/}">
                                 <i class="fas fa-unlock-alt"></i>General Detail</a>
                         </li>
                         <li>
@@ -129,60 +104,39 @@
                             <a th:href="@{/donationregister/}">
                                 <i class="fas fa-comment-alt"></i>Donation Register</a>
                         </li>
-                        </ul>
-                    </li>
 
-                <!--&lt;!&ndash;start search&ndash;&gt;
-                <li class="has-sub">
-                    <a class="js-arrow" href="#">
-                        <i class="fas fa-desktop"></i>Search
-                        <span class="arrow"><i class="fas fa-angle-down"></i></span>
-                    </a>
-
-                    <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
-                            <a th:href="@{/search/citizendetailage}">
-                                <i class="fas fa-comment-alt"></i>Citizen Detail</a>
+                            <a th:href="@{/gndivisionregister/}">
+                                <i class="fas fa-comment-alt"></i>GN Division Register</a>
                         </li>
 
                         <li>
-                            <a href="badge.html">
-                                <i class="fas fa-comment-alt"></i>Diary Entries</a>
-                        </li>
-                        <li>
-                            <a href="tab.html">
-                                <i class="far fa-window-maximize"></i>Householder Detail</a>
+                            <a th:href="@{/certificatedetailregister/}">
+                                <i class="fas fa-comment-alt"></i>Certificate Detail Register</a>
                         </li>
 
-                    </ul>
-                </li>-->
-                <!--<li class="has-sub">
-                    <a class="js-arrow" href="#">
-                        <i class="fas fa-copy"></i>Report and Static
-                        <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
-                    </a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-
-                        </ul>
-                </li>
-                <li class="has-sub" >
-                    <a class="js-arrow" href="#" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                        <i class="fas fa-copy"></i>Settings
-                        <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
-                    </a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
-                            <a th:href="@{/user/}"><i class="far fa-window-maximize"></i>User</a>
+                            <a th:href="@{/serviceregister/}">
+                                <i class="fas fa-comment-alt"></i>Citizen Service Register</a>
+                        </li>
+
+                        <li>
+                            <a th:href="@{/nationalityregister/}">
+                                <i class="fas fa-comment-alt"></i>Nationality Register</a>
+                        </li>
+
+                        <li>
+                            <a th:href="@{/religionregister/}">
+                                <i class="fas fa-comment-alt"></i>Religion Register</a>
+                        </li>
+
+                        <li>
+                            <a th:href="@{/landdetailregister/}">
+                                <i class="fas fa-comment-alt"></i>Land Detail Register</a>
                         </li>
                     </ul>
                 </li>
 
-                    </ul>
-                </li>-->
 
             </ul>
         </nav>

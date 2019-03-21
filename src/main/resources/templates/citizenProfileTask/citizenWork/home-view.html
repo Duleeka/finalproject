@@ -18,7 +18,7 @@
         <!-- END HEADER DESKTOP-->
 
         <!-- BREADCRUMB-->
-        <section class="au-breadcrumb m-t-75" th:include="primaryTask/citizenwork/breadcrum::breadcrum"></section>
+        <section class="au-breadcrumb m-t-75" th:include="citizenProfileTask/citizenWork/breadcrum::breadcrum"></section>
         <!-- END BREADCRUMB-->
 
         <!-- CONTENT-->
@@ -29,7 +29,7 @@
                 <div class="card">
                     <div class="card-body card-block">
 
-                        <a  th:href="@{/citizenwork/add}" class="btn btn-primary">
+                        <a  th:href="@{/citizenservices/add}" class="btn btn-primary">
                             <i class=""></i> New
                         </a>
                         <button class="btn btn-primary">
@@ -38,27 +38,26 @@
                         <button  class="btn btn-primary">
                             <i class=""></i> Delete
                         </button>
-                        <a  th:href="@{/citizenwork/}" class="btn btn-primary">
+                        <a  th:href="@{/citizenservices/}" class="btn btn-primary">
                             <i class=""></i> Cancel
                         </a>
 
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-header">
+                    <!--<div class="card-header">
                         <strong>Citizen Services</strong>
                         <small> Home</small>
-                    </div>
+                    </div>-->
                     <div class="card-body card-block">
                         <table class="table table-borderless table-striped table-earning" id="tbl_citizen_service">
                             <thead>
                             <tr>
                                 <th class="first-th"> #</th>
-                                <th class="hidden-xs">Service Id</th>
-                                <th class="hidden-xs">NIC</th>
+                                <th class="hidden-xs">Service No</th>
                                 <th class="hidden-xs">Service Type</th>
-                                <th class="hidden-xs">Receiver Name</th>
-                                <th class="hidden-xs">Register Date</th>
+                                <th class="hidden-xs">NIC</th>
+                                <th class="hidden-xs">Received Date</th>
                                 <th class="last-th">More</th>
                             </tr>
                             </thead>
@@ -84,7 +83,7 @@
 <script type="text/javascript" th:src="@{//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js}"></script>
 <script type="text/javascript" th:src="@{//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/lib/jquery.spring-friendly.js}"></script>
-<script type="text/javascript" th:src="@{/js/app/PrimaryTask/CitizenWork/home-view.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/CitizenProfileTask/citizenWork/home-view.js}"></script>
 <script>
     jQuery(document).ready(function() {
         //Main.init();

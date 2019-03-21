@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="no-js">
 
 <head th:include="common/commoncss::commoncss">
-    <link rel="stylesheet" type="text/css" th:href="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css}" >
+    <link rel="stylesheet" type="text/css"
+          th:href="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css}">
 </head>
 
 <body class="animsition">
@@ -19,7 +20,8 @@
         <!-- END HEADER DESKTOP-->
 
         <!-- BREADCRUMB-->
-        <section class="au-breadcrumb m-t-75" th:include="citizenProfileTask/donationDetail/breadcrum::breadcrum"></section>
+        <section class="au-breadcrumb m-t-75"
+                 th:include="citizenProfileTask/donationDetail/breadcrum::breadcrum"></section>
         <!-- END BREADCRUMB-->
 
         <!-- CONTENT-->
@@ -35,15 +37,15 @@
                         <div class="card">
                             <div class="card-body card-block">
 
-                                <a  th:href="@{/donationdetail/add}" class="btn btn-primary"><i class=""></i> New</a>
+                                <a th:href="@{/donationdetail/add}" class="btn btn-primary"><i class=""></i> New</a>
 
                                 <button type="submit" class="btn btn-primary"><i class=""></i> Save</button>
 
-                                <a  th:href="@{/donationdetail/delete(id=${donationDetail.id})}"
-                                    th:disabled="${donationDetail.id} ==null ? 'disabled'" class="btn btn-primary">
+                                <a th:href="@{/donationdetail/delete(id=${donationDetail.id})}"
+                                   th:disabled="${donationDetail.id} ==null ? 'disabled'" class="btn btn-primary">
                                     <i class=""></i> Delete</a>
 
-                                <a  th:href="@{/donationdetail/}" class="btn btn-primary"><i class=""></i> Cancel</a>
+                                <a th:href="@{/donationdetail/}" class="btn btn-primary"><i class=""></i> Cancel</a>
 
                             </div>
                         </div>
@@ -54,68 +56,73 @@
                             </div>
 
 
-
                             <!--START OF CITIZEN DONATION DETAIL-->
 
-<div class="card-body card-block">
+                            <div class="card-body card-block">
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="work_type" class=" form-control-label">Householder No</label>
-                <select id="work_type" name="work_type" th:field="*{householderId}" class="form-control" >
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                </select>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="work_type" class=" form-control-label">Householder No</label>
+                                            <select id="work_type" name="work_type" th:field="*{householderId}"
+                                                    class="form-control">
+                                                <option th:each="householder:${householders}"
+                                                        th:value="${householder.id}" th:text="${householder.citizenFamilyNo}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="donation_type" class=" form-control-label">Donation Type</label>
+                                            <select id="donation_type" name="donation_type" th:field="*{donationType}"
+                                                    class="form-control">
+                                                <option th:each="donation:${donations}"
+                                                        th:value="${donation.id}" th:text="${donation.donationType}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="date" class=" form-control-label">Received Date</label>
+                                            <input type="date" id="date" th:field="*{receivedDate}" placeholder=""
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="description" class=" form-control-label">Description</label>
+                                            <textarea id="description" placeholder="" th:field="*{description}"
+                                                      class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--END OF CITIZEN PUBLIC DONATION DETAIL-->
+
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="donation_type" class=" form-control-label">Donation Type</label>
-                <select id="donation_type" name="donation_type" th:field="*{donationType}" class="form-control" >
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                </select>
-            </div>
+
         </div>
 
+
+        <!-- END CONTENT-->
+        <div th:include="common/footer::footer"></div>
+        <!-- END PAGE CONTAINER-->
     </div>
-
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="date" class=" form-control-label">Received Date</label>
-                <input type="date" id="date" th:field="*{receivedDate}" placeholder="" class="form-control">
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="form-group">
-                <label for="description" class=" form-control-label">Description</label>
-                <textarea  id="description" placeholder="" th:field="*{description}" class="form-control"></textarea>
-            </div>
-        </div>
-    </div>
-</div>
-<!--END OF CITIZEN PUBLIC DONATION DETAIL-->
-
-    </div>
- </form></div>
-</div>
-
-</div>
-
-
-<!-- END CONTENT-->
-<div th:include="common/footer::footer"></div>
-<!-- END PAGE CONTAINER-->
-</div>
 </div>
 <div th:include="common/commonjs::commonjs"></div>
-<script type="text/javascript" th:src="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript"
+        th:src="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js}"></script>
 
 <script th:inline="javascript">
     $(function () {

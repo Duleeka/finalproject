@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(DonationDetailRestController.REQUEST_MAPPING_URL)
 public class DonationDetailRestController {
 
-    public static final String REQUEST_MAPPING_URL ="/restapi/citizendonation";
+    public static final String REQUEST_MAPPING_URL ="/restapi/donationdetail";
 
     @Autowired
     DonationDetailService donationDetailService;

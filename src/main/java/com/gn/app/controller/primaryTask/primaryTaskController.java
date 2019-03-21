@@ -56,7 +56,7 @@ public class primaryTaskController {
 
 
         //  assetService.create(asset);
-        return "primaryTask/basicCitizenDetail/primary-task-basic-citizen-detail";
+        return "primaryTask/CitizenDetail/primary-task-basic-citizen-detail";
     }
 
     @RequestMapping(value = "/citizenpublicdonations", method = RequestMethod.GET)
