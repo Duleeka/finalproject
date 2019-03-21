@@ -3,6 +3,7 @@ package com.gn.app.model.administrativeTask.GnProfile;
 import com.gn.app.model.BaseModel;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by hp on 1/31/2019.
@@ -36,10 +37,10 @@ public class GnProfile extends BaseModel {
     private String phoneNumber;
 
     @Column(name = "appointment_date")
-    private String appointmentDate;
+    private Date appointmentDate;
 
     @Column(name = "date_of_duty_assumed")
-    private String dateOfDutyAssumed;
+    private Date dateOfDutyAssumed;
 
     public Integer getId() {
         return id;
@@ -97,19 +98,19 @@ public class GnProfile extends BaseModel {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getAppointmentDate() {
+    public Date getAppointmentDate() {
         return appointmentDate;
     }
 
-    public void setAppointmentDate(String appointmentDate) {
+    public void setAppointmentDate(Date appointmentDate) {
         this.appointmentDate = appointmentDate;
     }
 
-    public String getDateOfDutyAssumed() {
+    public Date getDateOfDutyAssumed() {
         return dateOfDutyAssumed;
     }
 
-    public void setDateOfDutyAssumed(String dateOfDutyAssumed) {
+    public void setDateOfDutyAssumed(Date dateOfDutyAssumed) {
         this.dateOfDutyAssumed = dateOfDutyAssumed;
     }
 }

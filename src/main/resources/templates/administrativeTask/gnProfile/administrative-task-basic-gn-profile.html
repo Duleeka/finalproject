@@ -2,160 +2,140 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="no-js">
 
 <head th:include="common/commoncss::commoncss">
-    <link rel="stylesheet" type="text/css"
-          th:href="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-datetimepicker.min.css}">
+
 </head>
 
 <body class="animsition">
 <div class="page-wrapper">
-    <!-- MENU SIDEBAR-->
-    <aside class="menu-sidebar2" th:include="common/siderbar::siderbar"></aside>
-    <!-- END MENU SIDEBAR-->
+	<!-- MENU SIDEBAR-->
+	<aside class="menu-sidebar2" th:replace="common/siderbar::siderbar"></aside>
+	<!-- END MENU SIDEBAR-->
 
-    <!-- PAGE CONTAINER-->
-    <div class="page-container2">
+	<!-- PAGE CONTAINER-->
+	<div class="page-container2">
 
-        <!-- HEADER DESKTOP-->
-        <header class="header-desktop2" th:include="common/header:: header"></header>
-        <!-- END HEADER DESKTOP-->
+		<!-- HEADER DESKTOP-->
+		<header class="header-desktop2" th:replace="common/header:: header"></header>
+		<!-- END HEADER DESKTOP-->
 
-        <!-- BREADCRUMB-->
-        <section class="au-breadcrumb m-t-75" th:include="administrativeTask/gnProfile/breadcrum::breadcrum"></section>
-        <!-- END BREADCRUMB-->
+		<!-- BREADCRUMB-->
+		<section class="au-breadcrumb m-t-75" th:replace="administrativeTask/gnProfile/breadcrum::breadcrum"></section>
+		<!-- END BREADCRUMB-->
 
-        <!-- CONTENT-->
-        <!--<div class="main-content">-->
+		<!-- CONTENT-->
+		<!--<div class="main-content">-->
 
-        <div class="row">
-            <div class="col-lg-12">
-                <form th:action="@{/basicgnprofile/save}" th:object="${gnProfile}" th:method="post">
-                    <div class="card">
-                        <div class="card-body card-block">
+		<div class="row">
+			<div class="col-lg-12">
+				<form th:action="@{/basicgnprofile/save}" th:object="${gnProfile}" th:method="post">
+					<div class="card">
+						<div class="card-body card-block">
 
-                            <a th:href="@{/basicgnprofile/add}" class="btn btn-primary">
-                                <i class=""></i> New
-                            </a>
-                            <button type="submit" class="btn btn-primary">
-                                <i class=""></i> Save
-                            </button>
-                            <a th:href="@{/basicgnprofile/delete(id=${gnProfile.id})}"
-                               th:disabled="${gnProfile.id} == null ? 'disabled'" class="btn btn-primary">
-                                <i class=""></i> Delete
-                            </a>
-                            <a th:href="@{/basicgnprofile/}" class="btn btn-primary">
-                                <i class=""></i> Cancel
-                            </a>
+							<a  th:href="@{/basicgnprofile/add}" class="btn btn-primary">
+								<i class=""></i> New
+							</a>
+							<button type="submit" class="btn btn-primary">
+								<i class=""></i> Save
+							</button>
+							<a  th:href="@{/basicgnprofile/delete(id=${gnProfile.id})}"
+								th:disabled="${gnProfile.id} == null ? 'disabled'" class="btn btn-primary">
+								<i class=""></i> Delete
+							</a>
+							<a  th:href="@{/basicgnprofile/}" class="btn btn-primary">
+								<i class=""></i> Cancel
+							</a>
+							<a  th:href="@{/basicgnprofile/report/pdf}" class="btn btn-primary">
+								<i class=""></i> PDF
+							</a>
+							<a  th:href="@{/basicgnprofile/report/csv}" class="btn btn-primary">
+								<i class=""></i> CSV
+							</a>
 
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <strong>Gn Profile</strong>
-                            <small> Form</small>
-                        </div>
-                        <div class="card-body card-block">
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header">
+							<strong>Gn Profile</strong>
+							<small> Form</small>
+						</div>
+						<div class="card-body card-block">
 
-                            <input type="hidden" id="id" name="id" th:field="*{id}"/>
-                            <input type="hidden" id="version" name="id" th:field="*{version}"/>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="GNid" class=" form-control-label">GN Id</label>
-                                        <input type="text" id="GNid" th:field="*{gnId}" placeholder=""
-                                               class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="first_name" class=" form-control-label">First Name</label>
-                                        <input type="text" id="first_name" th:field="*{firstName}" placeholder=""
-                                               class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="middle_name" class=" form-control-label">Middle Name</label>
-                                        <input type="text" id="middle_name" th:field="*{middleName}" placeholder=""
-                                               class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="last_name" class=" form-control-label">Last Name</label>
-                                        <input type="text" id="last_name" th:field="*{lastName}" placeholder=""
-                                               class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="address" class=" form-control-label">Office Address</label>
-                                        <textarea id="address" placeholder="" th:field="*{officeAddress}"
-                                                  class="form-control"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+							<input type="hidden" id="id" name="id" th:field="*{id}"/>
+							<input type="hidden" id="version" name="id" th:field="*{version}"/>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="GNid" class=" form-control-label">GN Id</label>
+										<input type="text" id="GNid" th:field="*{gnId}" placeholder="Enter your ID" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="first_name" class=" form-control-label">First Name</label>
+										<input type="text" id="first_name" th:field="*{firstName}" placeholder="Enter your first name" class="form-control">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="middle_name" class=" form-control-label">Middle Name</label>
+										<input type="text" id="middle_name" th:field="*{middleName}"placeholder="Enter your middle name" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="last_name" class=" form-control-label">Last Name</label>
+										<input type="text" id="last_name" th:field="*{lastName}" placeholder="Enter your last name" class="form-control">
+									</div>
+								</div>
+							</div>
+							<div class="row ">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="address" class=" form-control-label">Office Address</label>
+										<textarea  id="address" placeholder="office address" th:field="*{officeAddress}" class="form-control"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="datetimepicker1" class=" form-control-label">Date of Appointed</label>
+								<input type='date' th:field="*{appointmentDate}" class="form-control" />
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="datetimepicker1" class=" form-control-label">Date of Appointed</label>
-                                    <div class="input-group" id="datetimepicker1">
-                                        <input id="appointmentDate" th:field="*{appointmentDate}" type="text"
-                                               data-date-format="dd-mm-yyyy" data-date-viewmode="years"
-                                               placeholder="Eg : 08-01-2020"
-                                               class="form-control date-picker">
-                                        <span class="input-group-addon"> <i class="fa fa-calendar"></i></span>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="datetimepicker2" class=" form-control-label">Date of Duty
-                                        Assumed</label>
-                                    <div class='input-group date' id='datetimepicker2'>
-                                        <input type='text' class="form-control" th:field="*{dateOfDutyAssumed}"/>
-                                        <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-            </div>
-            </form>
-        </div>
-
-    </div>
 
 </div>
-<!-- END CONTENT-->
+							</div>
 
-<div th:include="common/footer::footer"></div>
-<!-- END PAGE CONTAINER-->
-</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="datetimepicker2" class=" form-control-label">Date of Duty Assumed</label>
+											<input type='date' class="form-control" th:field="*{dateOfDutyAssumed}" />
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+				</form>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- END CONTENT-->
+
+	<div th:replace="common/footer::footer"></div>
+	<!-- END PAGE CONTAINER-->
+
 </div>
 <div th:include="common/commonjs::commonjs"></div>
-<script type="text/javascript"
-        th:src="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/lib/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/AdministrativeTask/GnProfile/gnProfile.js}"></script>
 </body>
-<script th:inline="javascript">
-    $('#appointmentDate').datepicker({
-        autoclose: true,
-        container: '#datetimepicker1'
-    });
-</script>
 </html>
 <!-- end document-->

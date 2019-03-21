@@ -4,6 +4,8 @@ import com.gn.app.dto.administrativeTask.GnProfile.GnProfileDTO;
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -22,7 +24,6 @@ public interface GnProfileService {
 
     void delete(Integer id);
 
-
-
+    void print(HttpServletResponse response, HttpServletRequest request, String type) throws Exception;
 
 }
