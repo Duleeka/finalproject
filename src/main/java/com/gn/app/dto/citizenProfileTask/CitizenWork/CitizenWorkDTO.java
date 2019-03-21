@@ -9,8 +9,9 @@ public class CitizenWorkDTO extends BaseDTO {
 
     private Integer id;
     private Integer citizenId;
+    private Integer serviceId;
     private String cwServiceNo;
-    private Integer cwServiceType;
+    private String  cwServiceType;
     private String nic;
     private Date receivedDate;
     private String serviceDescription;
@@ -39,11 +40,11 @@ public class CitizenWorkDTO extends BaseDTO {
         this.cwServiceNo = cwServiceNo;
     }
 
-    public Integer getCwServiceType() {
+    public String getCwServiceType() {
         return cwServiceType;
     }
 
-    public void setCwServiceType(Integer cwServiceType) {
+    public void setCwServiceType(String  cwServiceType) {
         this.cwServiceType = cwServiceType;
     }
 
@@ -69,5 +70,13 @@ public class CitizenWorkDTO extends BaseDTO {
 
     public void setServiceDescription(String serviceDescription) {
         this.serviceDescription = serviceDescription;
+    }
+
+    public Integer getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(Integer serviceId) {
+        this.serviceId = serviceId;
     }
 }

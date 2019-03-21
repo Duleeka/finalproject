@@ -14,7 +14,7 @@ public class CitizenAssetDTO extends BaseDTO {
     private String houseType;
     private String roofType;
     private String wallType;
-    private String description;
+    private String assetDescription;
     private String mainCultivation;
     private String waterFacility;
     private String electricity;
@@ -102,12 +102,12 @@ public class CitizenAssetDTO extends BaseDTO {
         this.wallType = wallType;
     }
 
-    public String getDescription() {
-        return description;
+    public String getAssetDescription() {
+        return assetDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAssetDescription(String assetDescription) {
+        this.assetDescription = assetDescription;
     }
 
     public String getMainCultivation() {

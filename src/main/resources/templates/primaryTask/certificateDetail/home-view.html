@@ -18,7 +18,7 @@
         <!-- END HEADER DESKTOP-->
 
         <!-- BREADCRUMB-->
-        <section class="au-breadcrumb m-t-75" th:include="primaryTask/basicDetail/breadcrum::breadcrum"></section>
+        <section class="au-breadcrumb m-t-75" th:include="primaryTask/certificateDetail/breadcrum::breadcrum"></section>
         <!-- END BREADCRUMB-->
 
         <!-- CONTENT-->
@@ -29,7 +29,7 @@
                 <div class="card">
                     <div class="card-body card-block">
 
-                        <a  th:href="@{/basicdetail/add}" class="btn btn-primary">
+                        <a  th:href="@{/certificatedetail/add}" class="btn btn-primary">
                             <i class=""></i> New
                         </a>
                         <button class="btn btn-primary">
@@ -38,7 +38,7 @@
                         <button  class="btn btn-primary">
                             <i class=""></i> Delete
                         </button>
-                        <a  th:href="@{/basicdetail/}" class="btn btn-primary">
+                        <a  th:href="@{/certificatedetail/}" class="btn btn-primary">
                             <i class=""></i> Cancel
                         </a>
 
@@ -50,7 +50,7 @@
                         <small> Home</small>
                     </div>-->
                     <div class="card-body card-block">
-                        <table class="table table-borderless table-striped table-earning" id="tbl_basic_detail">
+                        <table class=" table-earning" id="tbl_basic_detail">
                             <thead>
                             <tr>
                                 <th class="first-th"> #</th>
@@ -83,11 +83,11 @@
 <script type="text/javascript" th:src="@{//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js}"></script>
 <script type="text/javascript" th:src="@{//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/lib/jquery.spring-friendly.js}"></script>
-<script type="text/javascript" th:src="@{/js/app/PrimaryTask/basicDetail/home-view.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/PrimaryTask/certificateDetail/home-view.js}"></script>
 <script>
     jQuery(document).ready(function() {
         //Main.init();
-        BasicDetailHome.init();
+        CertificateDetailHome.init();
     });
 </script>
 </body>

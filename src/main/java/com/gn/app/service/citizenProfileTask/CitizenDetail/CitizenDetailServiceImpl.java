@@ -1,8 +1,12 @@
 package com.gn.app.service.citizenProfileTask.CitizenDetail;
 
 import com.gn.app.dao.citizenProfileTask.CitizenDetail.CitizenDetailDao;
+import com.gn.app.dao.settings.NationalityRegister.NationalityRegisterDao;
+import com.gn.app.dao.settings.ReligionRegister.ReligionRegisterDao;
 import com.gn.app.dto.citizenProfileTask.CitizenDetail.CitizenDetailDTO;
 import com.gn.app.mappers.citizenProfileTask.CitizenDetail.CitizenDetailMapper;
+import com.gn.app.model.Settings.NationalityRegister.NationalityRegister;
+import com.gn.app.model.Settings.ReligionRegister.ReligionRegister;
 import com.gn.app.model.citizenProfileTask.CitizenDetail.CitizenDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
@@ -24,16 +28,22 @@ public class CitizenDetailServiceImpl implements CitizenDetailService {
     @Autowired
     CitizenDetailDao citizenDetailDao;
 
+    @Autowired
+    NationalityRegisterDao nationalityRegisterDao;
+
+    @Autowired
+    ReligionRegisterDao religionRegisterDao;
+
 
     @Override
     @Transactional(readOnly = true)
-    public DataTablesOutput<CitizenDetailDTO> findAllDataTable (DataTablesInput input) {
+    public DataTablesOutput<CitizenDetailDTO> findAllDataTable(DataTablesInput input) {
 
-        DataTablesOutput<CitizenDetail> output= citizenDetailDao.findAll(input);
-        DataTablesOutput<CitizenDetailDTO> dataTablesOutput=null;
-        try{
+        DataTablesOutput<CitizenDetail> output = citizenDetailDao.findAll(input);
+        DataTablesOutput<CitizenDetailDTO> dataTablesOutput = null;
+        try {
             dataTablesOutput = CitizenDetailMapper.getInstance().domainToDTODataTablesOutput(output);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return dataTablesOutput;
@@ -42,9 +52,9 @@ public class CitizenDetailServiceImpl implements CitizenDetailService {
     @Override
     public List<CitizenDetailDTO> findAll() {
         List<CitizenDetailDTO> profiles = null;
-        try{
+        try {
             profiles = CitizenDetailMapper.getInstance().domainToDTOList(citizenDetailDao.findAll());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return profiles;
@@ -54,9 +64,9 @@ public class CitizenDetailServiceImpl implements CitizenDetailService {
     public CitizenDetailDTO create(CitizenDetailDTO citizenDetailDTO) {
 
 
-        if(citizenDetailDTO.getId() != null){
+        if (citizenDetailDTO.getId() != null) {
             return update(citizenDetailDTO);
-        }else{
+        } else {
             return save(citizenDetailDTO);
         }
 
@@ -80,43 +90,84 @@ public class CitizenDetailServiceImpl implements CitizenDetailService {
             return gnDomainDao.findOne(specification);
     }*/
 
-    private CitizenDetailDTO update(CitizenDetailDTO citizenDetailDTO){
-        CitizenDetail citizenDetail= findByIdEntity(citizenDetailDTO.getId()).get();
+    private CitizenDetailDTO update(CitizenDetailDTO citizenDetailDTO) {
+        CitizenDetail citizenDetail = findByIdEntity(citizenDetailDTO.getId()).get();
 //        CitizenDetail citizenDetail = getCitizenById(citizenDetailDTO.getCFamilyNo());
 
         try {
-           CitizenDetailMapper.getInstance().dtoToDomain(citizenDetailDTO,citizenDetail);
+            CitizenDetailMapper.getInstance().dtoToDomain(citizenDetailDTO, citizenDetail);
         } catch (Exception e) {
             e.printStackTrace();
         }
         saveOrUpdate(citizenDetail);
         return citizenDetailDTO;
     }
-    private CitizenDetailDTO  save(CitizenDetailDTO citizenDetailDTO){
-        CitizenDetail citizenDetail=new CitizenDetail();
+
+    private CitizenDetailDTO save(CitizenDetailDTO citizenDetailDTO) {
+        CitizenDetail citizenDetail = new CitizenDetail();
         try {
-            CitizenDetailMapper.getInstance().dtoToDomain(citizenDetailDTO,citizenDetail);
+            CitizenDetailMapper.getInstance().dtoToDomain(citizenDetailDTO, citizenDetail);
         } catch (Exception e) {
             e.printStackTrace();
         }
         /*setCommondata(citizenDetail,citizenDetailDTO);*/
+        setCommonData(citizenDetail, citizenDetailDTO);
         saveOrUpdate(citizenDetail);
         return citizenDetailDTO;
     }
 
-  /* private void setCommondata(CitizenDetail citizenDetail,CitizenDetailDTO citizenDetailDTO ){
-        setGnDomain(citizenDetailDTO,citizenDetail);
-    }*/
-    private void saveOrUpdate(CitizenDetail citizenDetail){
+    private void setCommonData(CitizenDetail citizenDetail, CitizenDetailDTO citizenDetailDTO) {
+        setNationalityRegister(citizenDetail, citizenDetailDTO);
+        setReligionRegister(citizenDetail, citizenDetailDTO);
+    }
+
+/*RELATIONSHIP OF NATIONALITY & CITIZEN*/
+
+    private void setNationalityRegister(CitizenDetail citizenDetail, CitizenDetailDTO citizenDetailDTO) {
+        citizenDetail.setNationalityRegister(nationalityRegisterDao.findOne(findNationalityRegisterSpecification(citizenDetailDTO.getNationalityId())).get());
+    }
+
+    private Specification<NationalityRegister> findNationalityRegisterSpecification(Integer id) {
+        Specification<NationalityRegister> specification = new Specification<NationalityRegister>() {
+            @Override
+            public Predicate toPredicate(Root<NationalityRegister> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
+                return cb.equal(root.get("id"), id);
+
+            }
+        };
+        return specification;
+    }
+
+
+/*RELATIONSHIP OF RELIGION & CITIZEN*/
+
+    private void setReligionRegister(CitizenDetail citizenDetail, CitizenDetailDTO citizenDetailDTO){
+        citizenDetail.setReligionRegister(religionRegisterDao.findOne(findReligionRegisterSpecification(citizenDetailDTO.getReligionId())).get());
+    }
+
+    private Specification<ReligionRegister> findReligionRegisterSpecification(Integer religionId) {
+        Specification<ReligionRegister> specification = new Specification<ReligionRegister>() {
+            @Override
+            public Predicate toPredicate(Root<ReligionRegister> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
+                return cb.equal(root.get("id"), religionId);
+            }
+        };
+        return specification;
+    }
+
+    /* private void setCommondata(CitizenDetail citizenDetail,CitizenDetailDTO citizenDetailDTO ){
+          setGnDomain(citizenDetailDTO,citizenDetail);
+      }*/
+    private void saveOrUpdate(CitizenDetail citizenDetail) {
         citizenDetailDao.save(citizenDetail);
     }
 
     @Override
     public CitizenDetailDTO findById(Integer id) {
-        CitizenDetail citizenDetail=findByIdEntity(id).get();
-        CitizenDetailDTO citizenDetailDTO=new CitizenDetailDTO();
+        CitizenDetail citizenDetail = findByIdEntity(id).get();
+        CitizenDetailDTO citizenDetailDTO = new CitizenDetailDTO();
         try {
-            citizenDetailDTO=CitizenDetailMapper.getInstance().domainToDto(citizenDetail);
+            citizenDetailDTO = CitizenDetailMapper.getInstance().domainToDto(citizenDetail);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -124,7 +175,7 @@ public class CitizenDetailServiceImpl implements CitizenDetailService {
     }
 
 
-    public Optional<CitizenDetail> findByIdEntity(Integer id){
+    public Optional<CitizenDetail> findByIdEntity(Integer id) {
         Specification<CitizenDetail> specification = new Specification<CitizenDetail>() {
             @Override
             public Predicate toPredicate(Root<CitizenDetail> root, CriteriaQuery<?> query, CriteriaBuilder cb) {

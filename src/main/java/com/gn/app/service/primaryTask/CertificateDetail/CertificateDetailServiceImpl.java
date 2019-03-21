@@ -3,8 +3,10 @@ package com.gn.app.service.primaryTask.CertificateDetail;
 
 import com.gn.app.dao.citizenProfileTask.CitizenDetail.CitizenDetailDao;
 import com.gn.app.dao.primaryTask.CertificateDetail.CertificateDetailDao;
+import com.gn.app.dao.settings.CertificateDetailRegister.CertificateDetailRegisterDao;
 import com.gn.app.dto.primaryTask.CertificateDetail.CertificateDetailDTO;
 import com.gn.app.mappers.primaryTask.CertificateDetail.CertificateDetailMapper;
+import com.gn.app.model.Settings.CertificateDetailRegister.CertificateDetailRegister;
 import com.gn.app.model.citizenProfileTask.CitizenDetail.CitizenDetail;
 import com.gn.app.model.primaryTask.CertificateDetail.CertificateDetail;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class CertificateDetailServiceImpl implements CertificateDetailService {
 
     @Autowired
     CitizenDetailDao citizenDetailDao;
+
+    @Autowired
+    CertificateDetailRegisterDao certificateDetailRegisterDao;
 
     @Override
     public DataTablesOutput<CertificateDetailDTO> findAllDataTable(DataTablesInput input) {
@@ -92,7 +97,7 @@ public class CertificateDetailServiceImpl implements CertificateDetailService {
 
         private void setCommonData(CertificateDetail certificateDetail,CertificateDetailDTO certificateDetailDTO){
             setCitizen(certificateDetail,certificateDetailDTO);
-            setCertificate(certificateDetail, certificateDetailDTO);
+            setCertificateDetailRegister(certificateDetail, certificateDetailDTO);
         }
 
         private void setCitizen(CertificateDetail certificateDetail, CertificateDetailDTO certificateDetailDTO){
@@ -111,14 +116,14 @@ public class CertificateDetailServiceImpl implements CertificateDetailService {
     }
 
 
-    private void setCertificate(CertificateDetail certificateDetail, CertificateDetailDTO certificateDetailDTO){
-        certificateDetail.setCertificateDetail(certificateDetailDao.findOne(findCertificateDetailSpecification(certificateDetailDTO.getCertificateId())).get());
+    private void setCertificateDetailRegister(CertificateDetail certificateDetail, CertificateDetailDTO certificateDetailDTO){
+        certificateDetail.setCertificateDetailRegister(certificateDetailRegisterDao.findOne(findCertificateDetailRegisterSpecification(certificateDetailDTO.getCertificateId())).get());
     }
 
-    public Specification<CertificateDetail> findCertificateDetailSpecification(Integer id){
-        Specification<CertificateDetail> specification = new Specification<CertificateDetail>() {
+    public Specification<CertificateDetailRegister> findCertificateDetailRegisterSpecification(Integer id){
+        Specification<CertificateDetailRegister> specification = new Specification<CertificateDetailRegister>() {
             @Override
-            public Predicate toPredicate(Root<CertificateDetail> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
+            public Predicate toPredicate(Root<CertificateDetailRegister> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
                 return cb.equal(root.get("id"),id);
             }
         };

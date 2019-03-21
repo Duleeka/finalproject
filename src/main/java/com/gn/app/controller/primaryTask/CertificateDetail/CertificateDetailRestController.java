@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(CertificateDetailRestController.REQUEST_MAPPING_URL)
 public class CertificateDetailRestController {
-    public static final String REQUEST_MAPPING_URL = "/restapi/basicdetail";
+    public static final String REQUEST_MAPPING_URL = "/restapi/certificatedetail";
 
     @Autowired
     CertificateDetailService certificateDetailService;

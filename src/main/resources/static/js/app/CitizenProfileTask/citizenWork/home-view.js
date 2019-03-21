@@ -135,12 +135,18 @@ var CitizenWorkHome = function () {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 }
             },{
-                data : 'cwServiceNo'
+                data : 'cwServiceNo',
+                orderable: false,
+                searchable: false,
             },{
-                data : 'cwServiceType'
-            },/*{
-                data :  'nic'
-            },*/
+                data : 'cwServiceType',
+                orderable: false,
+                searchable: false,
+            },{
+                data :  'nic',
+                orderable: false,
+                searchable: false,
+            },
                 {
                     data : 'receivedDate'
                 }  ,              {

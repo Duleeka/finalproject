@@ -12,6 +12,8 @@ import java.util.Date;
 public class CitizenDetailDTO extends BaseDTO {
 
     private Integer id;
+    private Integer nationalityId;
+    private Integer religionId;
     private Boolean isHouseholder;
     private String citizenFamilyNo;
     private Boolean citizenStatus=Boolean.FALSE;
@@ -52,6 +54,23 @@ public class CitizenDetailDTO extends BaseDTO {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getNationalityId() {
+        return nationalityId;
+    }
+
+    public void setNationalityId(Integer nationalityId) {
+        this.nationalityId = nationalityId;
+    }
+
+
+    public Integer getReligionId() {
+        return religionId;
+    }
+
+    public void setReligionId(Integer religionId) {
+        this.religionId = religionId;
     }
 
     public Boolean getIsHouseholder() {

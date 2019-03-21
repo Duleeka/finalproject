@@ -33,7 +33,8 @@ public class CitizenWorkMapper extends GenericMapper<CitizenWork,CitizenWorkDTO>
     public CitizenWorkDTO domainToDtoForDataTable(CitizenWork citizenWork) throws Exception {
         CitizenWorkDTO dto = new CitizenWorkDTO();
         dto.setId(citizenWork.getId());
-//dto.setCwServiceType(citizenWork.getCitizenDetail().getCitizenFirstName());
+        dto.setCwServiceType(citizenWork.getServiceRegister().getServiceType());
+        dto.setNic(citizenWork.getCitizenDetail().getNic());
         dto.setReceivedDate(citizenWork.getReceivedDate());
 
         return dto;

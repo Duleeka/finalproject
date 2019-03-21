@@ -2,6 +2,7 @@ package com.gn.app.model.primaryTask.CertificateDetail;
 
 
 import com.gn.app.model.BaseModel;
+import com.gn.app.model.Settings.CertificateDetailRegister.CertificateDetailRegister;
 import com.gn.app.model.citizenProfileTask.CitizenDetail.CitizenDetail;
 
 import javax.persistence.*;
@@ -28,20 +29,20 @@ public class CertificateDetail extends BaseModel {
     private String certificateType;
 
 
-    @Column(name = "issued_date")
+    @Column(name = "certificate_issued_date")
     @Temporal(TemporalType.DATE)
-    private Date issuedDate;
+    private Date certificateIssuedDate;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "cd_description")
+    private String cdDescription;
 
     @JoinColumn(name = "citizen_id")
     @ManyToOne(targetEntity = CitizenDetail.class , fetch = FetchType.LAZY)
     private CitizenDetail citizenDetail;
 
     @JoinColumn(name = "certificate_id")
-    @ManyToOne(targetEntity = CertificateDetail.class , fetch = FetchType.LAZY)
-    private CertificateDetail certificateDetail;
+    @ManyToOne(targetEntity = CertificateDetailRegister.class , fetch = FetchType.LAZY)
+    private CertificateDetailRegister certificateDetailRegister;
 
 
     public Integer getId() {
@@ -69,22 +70,21 @@ public class CertificateDetail extends BaseModel {
     }
 
 
-    public Date getIssuedDate() {
-        return issuedDate;
+    public Date getCertificateIssuedDate() {
+        return certificateIssuedDate;
     }
 
-    public void setIssuedDate(Date issuedDate) {
-        this.issuedDate = issuedDate;
+    public void setCertificateIssuedDate(Date certificateIssuedDate) {
+        this.certificateIssuedDate = certificateIssuedDate;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCdDescription() {
+        return cdDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCdDescription(String cdDescription) {
+        this.cdDescription = cdDescription;
     }
-
 
     public CitizenDetail getCitizenDetail() {
         return citizenDetail;
@@ -94,11 +94,11 @@ public class CertificateDetail extends BaseModel {
         this.citizenDetail = citizenDetail;
     }
 
-    public CertificateDetail getCertificateDetail() {
-        return certificateDetail;
+    public CertificateDetailRegister getCertificateDetailRegister() {
+        return certificateDetailRegister;
     }
 
-    public void setCertificateDetail(CertificateDetail certificateDetail) {
-        this.certificateDetail = certificateDetail;
+    public void setCertificateDetailRegister(CertificateDetailRegister certificateDetailRegister) {
+        this.certificateDetailRegister = certificateDetailRegister;
     }
 }

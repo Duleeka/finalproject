@@ -1,7 +1,7 @@
 /**
  * Created by hp on 2/10/2019.
  */
-var BasicDetailHome = function () {
+var CertificateDetailHome = function () {
 
     //
     // Pipelining function for DataTables. To be used to the `ajax` option of DataTables
@@ -125,7 +125,7 @@ var BasicDetailHome = function () {
             "processing": true,
             "serverSide": true,
             "ajax": $.fn.dataTable.pipeline( {
-                url: "../restapi/basicdetail/",
+                url: "../restapi/certificatedetail/",
                 pages: 5
             } ),
             columns : [ {
@@ -161,7 +161,7 @@ var BasicDetailHome = function () {
                 targets: 5,//index of column starting from 0
                 data: "id", //this name should exist in your JSON response
                 render: function ( data, type, full, meta ) {
-                    return "<div align='center'>" + ButtonUtil.getHomeBtnWithURL("basicdetail", data);
+                    return "<div align='center'>" + ButtonUtil.getHomeBtnWithURL("certificatedetail", data);
                 }
             }],
             oLanguage: {

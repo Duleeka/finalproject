@@ -2,6 +2,7 @@ package com.gn.app.service.citizenProfileTask.CitizenWork;
 
 import com.gn.app.dao.citizenProfileTask.CitizenDetail.CitizenDetailDao;
 import com.gn.app.dao.citizenProfileTask.CitizenWork.CitizenWorkDao;
+import com.gn.app.dao.settings.NationalityRegister.NationalityRegisterDao;
 import com.gn.app.dao.settings.ServiceRegister.ServiceRegisterDao;
 import com.gn.app.dto.citizenProfileTask.CitizenWork.CitizenWorkDTO;
 import com.gn.app.mappers.citizenProfileTask.CitizenWork.CitizenWorkMapper;
@@ -32,6 +33,8 @@ public class CitizenWorkServiceImpl implements CitizenWorkService {
 
     @Autowired
     ServiceRegisterDao serviceRegisterDao;
+
+
 
     public DataTablesOutput<CitizenWorkDTO> findAllDataTable(DataTablesInput input) {
         DataTablesOutput<CitizenWork> output = citizenWorkDao.findAll(input);
@@ -115,7 +118,7 @@ public class CitizenWorkServiceImpl implements CitizenWorkService {
     }
 
     private void setServiceRegister(CitizenWork citizenWork, CitizenWorkDTO citizenWorkDTO){
-        citizenWork.setServiceRegister(serviceRegisterDao.findOne(findServiceRegisterSpecification(citizenWorkDTO.getCwServiceType())).get());
+        citizenWork.setServiceRegister(serviceRegisterDao.findOne(findServiceRegisterSpecification(citizenWorkDTO.getServiceId())).get());
 
     }
 

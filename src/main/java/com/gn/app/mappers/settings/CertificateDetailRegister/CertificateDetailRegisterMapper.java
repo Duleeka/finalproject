@@ -23,7 +23,7 @@ public class CertificateDetailRegisterMapper extends GenericMapper<CertificateDe
         dto.setId(certificateDetailRegister.getId());
         dto.setVersion(certificateDetailRegister.getVersion());
         dto.setCertificateNo(certificateDetailRegister.getCertificateNo());
-        dto.setCertificateType(certificateDetailRegister.getCertificateType());
+        dto.setCrCertificateType(certificateDetailRegister.getCrCertificateType());
         dto.setCertificateValidFrom(certificateDetailRegister.getCertificateValidFrom());
         dto.setCertificateValidTill(certificateDetailRegister.getCertificateValidTill());
         return dto;
@@ -34,7 +34,7 @@ public class CertificateDetailRegisterMapper extends GenericMapper<CertificateDe
         CertificateDetailRegisterDTO dto= new CertificateDetailRegisterDTO();
         dto.setId(certificateDetailRegister.getId());
         dto.setCertificateNo(certificateDetailRegister.getCertificateNo());
-        dto.setCertificateType(certificateDetailRegister.getCertificateType());
+        dto.setCrCertificateType(certificateDetailRegister.getCrCertificateType());
         dto.setCertificateValidFrom(certificateDetailRegister.getCertificateValidFrom());
         dto.setCertificateValidTill(certificateDetailRegister.getCertificateValidTill());
         return dto;
@@ -45,7 +45,7 @@ public class CertificateDetailRegisterMapper extends GenericMapper<CertificateDe
         certificateDetailRegister.setId(dto.getId());
         dto.setVersion(certificateDetailRegister.getVersion());
         certificateDetailRegister.setCertificateNo(dto.getCertificateNo());
-        certificateDetailRegister.setCertificateType(dto.getCertificateType());
+        certificateDetailRegister.setCrCertificateType(dto.getCrCertificateType());
         dto.setCertificateValidFrom(certificateDetailRegister.getCertificateValidFrom());
         dto.setCertificateValidTill(certificateDetailRegister.getCertificateValidTill());
     }

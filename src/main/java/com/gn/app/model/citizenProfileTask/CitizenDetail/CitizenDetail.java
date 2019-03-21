@@ -6,6 +6,8 @@ import com.gn.app.constant.Gender;
 import com.gn.app.constant.MaritalStatus;
 import com.gn.app.constant.Relationship;
 import com.gn.app.model.BaseModel;
+import com.gn.app.model.Settings.NationalityRegister.NationalityRegister;
+import com.gn.app.model.Settings.ReligionRegister.ReligionRegister;
 
 
 import javax.persistence.*;
@@ -106,6 +108,14 @@ public class CitizenDetail extends BaseModel {
 
     @Column(name = "death_reason")
     private String deathReason;
+
+    @JoinColumn(name = "nationality_id")
+    @ManyToOne(targetEntity = NationalityRegister.class,fetch = FetchType.LAZY)
+    private NationalityRegister nationalityRegister;
+
+    @JoinColumn(name = "religion_id")
+    @ManyToOne(targetEntity = ReligionRegister.class,fetch = FetchType.LAZY)
+    private ReligionRegister religionRegister;
 
 /*
     @Column(name = "date_of_death")
@@ -369,6 +379,24 @@ public class CitizenDetail extends BaseModel {
     }
 
 
+    public NationalityRegister getNationalityRegister() {
+        return nationalityRegister;
+    }
+
+    public void setNationalityRegister(NationalityRegister nationalityRegister) {
+        this.nationalityRegister = nationalityRegister;
+
+
+    }
+
+
+    public ReligionRegister getReligionRegister() {
+        return religionRegister;
+    }
+
+    public void setReligionRegister(ReligionRegister religionRegister) {
+        this.religionRegister = religionRegister;
+    }
 }
 
 

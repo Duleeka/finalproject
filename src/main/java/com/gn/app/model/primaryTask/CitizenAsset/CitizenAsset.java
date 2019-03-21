@@ -46,8 +46,8 @@ public class CitizenAsset extends BaseModel {
     @Column(name = "wall_type")
     private String wallType;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "asset_description")
+    private String assetDescription;
 
     @Column(name = "main_cultivation")
     private String mainCultivation;
@@ -144,12 +144,12 @@ public class CitizenAsset extends BaseModel {
         this.wallType = wallType;
     }
 
-    public String getDescription() {
-        return description;
+    public String getAssetDescription() {
+        return assetDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAssetDescription(String assetDescription) {
+        this.assetDescription = assetDescription;
     }
 
     public String getMainCultivation() {

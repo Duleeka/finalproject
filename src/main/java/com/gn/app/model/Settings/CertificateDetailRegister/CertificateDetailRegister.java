@@ -20,8 +20,8 @@ public class CertificateDetailRegister extends BaseModel {
     @Column(name = "certificate_no")
     private String certificateNo;
 
-    @Column(name = "certificate_type")
-    private String certificateType;
+    @Column(name = "cr_certificate_type")
+    private String crCertificateType;
 
     @Column(name = "certificate_valid_from")
     @Temporal(TemporalType.DATE)
@@ -40,10 +40,6 @@ public class CertificateDetailRegister extends BaseModel {
         this.id = id;
     }
 
-    public String getCertificateType() {
-        return certificateType;
-    }
-
     public String getCertificateNo() {
         return certificateNo;
     }
@@ -52,8 +48,12 @@ public class CertificateDetailRegister extends BaseModel {
         this.certificateNo = certificateNo;
     }
 
-    public void setCertificateType(String certificateType) {
-        this.certificateType = certificateType;
+    public String getCrCertificateType() {
+        return crCertificateType;
+    }
+
+    public void setCrCertificateType(String crCertificateType) {
+        this.crCertificateType = crCertificateType;
     }
 
     public Date getCertificateValidFrom() {

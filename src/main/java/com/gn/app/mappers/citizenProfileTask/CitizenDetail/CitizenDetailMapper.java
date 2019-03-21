@@ -40,8 +40,8 @@ public class CitizenDetailMapper extends GenericMapper<CitizenDetail, CitizenDet
         dto.setCitizenEmailAddress(citizenDetail.getCitizenEmailAddress());
         dto.setCitizenOccupation(citizenDetail.getCitizenOccupation());
         dto.setCitizenIncome(citizenDetail.getCitizenIncome());
-        dto.setCitizenNationality(citizenDetail.getCitizenNationality());
-        dto.setCitizenReligion(citizenDetail.getCitizenReligion());
+        dto.setCitizenNationality(citizenDetail.getNationalityRegister().getNationalityType());
+        dto.setCitizenReligion(citizenDetail.getReligionRegister().getReligionType());
 
 
         dto.setCitizenAddress(citizenDetail.getCitizenAddress());
@@ -101,7 +101,7 @@ public class CitizenDetailMapper extends GenericMapper<CitizenDetail, CitizenDet
         citizenDetail.setCitizenDateOfBirth(dto.getCitizenDateOfBirth());
 */
         citizenDetail.setCitizenGender(dto.getCitizenGender());
-        citizenDetail.setMaritalStatus(dto.getMaritalStatus());
+       citizenDetail.setMaritalStatus(dto.getMaritalStatus());
         citizenDetail.setPhoneNumber(dto.getPhoneNumber());
         citizenDetail.setCitizenEmailAddress(dto.getCitizenEmailAddress());
         citizenDetail.setCitizenOccupation(dto.getCitizenOccupation());

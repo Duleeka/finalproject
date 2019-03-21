@@ -3,7 +3,10 @@ package com.gn.app.controller.citizenProfileTask.citizenDetail;
 
 import com.gn.app.constant.*;
 import com.gn.app.dto.citizenProfileTask.CitizenDetail.CitizenDetailDTO;
+import com.gn.app.model.Settings.NationalityRegister.NationalityRegister;
 import com.gn.app.service.citizenProfileTask.CitizenDetail.CitizenDetailService;
+import com.gn.app.service.settings.NationalityRegister.NationalityRegisterService;
+import com.gn.app.service.settings.ReligionRegister.ReligionRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +22,12 @@ public class CitizenDetailController {
 
     @Autowired
     CitizenDetailService citizenDetailService;
+
+    @Autowired
+    NationalityRegisterService nationalityRegisterService;
+
+    @Autowired
+    ReligionRegisterService religionRegisterService;
 
    /* @Autowired
     GnDomainService gnDomainService;
@@ -63,5 +72,7 @@ private void setCommonData(Model model, CitizenDetailDTO dto) {
         model.addAttribute("relationships",Relationship.getALLRelationship());
         model.addAttribute("domains", citizenDetailService.findAll());
         model.addAttribute("certificates",citizenDetailService.findAll());
+        model.addAttribute("persons", nationalityRegisterService.findAll());
+        model.addAttribute("religions",religionRegisterService.findAll());
     }
 }

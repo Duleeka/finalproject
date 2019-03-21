@@ -97,7 +97,7 @@
                                     <label for="relationship" class=" form-control-label">Relationship</label>
                                     <select id="relationship" name="relationship" th:field="*{relationship}" class="form-control" >
                                         <option th:each="relationship:${relationships}"
-                                                th:value="${relationship.relId}" th:text="${relationship.relType}">
+                                                th:value="${relationship}" th:text="${relationship.relType}">
                                         </option>  මියගිය
                                     </select>
                                 </div>
@@ -183,7 +183,7 @@
                                             <label for="gender"  class=" form-control-label">Gender</label>
                                             <select id="gender" name="gender" th:field="*{citizenGender}" class="form-control" >
                                                 <option th:each="gender:${genders}"
-                                                        th:value="${gender.genId}" th:text="${gender.genName}">
+                                                        th:value="${gender}" th:text="${gender.genName}">
                                                 </option>
 
                                             </select>
@@ -194,7 +194,7 @@
                                             <label for="marital_status"  class=" form-control-label">Marital Status</label>
                                             <select id="marital_status" name="marital_status" th:field="*{maritalStatus}" class="form-control" >
                                                 <option th:each="maritalStatus:${maritalStatuses}"
-                                                        th:value="${maritalStatus.id}" th:text="${maritalStatus.name}">
+                                                        th:value="${maritalStatus}" th:text="${maritalStatus.name}">
                                                 </option>
 
                                             </select>
@@ -242,7 +242,7 @@
                                                 <label for="birth_place"  class=" form-control-label">Birth District</label>
                                                 <select id="birth_place" name="birth_place" th:field="*{citizenBirthDistrict}" class="form-control" >
                                                     <option th:each="district:${districts}"
-                                                            th:value="${district.distId}" th:text="${district.distName}"></option>
+                                                            th:value="${district}" th:text="${district.distName}"></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -260,8 +260,8 @@
                                             <div class="form-group">
                                                 <label for="residence_area"  class=" form-control-label">Previous Residence Area</label>
                                                 <select id="residence_area" name="residence_area" th:field="*{previousResidentialArea}" class="form-control" >
-                                                    <option th:each="dsOffice:${dsOffices}"
-                                                            th:value="${dsOffice.dsOfficeId}" th:text="${dsOffice.dsOfficeName}"></option>
+                                                    <option th:each="district:${districts}"
+                                                            th:value="${district}" th:text="${district.distName}"></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -341,20 +341,21 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="nationality"  class=" form-control-label">Nationality</label>
-                                            <select id="nationality" name="nationality" th:field="*{citizenNationality}" class="form-control" >
-                                                <option value=""></option>
-                                                <option value=""></option>
-                                                <option value=""></option>
+                                            <select id="nationality" name="nationality"
+                                                    th:field="*{nationalityId}" class="form-control">
+                                                <option th:each="person:${persons}"
+                                                        th:value="${person.id}" th:text="${person.nationalityType}">
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="religion"  class=" form-control-label">Religion</label>
-                                            <select id="religion" name="religion" th:field="*{citizenReligion}" class="form-control" >
-                                                <option value=""></option>
-                                                <option value=""></option>
-                                                <option value=""></option>
+                                            <select id="religion" name="religion" th:field="*{religionId}" class="form-control" >
+                                                <option th:each="religion:${religions}"
+                                                        th:value="${religion.id}" th:text="${religion.religionType}">
+                                                </option>
                                             </select>
                                         </div>
                                     </div>

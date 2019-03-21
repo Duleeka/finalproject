@@ -7,7 +7,7 @@ import java.util.Date;
 public class CertificateDetailRegisterDTO extends BaseDTO {
     private Integer id;
     private String certificateNo;
-    private String certificateType;
+    private String crCertificateType;
     private Date certificateValidFrom;
     private Date certificateValidTill;
 
@@ -28,12 +28,12 @@ public class CertificateDetailRegisterDTO extends BaseDTO {
         this.certificateNo = certificateNo;
     }
 
-    public String getCertificateType() {
-        return certificateType;
+    public String getCrCertificateType() {
+        return crCertificateType;
     }
 
-    public void setCertificateType(String certificateType) {
-        this.certificateType = certificateType;
+    public void setCrCertificateType(String crCertificateType) {
+        this.crCertificateType = crCertificateType;
     }
 
     public Date getCertificateValidFrom() {

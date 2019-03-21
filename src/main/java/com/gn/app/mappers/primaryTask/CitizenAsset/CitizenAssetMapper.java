@@ -31,7 +31,7 @@ public class CitizenAssetMapper extends GenericMapper<CitizenAsset, CitizenAsset
         dto.setHouseType(citizenAsset.getHouseType());
         dto.setRoofType(citizenAsset.getRoofType());
         dto.setWallType(citizenAsset.getWallType());
-        dto.setDescription(citizenAsset.getDescription());
+        dto.setAssetDescription(citizenAsset.getAssetDescription());
         dto.setMainCultivation(citizenAsset.getMainCultivation());
         dto.setWaterFacility(citizenAsset.getWaterFacility());
         dto.setElectricity(citizenAsset.getElectricity());
@@ -64,7 +64,7 @@ public class CitizenAssetMapper extends GenericMapper<CitizenAsset, CitizenAsset
         citizenAsset.setHouseType(dto.getHouseType());
         citizenAsset.setRoofType(dto.getRoofType());
         citizenAsset.setWallType(dto.getWallType());
-        citizenAsset.setDescription(dto.getDescription());
+        citizenAsset.setAssetDescription(dto.getAssetDescription());
         citizenAsset.setMainCultivation(dto.getMainCultivation());
         citizenAsset.setWaterFacility(dto.getWaterFacility());
         citizenAsset.setElectricity(dto.getElectricity());

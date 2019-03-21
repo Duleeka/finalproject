@@ -22,8 +22,8 @@ public class CertificateDetailMapper extends GenericMapper<CertificateDetail, Ce
             dto.setId(certificateDetail.getId());
             dto.setCertificateNo(certificateDetail.getCertificateNo());
             dto.setCertificateType(certificateDetail.getCertificateType());
-            dto.setIssuedDate(certificateDetail.getIssuedDate());
-            dto.setDescription(certificateDetail.getDescription());
+            dto.setCertificateIssuedDate(certificateDetail.getCertificateIssuedDate());
+            dto.setCdDescription(certificateDetail.getCdDescription());
 
         return dto;
     }
@@ -34,7 +34,7 @@ public class CertificateDetailMapper extends GenericMapper<CertificateDetail, Ce
         dto.setId(certificateDetail.getId());
         dto.setVersion(certificateDetail.getVersion());
         dto.setCertificateNo(certificateDetail.getCertificateNo());
-        dto.setCertificateType(certificateDetail.getCertificateType());
+        dto.setCertificateType(certificateDetail.getCertificateDetailRegister().getCrCertificateType());
         dto.setNic(certificateDetail.getCitizenDetail().getNic());
         dto.setReceiverFullName(certificateDetail.getCitizenDetail().getCitizenFirstName()+" "+certificateDetail.getCitizenDetail().getCitizenLastName());
         return dto;
@@ -46,8 +46,8 @@ public class CertificateDetailMapper extends GenericMapper<CertificateDetail, Ce
         certificateDetail.setVersion(certificateDetail.getVersion());
         certificateDetail.setCertificateNo(dto.getCertificateNo());
         certificateDetail.setCertificateType(dto.getCertificateType());
-        certificateDetail.setIssuedDate(dto.getIssuedDate());
-        certificateDetail.setDescription(dto.getDescription());
+        certificateDetail.setCertificateIssuedDate(dto.getCertificateIssuedDate());
+        certificateDetail.setCdDescription(dto.getCdDescription());
 
         }
 }
