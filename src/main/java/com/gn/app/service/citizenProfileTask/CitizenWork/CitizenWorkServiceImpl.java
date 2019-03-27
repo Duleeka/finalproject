@@ -102,14 +102,19 @@ public class CitizenWorkServiceImpl implements CitizenWorkService {
     }
 
     private void setCitizen(CitizenWork citizenWork,CitizenWorkDTO citizenWorkDTO){
-        citizenWork.setCitizenDetail(citizenDetailDao.findOne(findCitizenSpecification(citizenWorkDTO.getCitizenId())).get());
-    }
+
+        if(citizenWorkDTO != null && citizenWorkDTO.getCitizenId()!=null) {
+
+        citizenWork.setCitizenDetail(citizenDetailDao.findOne(findCitizenSpecification
+                (citizenWorkDTO.getCitizenId())).get());
+    }}
 
 
     public Specification<CitizenDetail> findCitizenSpecification(Integer id){
         Specification<CitizenDetail> specification = new Specification<CitizenDetail>() {
             @Override
-            public Predicate toPredicate(Root<CitizenDetail> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
+            public Predicate toPredicate(Root<CitizenDetail> root, CriteriaQuery<?>
+                    criteriaQuery, CriteriaBuilder cb) {
                 return cb.equal(root.get("id"), id);
 
             }
@@ -118,21 +123,24 @@ public class CitizenWorkServiceImpl implements CitizenWorkService {
     }
 
     private void setServiceRegister(CitizenWork citizenWork, CitizenWorkDTO citizenWorkDTO){
-        citizenWork.setServiceRegister(serviceRegisterDao.findOne(findServiceRegisterSpecification(citizenWorkDTO.getServiceId())).get());
 
-    }
+        if(citizenWorkDTO != null && citizenWorkDTO.getServiceId()!=null) {
+
+        citizenWork.setServiceRegister(serviceRegisterDao.findOne(findServiceRegisterSpecification
+                (citizenWorkDTO.getServiceId())).get());
+
+    }}
 
     public Specification<ServiceRegister> findServiceRegisterSpecification(Integer serviceId){
         Specification<ServiceRegister> specification = new Specification<ServiceRegister>() {
             @Override
-            public Predicate toPredicate(Root<ServiceRegister> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
+            public Predicate toPredicate(Root<ServiceRegister> root, CriteriaQuery<?>
+                    criteriaQuery, CriteriaBuilder cb) {
                 return cb.equal(root.get("id"), serviceId);
             }
         };
         return specification;
     }
-
-
 
     private void saveOrUpdate(CitizenWork citizenWork) {
         citizenWorkDao.save(citizenWork);

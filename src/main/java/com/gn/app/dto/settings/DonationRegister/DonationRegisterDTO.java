@@ -9,8 +9,6 @@ public class DonationRegisterDTO extends BaseDTO {
 
     private Integer id;
     private String donationType;
-    private String  validFrom;
-    private String  validTo;
     private String description;
 
     public Integer getId() {
@@ -27,22 +25,6 @@ public class DonationRegisterDTO extends BaseDTO {
 
     public void setDonationType(String donationType) {
         this.donationType = donationType;
-    }
-
-    public String getValidFrom() {
-        return validFrom;
-    }
-
-    public void setValidFrom(String validFrom) {
-        this.validFrom = validFrom;
-    }
-
-    public String getValidTo() {
-        return validTo;
-    }
-
-    public void setValidTo(String validTo) {
-        this.validTo = validTo;
     }
 
     public String getDescription() {

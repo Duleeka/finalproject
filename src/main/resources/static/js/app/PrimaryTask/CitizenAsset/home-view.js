@@ -135,11 +135,15 @@ var CitizenAssetHome = function () {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 }
             },{
-                data : 'householderId'
+                data : 'householderId',
+                orderable: false,
+                searchable: false,
             },{
                 data : 'assetId'
             },{
-                data :  'landName'
+                data :  'landName',
+                orderable: false,
+                searchable: false,
             },{
                 data :  'houseOwnership'
             },

@@ -4,26 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum Relationship {
-    HOUSEHOLDER(1,"householder"),
-    HUSBAND(2,"husband"),
-    WIFE(3,"wife"),
-    FATHER(4,"father"),
-    MOTHER(5,"mother"),
-    GRANDMOTHER(6,"grandmother"),
-    GRANDFATHER(7,"grandfather"),
-    DAUGHTER(8,"daughter"),
-    SON(9,"son"),
-    GRANDSON(10,"grandson"),
-    GRANDDAUGHTER(11,"granddaughter"),
-    AUNT(12,"aunt"),
-    UNCLE(13,"uncle"),
-    SON_IN_LAW(14,"sonInLaw"),
-    SISTER_IN_LAW(15, "sisterInLaw"),
-    FATHER_IN_LAW(16, "fatherInLaw"),
-    MOTHER_IN_LAW(17, "motherInLaw"),
-    STEPMOTHER(18, "stepmother"),
-    BROTHER(19, "brother"),
-    SISTER(20,"sister");
+    HOUSEHOLDER(0,"householder"),
+    HUSBAND(1,"husband"),
+    WIFE(2,"wife"),
+    FATHER(3,"father"),
+    MOTHER(4,"mother"),
+    GRANDMOTHER(5,"grandmother"),
+    GRANDFATHER(6,"grandfather"),
+    DAUGHTER(7,"daughter"),
+    SON(8,"son"),
+    GRANDSON(9,"grandson"),
+    GRANDDAUGHTER(10,"granddaughter"),
+    AUNTY(11,"aunty"),
+    UNCLE(12,"uncle"),
+    SON_IN_LAW(13,"sonInLaw"),
+    SISTER_IN_LAW(14, "sisterInLaw"),
+    FATHER_IN_LAW(15, "fatherInLaw"),
+    MOTHER_IN_LAW(16, "motherInLaw"),
+    STEPMOTHER(17, "stepmother"),
+    BROTHER(18, "brother"),
+    SISTER(19,"sister");
 
     private Integer relId;
     private String relType;
@@ -47,7 +47,7 @@ public enum Relationship {
         relationshipList.add(DAUGHTER);
         relationshipList.add(GRANDSON);
         relationshipList.add(GRANDSON);
-        relationshipList.add(AUNT);
+        relationshipList.add(AUNTY);
         relationshipList.add(UNCLE);
         relationshipList.add(SISTER_IN_LAW);
         relationshipList.add(SON_IN_LAW);

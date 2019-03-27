@@ -146,7 +146,7 @@ var NationalityRegisterHome = function () {
                 }
             ],
             aoColumnDefs: [{
-                targets: 4,//index of column starting from 0
+                targets: 3,//index of column starting from 0
                 data: "id", //this name should exist in your JSON response
                 render: function ( data, type, full, meta ) {
                     return "<div align='center'>" + ButtonUtil.getHomeBtnWithURL("nationalityregister", data);

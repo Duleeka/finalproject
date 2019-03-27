@@ -5,9 +5,9 @@ import java.util.List;
 
 public enum MaritalStatus {
 
-    NEVER_MARRIED(1,"neverMarried"),
-    REGISTERED_MARRIED(2,"registeredMarried"),
-    MARRIED_NOT_REGISTERED (3,"marriedNotRegistered"),
+    NEVER_MARRIED(1,"never Married"),
+    REGISTERED_MARRIED(2,"registered Married"),
+    MARRIED_NOT_REGISTERED (3,"married Not Registered"),
     WIDOW(4,"widow"),
     DIVORCE(5,"divorce"),
     OTHER(6,"other");

@@ -135,11 +135,9 @@ var DonationRegisterHome = function () {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 }
             },{
-                data : 'donationType'
-            },{
-                data : 'validFrom'
-            },{
-                data :  'validTo'
+                data : 'donationType',
+                orderable: false,
+                searchable: false,
             },
                 {
                     data : 'description'
@@ -150,7 +148,7 @@ var DonationRegisterHome = function () {
                 }
             ],
             aoColumnDefs: [{
-                targets: 5,//index of column starting from 0
+                targets: 3,//index of column starting from 0
                 data: "id", //this name should exist in your JSON response
                 render: function ( data, type, full, meta ) {
                     return "<div align='center'>" + ButtonUtil.getHomeBtnWithURL("donationregister", data);

@@ -135,9 +135,13 @@ var DonationDetailHome = function () {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 }
             },{
-                data : 'householderId'
+                data : 'householderId',
+                orderable: false,
+                searchable: false,
             },{
-                data : 'donationType'
+                data : 'donationType',
+                orderable: false,
+                searchable: false,
             },{
                 data :  'receivedDate'
             },

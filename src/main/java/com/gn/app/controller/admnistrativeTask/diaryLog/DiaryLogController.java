@@ -36,8 +36,8 @@ public class DiaryLogController {
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String editDiaryLog(Model model, Integer taskid){
-        setCommonData(model,diaryLogService.findById(taskid));
+    public String editDiaryLog(Model model, Integer id){
+        setCommonData(model,diaryLogService.findById(id));
         return "administrativeTask/diaryLog/administrative-task-diary-log";
     }
 
@@ -50,8 +50,8 @@ public class DiaryLogController {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    public String deleteDiaryLog(Model model, Integer taskid){
-        diaryLogService.delete(taskid);
+    public String deleteDiaryLog(Model model, Integer id){
+        diaryLogService.delete(id);
         return "redirect:/diarylog/";
     }
     private void setCommonData(Model model, DiaryLogDTO dto)

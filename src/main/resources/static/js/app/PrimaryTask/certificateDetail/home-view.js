@@ -135,16 +135,18 @@ var CertificateDetailHome = function () {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 }
             },{
-                data : 'certificateNo'
+                data : 'certificateNo',
+                orderable: false,
+                searchable: false
             },{
                 data : 'certificateType',
                 orderable: false,
-                searchable: false,
+                searchable: false
             },{
                 data :  'receiverFullName',
 
                     orderable: false,
-                    searchable: false,
+                    searchable: false
             },
 
                 {

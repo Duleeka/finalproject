@@ -1,24 +1,27 @@
 package com.gn.app.dto.primaryTask.CitizenAsset;
 
+import com.gn.app.constant.HouseOwnership;
 import com.gn.app.dto.BaseDTO;
 
 public class CitizenAssetDTO extends BaseDTO {
 
     private Integer id;
     private String householderId;
+    private Integer landId;
+    private Integer citizenId;
     private String assetId;
     private String landName;
     private Integer landSize;
-    private String landType;
-    private String houseOwnership;
+    private String landAssetType;
+    private HouseOwnership houseOwnership;
     private String houseType;
     private String roofType;
     private String wallType;
     private String assetDescription;
     private String mainCultivation;
-    private String waterFacility;
-    private String electricity;
-    private String toiletFacility;
+    private Boolean waterFacility=Boolean.FALSE;
+    private Boolean electricity=Boolean.FALSE;
+    private Boolean toiletFacility=Boolean.FALSE;
     private String assetStatus;
 
 
@@ -28,6 +31,22 @@ public class CitizenAssetDTO extends BaseDTO {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getLandId() {
+        return landId;
+    }
+
+    public void setLandId(Integer landId) {
+        this.landId = landId;
+    }
+
+    public Integer getCitizenId() {
+        return citizenId;
+    }
+
+    public void setCitizenId(Integer citizenId) {
+        this.citizenId = citizenId;
     }
 
     public String getHouseholderId() {
@@ -62,19 +81,19 @@ public class CitizenAssetDTO extends BaseDTO {
         this.landSize = landSize;
     }
 
-    public String getLandType() {
-        return landType;
+    public String getLandAssetType() {
+        return landAssetType;
     }
 
-    public void setLandType(String landType) {
-        this.landType = landType;
+    public void setLandAssetType(String landAssetType) {
+        this.landAssetType = landAssetType;
     }
 
-    public String getHouseOwnership() {
+    public HouseOwnership getHouseOwnership() {
         return houseOwnership;
     }
 
-    public void setHouseOwnership(String houseOwnership) {
+    public void setHouseOwnership(HouseOwnership houseOwnership) {
         this.houseOwnership = houseOwnership;
     }
 
@@ -118,27 +137,27 @@ public class CitizenAssetDTO extends BaseDTO {
         this.mainCultivation = mainCultivation;
     }
 
-    public String getWaterFacility() {
+    public Boolean getWaterFacility() {
         return waterFacility;
     }
 
-    public void setWaterFacility(String waterFacility) {
+    public void setWaterFacility(Boolean waterFacility) {
         this.waterFacility = waterFacility;
     }
 
-    public String getElectricity() {
+    public Boolean getElectricity() {
         return electricity;
     }
 
-    public void setElectricity(String electricity) {
+    public void setElectricity(Boolean electricity) {
         this.electricity = electricity;
     }
 
-    public String getToiletFacility() {
+    public Boolean getToiletFacility() {
         return toiletFacility;
     }
 
-    public void setToiletFacility(String toiletFacility) {
+    public void setToiletFacility(Boolean toiletFacility) {
         this.toiletFacility = toiletFacility;
     }
 

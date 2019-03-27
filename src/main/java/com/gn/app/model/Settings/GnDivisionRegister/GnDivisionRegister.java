@@ -41,8 +41,7 @@ public class GnDivisionRegister extends BaseModel {
         this.divisionNo = divisionNo;
     }
 
-    public String getDivisionName() {
-        return divisionName;
+    public String getDivisionName() {return divisionName;
     }
 
     public void setDivisionName(String divisionName) {

@@ -35,7 +35,8 @@
                 <!--START OF CITIZEN DETAIL FORM-->
                 <div class="card">
 
-                    <form th:action="@{/citizendetail/save}" th:object="${citizenDetail}" th:method="post">
+                    <form th:action="@{/citizendetail/save}" th:object="${citizenDetail}" th:method="post"
+                          id="frm_citizendetail">   <!--VALIDATION ID FROM .JS-->
                         <div class="card">
                             <div class="card-body card-block">
 
@@ -47,7 +48,7 @@
                                    th:disabled="${citizenDetail.id} ==null ? 'disabled'" class="btn btn-primary">
                                     <i class=""></i> Delete</a>
 
-                                <a th:href="@{/citizendetail/}" class="btn btn-primary ui-icon-cancel"><i class=""></i> Cancel</a>
+                                <a th:href="@{/citizendetail/}" class="btn btn-primary"><i class=""></i> Cancel</a>
 
                             </div>
                         </div>
@@ -65,28 +66,30 @@
                                 <input type="hidden" id="version" name="id" th:field="*{version}"/>
 
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="family_no" class=" form-control-label">Householder No</label>
-                                            <input type="text" id="family_no" placeholder=""
+                                            <input type="text" id="family_no" placeholder="Enter householder no"
                                                    th:field="*{citizenFamilyNo}" class="form-control">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group">
-                                            <label class="form-control-label">Householder</label>
+                                            <label class="form-control-label">Citizen Type</label>
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input"
-                                                       th:field="*{isHouseholder}" id="householder1">
-                                                <label class="custom-control-label" for="householder1">Yes</label>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" th:field="*{isHouseholder}"
+                                                               data-toggle="toggle" id="is_householder" data-style="slow"
+                                                               data-on="Householder" data-off="Dependent" data-onstyle="primary"
+                                                               data-size="small">
+                                                    </label>
+                                                </div>
                                             </div>
 
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="form-control-label">Current Status</label>
                                             <div class="custom-control custom-switch">
@@ -102,7 +105,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="relationship" class=" form-control-label">Relationship</label>
                                             <select id="relationship" name="relationship" th:field="*{relationship}"
@@ -115,14 +118,12 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="initials" class=" form-control-label">Initials</label>
                                             <input type="text" id="initials" th:field="*{citizenInitials}"
-                                                   placeholder="" class="form-control">
+                                                   placeholder="Enter Initials" class="form-control">
                                         </div>
                                     </div>
 
@@ -130,7 +131,7 @@
                                         <div class="form-group">
                                             <label for="first_name" class=" form-control-label">First Name</label>
                                             <input type="text" id="first_name" th:field="*{citizenFirstName}"
-                                                   placeholder="" class="form-control">
+                                                   placeholder="Enter first name" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -140,7 +141,7 @@
                                         <div class="form-group">
                                             <label for="middle_name" class=" form-control-label">Middle Name</label>
                                             <input type="text" id="middle_name" th:field="*{citizenMiddleName}"
-                                                   placeholder="" class="form-control">
+                                                   placeholder="Enter middle name" class="form-control">
                                         </div>
                                     </div>
 
@@ -148,7 +149,7 @@
                                         <div class="form-group">
                                             <label for="last_name" class=" form-control-label">Last Name</label>
                                             <input type="text" id="last_name" th:field="*{citizenLastName}"
-                                                   placeholder="" class="form-control">
+                                                   placeholder="Enter last name" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -163,17 +164,13 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="datetimepicker1" class=" form-control-label">Date of
-                                                Birth</label>
-                                            <div class='input-group date' id='datetimepicker1'>
-                                                <input type='text' th:field="*{citizenDateOfBirth}"
-                                                       class="form-control"/>
-                                                <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span></span>
-                                            </div>
+                                            <label for="datetimepicker1" class=" form-control-label">Date of Birth</label>
+                                            <input type='date' id="datetimepicker1" th:field="*{citizenDateOfBirth}" class="form-control"/>
+
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                             <!--END OF CITIZEN BASIC DETAIL-->
 
@@ -188,9 +185,9 @@
                                             <li class="nav-item"><a class="nav-link " data-toggle="tab"
                                                                     href="#tab_location">Location</a></li>
                                             <li class="nav-item"><a class="nav-link " data-toggle="tab"
-                                                                    href="#tab_education">Education</a></li>
-                                            <li class="nav-item"><a class="nav-link " data-toggle="tab"
                                                                     href="#tab_death_detail">Death Record</a></li>
+                                            <li class="nav-item"><a class="nav-link " data-toggle="tab"
+                                                                    href="#tab_other_detail">Other Information</a></li>
 
                                         </ul>
                                     </div>
@@ -202,7 +199,7 @@
                                             <div class="card-body card-block">
 
                                                 <div class="row ">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="gender"
                                                                    class=" form-control-label">Gender</label>
@@ -216,7 +213,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="marital_status" class=" form-control-label">Marital
                                                                 Status</label>
@@ -230,24 +227,37 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="phone_no" class=" form-control-label">Phone
                                                                 Number</label>
-                                                            <input type="text" id="phone_no" placeholder=""
+                                                            <input type="text" id="phone_no" placeholder="Enter phone number"
                                                                    th:field="*{phoneNumber}" class="form-control">
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="email" class=" form-control-label">Email
                                                                 Address</label>
-                                                            <input type="text" id="email" placeholder=""
+                                                            <input type="text" id="email" placeholder="Enter email address"
                                                                    th:field="*{citizenEmailAddress}"
                                                                    class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="edu_level" class=" form-control-label">
+                                                                Highest Education Level</label>
+                                                            <select id="edu_level" name="edu_level"
+                                                                    th:field="*{educationId}"
+                                                                    class="form-control">
+                                                                <<option th:each="educationLevel:${educationLevels}"
+                                                                         th:value="${educationLevel.id}"
+                                                                         th:text="${educationLevel.educationLevel}">
+                                                            </option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -261,22 +271,22 @@
 
                                             <div class="card-body card-block">
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="div_name" class=" form-control-label">GN
                                                                 Division</label>
                                                             <select id="div_name" name="div_name"
-                                                                    th:field="*{citizenGnDivision}"
+                                                                    th:field="*{gnDivisionId}"
                                                                     class="form-control">
 
-                                                                <option th:each="province:${provinces}"
-                                                                        th:value="${province.id}"
-                                                                        th:text="${province.name}"></option>
+                                                                <option th:each="division:${divisions}"
+                                                                        th:value="${division.id}"
+                                                                        th:text="${division.divisionName}"></option>
                                                             </select>
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="birth_place" class=" form-control-label">Birth
                                                                 District</label>
@@ -289,20 +299,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="row ">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label for="address"
-                                                                   class=" form-control-label">Address</label>
-                                                            <textarea id="address" placeholder=""
-                                                                      th:field="*{citizenAddress}"
-                                                                      class="form-control"></textarea>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row ">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="residence_area" class=" form-control-label">Previous
                                                                 Residence Area</label>
@@ -315,6 +312,9 @@
                                                             </select>
                                                         </div>
                                                     </div>
+                                                </div>
+
+                                                <div class="row ">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="reason_to_change" class=" form-control-label">Reason
@@ -325,80 +325,23 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="row ">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="address"
+                                                                   class=" form-control-label">Address</label>
+                                                            <textarea id="address" placeholder="Enter address"
+                                                                      th:field="*{citizenAddress}"
+                                                                      class="form-control"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
                                         <!--END OF CITIZEN LOCATION DETAIL-->
 
-
-                                        <div id="tab_education" class="tab-pane fade">
-                                            <!--START OF CITIZEN EDUCATION DETAIL-->
-
-                                            <div class="card-body card-block">
-
-                                                <div class="row ">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="edu_level" class=" form-control-label">
-                                                                Highest Education Level</label>
-                                                            <select id="edu_level" name="edu_level"
-                                                                    th:field="*{highestEducationLevel}"
-                                                                    class="form-control">
-                                                                <option value=""></option>
-                                                                <option value="Al"></option>
-                                                                <option value="Ol"></option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="sinhala" class=" form-control-label">Sinhala
-                                                                Language Proficiency</label>
-                                                            <select id="sinhala" name="sinhala"
-                                                                    th:field="*{languageProficiency}"
-                                                                    class="form-control">
-                                                                <option value=""></option>
-                                                                <option value="Yes"></option>
-                                                                <option value="No"></option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="english" class=" form-control-label">English
-                                                                Language Proficiency</label>
-                                                            <select id="english" name="english"
-                                                                    th:field="*{languageProficiency}"
-                                                                    class="form-control">
-                                                                <option value=""></option>
-                                                                <option value="Married"></option>
-                                                                <option value="Unmarried"></option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="tamil" class=" form-control-label">Tamil
-                                                                Language Proficiency</label>
-                                                            <select id="tamil" name="tamil"
-                                                                    th:field="*{languageProficiency}"
-                                                                    class="form-control">
-                                                                <option value=""></option>
-                                                                <option value="Yes"></option>
-                                                                <option value="No"></option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--END OF CITIZEN EDUCATION DETAIL-->
-
-                                        </div>
-
-                                        <div id="tab_other" class="tab-pane fade ">
+                                        <div id="tab_other_detail" class="tab-pane fade ">
                                             <!--START OF CITIZEN EXTRA DETAIL-->
 
                                             <div class="card-body card-block">
@@ -434,15 +377,14 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="occupation" class=" form-control-label">Occupation</label>
-                                                            <input type="text" id="occupation" placeholder=""
+                                                            <input type="text" id="occupation" placeholder="enter occupation"
                                                                    th:field="*{citizenOccupation}" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="income" class=" form-control-label">Income
-                                                                Level</label>
-                                                            <input type="text" id="income" placeholder=""
+                                                            <label for="income" class=" form-control-label">Income</label>
+                                                            <input type="text" id="income" placeholder="Enter income detail"
                                                                    th:field="*{citizenIncome}" class="form-control">
                                                         </div>
                                                     </div>
@@ -460,14 +402,11 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="datetimepicker1" class=" form-control-label">Date
-                                                                of Death</label>
-                                                            <div class='input-group date' id='datetimepicker1'>
-                                                                <input type='text' th:disabled="*{citizenStatus}==false"
-                                                                       th:field="*{dateOfDeath}" class="form-control"/>
-                                                                <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span></span>
-                                                            </div>
+                                                            <label for="datetimepicker2" class=" form-control-label">Dateof Death</label>
+                                                                <input type='date' id="datetimepicker2" th:disabled="${citizenDetail.citizenStatus}==false"
+                                                                       th:field="*{dateOfDeath}" class="form-control">
+
+
                                                         </div>
                                                     </div>
 
@@ -497,7 +436,7 @@
                                                 </div>
 
                                             </div>
-                                            -->
+
                                             <!--END OF DIED CITIZEN DETAIL-->
 
                                         </div>
@@ -525,10 +464,9 @@
 </div>
 </div>
 <div th:include="common/commonjs::commonjs"></div>
-<script type="text/javascript"
-        th:src="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/app/CitizenProfileTask/CitizenDetail/deathCitizenDetail.js}"></script>
 
+<script type="text/javascript" th:src="@{/js/lib/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/CitizenProfileTask/CitizenDetail/deathCitizenDetail.js}"></script>
 <script type="text/javascript" th:src="@{/js/app/CitizenProfileTask/CitizenDetail/init.js}"></script>
 </body>
 </html>

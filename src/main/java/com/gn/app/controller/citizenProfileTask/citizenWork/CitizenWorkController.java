@@ -42,8 +42,8 @@ public class CitizenWorkController {
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String editCitizenWork(Model model, Integer sid){
-        setCommonData(model, citizenWorkService.findById(sid));
+    public String editCitizenWork(Model model, Integer id){
+        setCommonData(model, citizenWorkService.findById(id));
         return "citizenProfileTask/citizenWork/primary-task-citizen-services";
 
     }
@@ -59,8 +59,8 @@ public class CitizenWorkController {
 
 
     @RequestMapping(value = "/delete",method = RequestMethod.GET)
-    public String deleteCitizenWork(Model model, Integer sid){
-        citizenWorkService.delete(sid);
+    public String deleteCitizenWork(Model model, Integer id){
+        citizenWorkService.delete(id);
         return "redirect/citizenservices/";
     }
 

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" class="no-js">
+
+<head th:include="common/commoncss::commoncss">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css}">
+</head>
+
+<body class="animsition">
+<div class="page-wrapper">
+    <!-- MENU SIDEBAR-->
+    <aside class="menu-sidebar2" th:include="common/siderbar::siderbar"></aside>
+    <!-- END MENU SIDEBAR-->
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-container2">
+
+        <!-- HEADER DESKTOP-->
+        <header class="header-desktop2" th:include="common/header:: header"></header>
+        <!-- END HEADER DESKTOP-->
+
+        <!-- BREADCRUMB-->
+        <section class="au-breadcrumb m-t-75" th:include="settings/roofDetailRegister/breadcrum::breadcrum"></section>
+        <!-- END BREADCRUMB-->
+
+        <!-- CONTENT-->
+        <!--<div class="main-content">-->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <form th:action="@{/roofdetailregister/save}" th:object="${roofDetailRegister}" th:method="post" id="frm_roofregister">
+                    <div class="card">
+                        <div class="card-body card-block">
+
+                            <a th:href="@{/roofdetailregister/add}" class="btn btn-primary">
+                                <i class=""></i> New
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class=""></i> Save
+                            </button>
+                            <a th:href="@{/roofdetailregister/delete(id=${roofDetailRegister.id})}"
+                               th:disabled="${roofDetailRegister.id} == null ? 'disabled'" class="btn btn-primary">
+                                <i class=""></i> Delete
+                            </a>
+                            <a th:href="@{/roofdetailregister/}" class="btn btn-primary">
+                                <i class=""></i> Cancel
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Roof Detail Registration</strong>
+                            <small> Form</small>
+                        </div>
+
+
+                        <div class="card-body card-block">
+                            <input type="hidden" id="id" name="id" th:field="*{id}"/>
+                            <input type="hidden" id="version" name="id" th:field="*{version}"/>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="roof_type" class=" form-control-label">Roof Type</label>
+                                        <input type="text" id="roof_type" placeholder="" th:field="*{roofType}"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="roof_description" class=" form-control-label">Description</label>
+                                        <textarea id="roof_description" placeholder="" th:field="*{roofDescription}"
+                                                  class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!-- END CONTENT-->
+    <div th:include="common/footer::footer"></div>
+    <!-- END PAGE CONTAINER-->
+</div>
+</div>
+<div th:include="common/commonjs::commonjs"></div>
+
+<script type="text/javascript" th:src="@{/js/lib/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/Settings/roofDetailRegister/roofRegister.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/Settings/roofDetailRegister/init.js}"></script>
+</body>
+</html>
+<!-- end document-->

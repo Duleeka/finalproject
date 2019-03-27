@@ -156,7 +156,7 @@ var UserHome = function () {
                 }
             }],
             oLanguage: {
-                sLengthMenu: "Show _MENU_ Rows",
+                sLengthMenu: " _MENU_ ",
                 sSearch: "",
                 oPaginate: {
                     sPrevious: "&laquo;",

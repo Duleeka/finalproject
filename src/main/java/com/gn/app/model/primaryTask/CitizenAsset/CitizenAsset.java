@@ -1,6 +1,9 @@
 package com.gn.app.model.primaryTask.CitizenAsset;
 
+import com.gn.app.constant.HouseOwnership;
 import com.gn.app.model.BaseModel;
+import com.gn.app.model.Settings.LandDetailRegister.LandDetailRegister;
+import com.gn.app.model.citizenProfileTask.CitizenDetail.CitizenDetail;
 
 import javax.persistence.*;
 
@@ -19,23 +22,15 @@ public class CitizenAsset extends BaseModel {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "householder_id")
-    private String householderId;
-
     @Column(name = "asset_id")
     private String assetId;
-
-    @Column(name = "land_name")
-    private String landName;
 
     @Column(name = "land_size")
     private Integer landSize;
 
-    @Column(name = "land_type")
-    private String landType;
 
     @Column(name = "house_ownership")
-    private String houseOwnership;
+    private HouseOwnership houseOwnership;
 
     @Column(name = "house_type")
     private String houseType;
@@ -53,16 +48,25 @@ public class CitizenAsset extends BaseModel {
     private String mainCultivation;
 
     @Column(name = "water_facility")
-    private String waterFacility;
+    private Boolean waterFacility;
 
     @Column(name = "electricity")
-    private String electricity;
+    private Boolean electricity;
 
     @Column(name = "toilet_facility")
-    private String toiletFacility;
+    private Boolean toiletFacility;
 
     @Column(name = "asset_status")
     private String assetStatus;
+
+
+    @JoinColumn(name = "citizen_id")
+    @ManyToOne(targetEntity = CitizenDetail.class,fetch = FetchType.LAZY)
+    private CitizenDetail citizenDetail;
+
+    @JoinColumn(name = "land_id")
+    @ManyToOne(targetEntity = LandDetailRegister.class,fetch = FetchType.LAZY)
+    private LandDetailRegister landDetailRegister;
 
     public Integer getId() {
         return id;
@@ -72,12 +76,21 @@ public class CitizenAsset extends BaseModel {
         this.id = id;
     }
 
-    public String getHouseholderId() {
-        return householderId;
+
+    public CitizenDetail getCitizenDetail() {
+        return citizenDetail;
     }
 
-    public void setHouseholderId(String householderId) {
-        this.householderId = householderId;
+    public void setCitizenDetail(CitizenDetail citizenDetail) {
+        this.citizenDetail = citizenDetail;
+    }
+
+    public LandDetailRegister getLandDetailRegister() {
+        return landDetailRegister;
+    }
+
+    public void setLandDetailRegister(LandDetailRegister landDetailRegister) {
+        this.landDetailRegister = landDetailRegister;
     }
 
     public String getAssetId() {
@@ -88,14 +101,6 @@ public class CitizenAsset extends BaseModel {
         this.assetId = assetId;
     }
 
-    public String getLandName() {
-        return landName;
-    }
-
-    public void setLandName(String landName) {
-        this.landName = landName;
-    }
-
     public Integer getLandSize() {
         return landSize;
     }
@@ -104,19 +109,12 @@ public class CitizenAsset extends BaseModel {
         this.landSize = landSize;
     }
 
-    public String getLandType() {
-        return landType;
-    }
 
-    public void setLandType(String landType) {
-        this.landType = landType;
-    }
-
-    public String getHouseOwnership() {
+    public HouseOwnership getHouseOwnership() {
         return houseOwnership;
     }
 
-    public void setHouseOwnership(String houseOwnership) {
+    public void setHouseOwnership(HouseOwnership houseOwnership) {
         this.houseOwnership = houseOwnership;
     }
 
@@ -160,27 +158,27 @@ public class CitizenAsset extends BaseModel {
         this.mainCultivation = mainCultivation;
     }
 
-    public String getWaterFacility() {
+    public Boolean getWaterFacility() {
         return waterFacility;
     }
 
-    public void setWaterFacility(String waterFacility) {
+    public void setWaterFacility(Boolean waterFacility) {
         this.waterFacility = waterFacility;
     }
 
-    public String getElectricity() {
+    public Boolean getElectricity() {
         return electricity;
     }
 
-    public void setElectricity(String electricity) {
+    public void setElectricity(Boolean electricity) {
         this.electricity = electricity;
     }
 
-    public String getToiletFacility() {
+    public Boolean getToiletFacility() {
         return toiletFacility;
     }
 
-    public void setToiletFacility(String toiletFacility) {
+    public void setToiletFacility(Boolean toiletFacility) {
         this.toiletFacility = toiletFacility;
     }
 

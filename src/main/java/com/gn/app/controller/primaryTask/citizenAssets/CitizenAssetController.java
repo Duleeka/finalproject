@@ -1,8 +1,11 @@
 package com.gn.app.controller.primaryTask.citizenAssets;
 
 
+import com.gn.app.constant.HouseOwnership;
 import com.gn.app.dto.primaryTask.CitizenAsset.CitizenAssetDTO;
+import com.gn.app.service.citizenProfileTask.CitizenDetail.CitizenDetailService;
 import com.gn.app.service.primaryTask.CitizenAsset.CitizenAssetService;
+import com.gn.app.service.settings.LandDetailRegister.LandDetailRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +21,12 @@ public class CitizenAssetController {
 
     @Autowired
     CitizenAssetService citizenAssetService;
+
+    @Autowired
+    LandDetailRegisterService landDetailRegisterService;
+
+    @Autowired
+    CitizenDetailService citizenDetailService;
 
 
 
@@ -50,7 +59,12 @@ public class CitizenAssetController {
         citizenAssetService.delete(id);
         return "redirect:/assetsofcitizen/";
     }
-    private void setCommonData(Model model, CitizenAssetDTO dto) {
+    private void setCommonData(Model model, CitizenAssetDTO dto)
+    {
         model.addAttribute("citizenAsset",dto);
+        model.addAttribute("houseOwnerships", HouseOwnership.getALLHouseOwnership());
+        model.addAttribute("lands",landDetailRegisterService.findAll());
+        model.addAttribute("citizens",citizenDetailService.findAll());
+
     }
 }

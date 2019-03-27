@@ -14,6 +14,8 @@ public class CitizenDetailDTO extends BaseDTO {
     private Integer id;
     private Integer nationalityId;
     private Integer religionId;
+    private Integer gnDivisionId;
+    private Integer educationId;
     private Boolean isHouseholder;
     private String citizenFamilyNo;
     private Boolean citizenStatus=Boolean.FALSE;
@@ -23,7 +25,7 @@ public class CitizenDetailDTO extends BaseDTO {
     private String citizenMiddleName;
     private String citizenLastName;
     private String nic;
-    private Date citizenDateOfBirth;
+    private String  citizenDateOfBirth;
     private Gender citizenGender;
     private MaritalStatus maritalStatus;
     private Integer phoneNumber;
@@ -40,11 +42,10 @@ public class CitizenDetailDTO extends BaseDTO {
     private String reasonToChangeResidentialArea;
 
     private String highestEducationLevel;
-    private String languageProficiency;
 
     private String deathPlace;
     private String deathReason;
-    private Date dateOfDeath;
+    private String  dateOfDeath;
 
 
 
@@ -71,6 +72,22 @@ public class CitizenDetailDTO extends BaseDTO {
 
     public void setReligionId(Integer religionId) {
         this.religionId = religionId;
+    }
+
+    public Integer getGnDivisionId() {
+        return gnDivisionId;
+    }
+
+    public void setGnDivisionId(Integer gnDivisionId) {
+        this.gnDivisionId = gnDivisionId;
+    }
+
+    public Integer getEducationId() {
+        return educationId;
+    }
+
+    public void setEducationId(Integer educationId) {
+        this.educationId = educationId;
     }
 
     public Boolean getIsHouseholder() {
@@ -145,8 +162,12 @@ public class CitizenDetailDTO extends BaseDTO {
         this.nic = nic;
     }
 
-    public Date getCitizenDateOfBirth() {
+    public String getCitizenDateOfBirth() {
         return citizenDateOfBirth;
+    }
+
+    public void setCitizenDateOfBirth(String citizenDateOfBirth) {
+        this.citizenDateOfBirth = citizenDateOfBirth;
     }
 
     public Gender getCitizenGender() {
@@ -261,15 +282,6 @@ public class CitizenDetailDTO extends BaseDTO {
         this.highestEducationLevel = highestEducationLevel;
     }
 
-    public String getLanguageProficiency() {
-        return languageProficiency;
-    }
-
-    public void setLanguageProficiency(String languageProficiency) {
-        this.languageProficiency = languageProficiency;
-    }
-
-
     public String getDeathPlace() {
         return deathPlace;
     }
@@ -286,11 +298,11 @@ public class CitizenDetailDTO extends BaseDTO {
         this.deathReason = deathReason;
     }
 
-    public Date getDateOfDeath() {
+    public String getDateOfDeath() {
         return dateOfDeath;
     }
 
-    public void setDateOfDeath(Date dateOfDeath) {
+    public void setDateOfDeath(String dateOfDeath) {
         this.dateOfDeath = dateOfDeath;
     }
 }

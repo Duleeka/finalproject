@@ -7,58 +7,80 @@ import java.util.Date;
 
 
 @Entity
-   @Table(name = "tbl_gn_diary")
-    public class DiaryLog extends BaseModel{
-       private static final long serialVersionUID = 3466843752790052309L;
+@Table(name = "tbl_gn_diary")
+public class DiaryLog extends BaseModel {
+    private static final long serialVersionUID = 3466843752790052309L;
 
-       @Id
-       @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-
-       @Column(name = "task_id")
-       private Integer taskId;
-
-       @Column(name = "task_name")
-       private String taskName;
-
-       @Column(name = "description")
-       private String description;
-
-       @Column(name = "status")
-       private String status;
-
-       @Column(name = "start_date")
-       @Temporal(TemporalType.DATE)
-       private Date startDate;
-
-       @Column(name = "finish_date")
-       @Temporal(TemporalType.DATE)
-       private Date finishDate;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
 
-       public Integer getTaskId() { return taskId;}
+    @Column(name = "id")
+    private Integer id;
 
-       public void setTaskId(Integer taskId) { this.taskId=taskId;}
+    @Column(name = "task_name")
+    private String taskName;
 
-       public String getTaskName() { return taskName;}
+    @Column(name = "description")
+    private String description;
 
-       public void setTaskName(String taskName) {this.taskName= taskName;}
+    @Column(name = "status")
+    private String status;
 
-       public String getDescription() { return description;}
+    @Column(name = "start_date")
+    private Date startDate;
 
-       public void setDescription(String description) {this.description= description;}
+    @Column(name = "finish_date")
+    private Date finishDate;
 
-       public String getStatus() { return status;}
 
-       public void setStatus(String status) { this.status= status;}
+    public Integer getId() {
+        return id;
+    }
 
-       public Date getStartDate() { return startDate;}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-       public void setStartDate(Date startDate) {this.startDate= startDate;}
+    public String getTaskName() {
+        return taskName;
+    }
 
-       public Date getFinishDate() { return finishDate;}
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
 
-       public void setFinishDate(Date finishDate) {this.finishDate= finishDate;}
-   }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getFinishDate() {
+        return finishDate;
+    }
+
+    public void setFinishDate(Date finishDate) {
+        this.finishDate = finishDate;
+    }
+}
 
 

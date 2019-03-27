@@ -4,6 +4,8 @@ import com.gn.app.dto.citizenProfileTask.CitizenWork.CitizenWorkDTO;
 import com.gn.app.mappers.GenericMapper;
 import com.gn.app.model.citizenProfileTask.CitizenWork.CitizenWork;
 
+import java.text.SimpleDateFormat;
+
 public class CitizenWorkMapper extends GenericMapper<CitizenWork,CitizenWorkDTO> {
     public static CitizenWorkMapper instance = null;
 
@@ -24,7 +26,23 @@ public class CitizenWorkMapper extends GenericMapper<CitizenWork,CitizenWorkDTO>
         CitizenWorkDTO dto = new CitizenWorkDTO();
         dto.setId(citizenWork.getId());
         dto.setVersion(citizenWork.getVersion());
-       dto.setReceivedDate(citizenWork.getReceivedDate());
+
+        if (citizenWork.getServiceRegister()!=null && citizenWork.getServiceRegister().getServiceNo()!=null) {
+            dto.setCwServiceNo(citizenWork.getServiceRegister().getServiceNo());
+        }
+
+        if (citizenWork.getServiceRegister()!=null && citizenWork.getServiceRegister().getServiceType()!=null) {
+            dto.setCwServiceType(citizenWork.getServiceRegister().getServiceType());
+        }
+
+        if (citizenWork.getReceivedDate()!=null){
+            dto.setReceivedDate(new SimpleDateFormat("yyyy-MM-dd").format(citizenWork.getReceivedDate()));
+        }
+
+        if (citizenWork.getCitizenDetail()!=null && citizenWork.getCitizenDetail().getNic()!=null) {
+            dto.setNic(citizenWork.getCitizenDetail().getNic());
+        }
+
         dto.setServiceDescription(citizenWork.getServiceDescription());
         return dto;
     }
@@ -33,9 +51,21 @@ public class CitizenWorkMapper extends GenericMapper<CitizenWork,CitizenWorkDTO>
     public CitizenWorkDTO domainToDtoForDataTable(CitizenWork citizenWork) throws Exception {
         CitizenWorkDTO dto = new CitizenWorkDTO();
         dto.setId(citizenWork.getId());
-        dto.setCwServiceType(citizenWork.getServiceRegister().getServiceType());
-        dto.setNic(citizenWork.getCitizenDetail().getNic());
-        dto.setReceivedDate(citizenWork.getReceivedDate());
+        if (citizenWork.getServiceRegister()!=null && citizenWork.getServiceRegister().getServiceNo()!=null) {
+            dto.setCwServiceNo(citizenWork.getServiceRegister().getServiceType());
+        }
+
+        if (citizenWork.getServiceRegister()!=null && citizenWork.getServiceRegister().getServiceType()!=null) {
+            dto.setCwServiceType(citizenWork.getServiceRegister().getServiceType());
+        }
+
+        if (citizenWork.getCitizenDetail()!=null && citizenWork.getCitizenDetail().getNic()!=null) {
+            dto.setNic(citizenWork.getCitizenDetail().getNic());
+        }
+
+        if (citizenWork.getReceivedDate()!=null) {
+            dto.setReceivedDate(new SimpleDateFormat("yyyy-MM-dd").format(citizenWork.getReceivedDate()));
+        }
 
         return dto;
     }
@@ -44,7 +74,7 @@ public class CitizenWorkMapper extends GenericMapper<CitizenWork,CitizenWorkDTO>
     public void dtoToDomain(CitizenWorkDTO dto, CitizenWork citizenWork) throws Exception {
         citizenWork.setId(dto.getId());
         citizenWork.setVersion(dto.getVersion());
-        citizenWork.setReceivedDate(dto.getReceivedDate());
+        citizenWork.setReceivedDate(new SimpleDateFormat("yyyy-MM-dd").parse(dto.getReceivedDate()));
         citizenWork.setServiceDescription(dto.getServiceDescription());
 
     }

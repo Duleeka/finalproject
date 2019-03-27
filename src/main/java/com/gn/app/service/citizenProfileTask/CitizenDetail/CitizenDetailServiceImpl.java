@@ -1,10 +1,14 @@
 package com.gn.app.service.citizenProfileTask.CitizenDetail;
 
 import com.gn.app.dao.citizenProfileTask.CitizenDetail.CitizenDetailDao;
+import com.gn.app.dao.settings.EducationLevelRegister.EducationLevelRegisterDao;
+import com.gn.app.dao.settings.GnDivisionRegister.GnDivisionRegisterDao;
 import com.gn.app.dao.settings.NationalityRegister.NationalityRegisterDao;
 import com.gn.app.dao.settings.ReligionRegister.ReligionRegisterDao;
 import com.gn.app.dto.citizenProfileTask.CitizenDetail.CitizenDetailDTO;
 import com.gn.app.mappers.citizenProfileTask.CitizenDetail.CitizenDetailMapper;
+import com.gn.app.model.Settings.EducationLevelRegister.EducationLevelRegister;
+import com.gn.app.model.Settings.GnDivisionRegister.GnDivisionRegister;
 import com.gn.app.model.Settings.NationalityRegister.NationalityRegister;
 import com.gn.app.model.Settings.ReligionRegister.ReligionRegister;
 import com.gn.app.model.citizenProfileTask.CitizenDetail.CitizenDetail;
@@ -33,6 +37,12 @@ public class CitizenDetailServiceImpl implements CitizenDetailService {
 
     @Autowired
     ReligionRegisterDao religionRegisterDao;
+
+    @Autowired
+    GnDivisionRegisterDao gnDivisionRegisterDao;
+
+    @Autowired
+    EducationLevelRegisterDao educationLevelRegisterDao;
 
 
     @Override
@@ -73,26 +83,8 @@ public class CitizenDetailServiceImpl implements CitizenDetailService {
 
     }
 
-   /*private void setGnDomain(CitizenDetailDTO citizenDetailDTO,CitizenDetail citizenDetail){
-        if(citizenDetailDTO != null && citizenDetailDTO.getGnDomainId()!=null) {
-            citizenDetail.setGnDomain(getGnDomainSpecification(citizenDetailDTO).get());
-        }
-    }*/
-
-   /*private Optional<GnDomain> getGnDomainSpecification(CitizenDetailDTO citizenDetailDTO){
-
-            Specification<GnDomain> specification = new Specification<GnDomain>() {
-                @Override
-                public Predicate toPredicate(Root<GnDomain> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-                    return cb.equal(root.get("id"), citizenDetailDTO.getGnDomainId());
-                }
-            };
-            return gnDomainDao.findOne(specification);
-    }*/
-
     private CitizenDetailDTO update(CitizenDetailDTO citizenDetailDTO) {
         CitizenDetail citizenDetail = findByIdEntity(citizenDetailDTO.getId()).get();
-//        CitizenDetail citizenDetail = getCitizenById(citizenDetailDTO.getCFamilyNo());
 
         try {
             CitizenDetailMapper.getInstance().dtoToDomain(citizenDetailDTO, citizenDetail);
@@ -110,7 +102,6 @@ public class CitizenDetailServiceImpl implements CitizenDetailService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        /*setCommondata(citizenDetail,citizenDetailDTO);*/
         setCommonData(citizenDetail, citizenDetailDTO);
         saveOrUpdate(citizenDetail);
         return citizenDetailDTO;
@@ -119,13 +110,21 @@ public class CitizenDetailServiceImpl implements CitizenDetailService {
     private void setCommonData(CitizenDetail citizenDetail, CitizenDetailDTO citizenDetailDTO) {
         setNationalityRegister(citizenDetail, citizenDetailDTO);
         setReligionRegister(citizenDetail, citizenDetailDTO);
+
+        setGnDivisionRegister(citizenDetail, citizenDetailDTO);
+
+        setEducationLevelRegister(citizenDetail,citizenDetailDTO);
     }
 
-/*RELATIONSHIP OF NATIONALITY & CITIZEN*/
+    /*RELATIONSHIP OF NATIONALITY & CITIZEN*/
 
     private void setNationalityRegister(CitizenDetail citizenDetail, CitizenDetailDTO citizenDetailDTO) {
-        citizenDetail.setNationalityRegister(nationalityRegisterDao.findOne(findNationalityRegisterSpecification(citizenDetailDTO.getNationalityId())).get());
-    }
+
+        if(citizenDetailDTO != null && citizenDetailDTO.getNationalityId()!=null) {
+
+        citizenDetail.setNationalityRegister(nationalityRegisterDao.findOne(findNationalityRegisterSpecification
+                (citizenDetailDTO.getNationalityId())).get());
+    }}
 
     private Specification<NationalityRegister> findNationalityRegisterSpecification(Integer id) {
         Specification<NationalityRegister> specification = new Specification<NationalityRegister>() {
@@ -142,8 +141,11 @@ public class CitizenDetailServiceImpl implements CitizenDetailService {
 /*RELATIONSHIP OF RELIGION & CITIZEN*/
 
     private void setReligionRegister(CitizenDetail citizenDetail, CitizenDetailDTO citizenDetailDTO){
+
+        if(citizenDetailDTO != null && citizenDetailDTO.getReligionId()!=null) {
+
         citizenDetail.setReligionRegister(religionRegisterDao.findOne(findReligionRegisterSpecification(citizenDetailDTO.getReligionId())).get());
-    }
+    }}
 
     private Specification<ReligionRegister> findReligionRegisterSpecification(Integer religionId) {
         Specification<ReligionRegister> specification = new Specification<ReligionRegister>() {
@@ -155,9 +157,47 @@ public class CitizenDetailServiceImpl implements CitizenDetailService {
         return specification;
     }
 
-    /* private void setCommondata(CitizenDetail citizenDetail,CitizenDetailDTO citizenDetailDTO ){
-          setGnDomain(citizenDetailDTO,citizenDetail);
-      }*/
+
+/*RELATIONSHIP OF GN DIVISION & CITIZEN*/
+    private void setGnDivisionRegister(CitizenDetail citizenDetail, CitizenDetailDTO citizenDetailDTO) {
+
+        if(citizenDetailDTO != null && citizenDetailDTO.getGnDivisionId()!=null) {
+
+        citizenDetail.setGnDivisionRegister(gnDivisionRegisterDao.findOne(findGnDivisionRegisterSpecification
+                (citizenDetailDTO.getGnDivisionId())).get());
+    }}
+
+
+    private Specification<GnDivisionRegister> findGnDivisionRegisterSpecification(Integer id) {
+        Specification<GnDivisionRegister> specification = new Specification<GnDivisionRegister>() {
+            @Override
+            public Predicate toPredicate(Root<GnDivisionRegister> root, CriteriaQuery<?>
+                    criteriaQuery, CriteriaBuilder cb) {
+                return cb.equal(root.get("id"), id);
+            }
+        };
+        return specification;
+    }
+/*END OF RELETIONSHIP OF DIVISION & CITIZEN*/
+
+    private void setEducationLevelRegister(CitizenDetail citizenDetail, CitizenDetailDTO citizenDetailDTO) {
+
+        if(citizenDetailDTO != null && citizenDetailDTO.getEducationId()!=null) {
+
+        citizenDetail.setEducationLevelRegister(educationLevelRegisterDao.findOne(findEducationLevelRegisterSpecification
+                (citizenDetailDTO.getEducationId())).get());
+    }}
+
+    private Specification<EducationLevelRegister> findEducationLevelRegisterSpecification(Integer educationId) {
+        Specification<EducationLevelRegister> specification = new Specification<EducationLevelRegister>() {
+            @Override
+            public Predicate toPredicate(Root<EducationLevelRegister> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
+                return cb.equal(root.get("id"),educationId);
+            }
+        };
+        return specification;
+    }
+
     private void saveOrUpdate(CitizenDetail citizenDetail) {
         citizenDetailDao.save(citizenDetail);
     }

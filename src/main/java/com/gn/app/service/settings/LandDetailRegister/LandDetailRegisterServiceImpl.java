@@ -79,7 +79,8 @@ public class LandDetailRegisterServiceImpl implements LandDetailRegisterService 
         return landDetailRegisterDTO;
     }
 
-    private void saveOrUpdate(LandDetailRegister landDetailRegister) {
+    private void saveOrUpdate(LandDetailRegister landDetailRegister)
+    {
         landDetailRegisterDao.save(landDetailRegister);
     }
 

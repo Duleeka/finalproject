@@ -23,13 +23,6 @@ public class CertificateDetailRegister extends BaseModel {
     @Column(name = "cr_certificate_type")
     private String crCertificateType;
 
-    @Column(name = "certificate_valid_from")
-    @Temporal(TemporalType.DATE)
-    private Date certificateValidFrom;
-
-    @Column(name = "certificate_valid_Till")
-    @Temporal(TemporalType.DATE)
-    private Date certificateValidTill;
 
 
     public Integer getId() {
@@ -56,19 +49,4 @@ public class CertificateDetailRegister extends BaseModel {
         this.crCertificateType = crCertificateType;
     }
 
-    public Date getCertificateValidFrom() {
-        return certificateValidFrom;
-    }
-
-    public void setCertificateValidFrom(Date certificateValidFrom) {
-        this.certificateValidFrom = certificateValidFrom;
-    }
-
-    public Date getCertificateValidTill() {
-        return certificateValidTill;
-    }
-
-    public void setCertificateValidTill(Date certificateValidTill) {
-        this.certificateValidTill = certificateValidTill;
-    }
 }

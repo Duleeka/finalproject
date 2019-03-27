@@ -10,16 +10,20 @@ import java.util.Date;
 
 public class DiaryLogDTO extends BaseDTO {
 
-    private Integer taskId;
+    private Integer id;
     private String taskName;
     private String description;
     private String status;
-    private Date startDate;
-    private Date finishDate;
+    private String startDate;
+    private String finishDate;
 
-    public Integer getTaskId() { return taskId;}
+    public Integer getId() {
+        return id;
+    }
 
-    public void  setTaskId(Integer taskId) { this.taskId= taskId;}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getTaskName() { return taskName;}
 
@@ -29,16 +33,27 @@ public class DiaryLogDTO extends BaseDTO {
 
     public void setDescription( String description)  { this.description= description;}
 
-    public String getStatus() { return status;}
+    public String getStatus() {
+        return status;
+    }
 
-    public void setStatus(String status) { this.status= status;}
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-    public Date getStartDate() { return startDate;}
+    public String getStartDate() {
+        return startDate;
+    }
 
-    public void setStartDate(Date startDate) { this.startDate= startDate;}
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
 
-    public Date getFinishDate() { return finishDate;}
+    public String getFinishDate() {
+        return finishDate;
+    }
 
-    public void  setFinishDate(Date finishDate) { this.finishDate= finishDate;}
-
+    public void setFinishDate(String finishDate) {
+        this.finishDate = finishDate;
+    }
 }

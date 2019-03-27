@@ -20,12 +20,6 @@ public class DonationRegister extends BaseModel {
     @Column(name = "donation_type")
     private String donationType;
 
-    @Column(name = "valid_from")
-    private String  validFrom;
-
-    @Column(name = "valid_to")
-    private String  validTo;
-
     @Column(name = "description")
     private String description;
 
@@ -43,22 +37,6 @@ public class DonationRegister extends BaseModel {
 
     public void setDonationType(String donationType) {
         this.donationType = donationType;
-    }
-
-    public String getValidFrom() {
-        return validFrom;
-    }
-
-    public void setValidFrom(String validFrom) {
-        this.validFrom = validFrom;
-    }
-
-    public String getValidTo() {
-        return validTo;
-    }
-
-    public void setValidTo(String validTo) {
-        this.validTo = validTo;
     }
 
     public String getDescription() {

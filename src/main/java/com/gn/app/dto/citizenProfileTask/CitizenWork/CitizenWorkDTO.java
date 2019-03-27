@@ -13,7 +13,7 @@ public class CitizenWorkDTO extends BaseDTO {
     private String cwServiceNo;
     private String  cwServiceType;
     private String nic;
-    private Date receivedDate;
+    private String receivedDate;
     private String serviceDescription;
 
     public Integer getId() {
@@ -56,11 +56,11 @@ public class CitizenWorkDTO extends BaseDTO {
         this.nic = nic;
     }
 
-    public Date getReceivedDate() {
+    public String getReceivedDate() {
         return receivedDate;
     }
 
-    public void setReceivedDate(Date receivedDate) {
+    public void setReceivedDate(String receivedDate) {
         this.receivedDate = receivedDate;
     }
 

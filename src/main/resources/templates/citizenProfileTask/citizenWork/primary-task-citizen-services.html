@@ -29,7 +29,7 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <form th:action="@{/citizenservices/save}" th:object="${citizenWork}" th:method="post">
+                <form th:action="@{/citizenservices/save}" th:object="${citizenWork}" th:method="post" id="frm_citizenservices">
                     <div class="card">
                         <div class="card-body card-block">
 
@@ -61,15 +61,18 @@
                             <div class="card-body card-block">
 
                                 <div class="row">
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="service_no" class=" form-control-label">Service No</label>
-                                            <input type="text" id="service_no" th:value="${serviceNo}"
-                                                   th:field="*{cwServiceNo}" class="form-control"/>
-
+                                            <select id="service_no" name="service_type"  th:field="*{serviceId}"
+                                                    class="form-control">
+                                                <option th:each="service:${services}"
+                                                        th:value="${service.id}" th:text="${service.serviceNo}">
+                                                </option>
+                                            </select>
                                         </div>
                                     </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="service_type" class=" form-control-label">Service Type</label>
@@ -98,17 +101,15 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="datetimepicker" class=" form-control-label">Received
+                                            <label for="datetimepicker1" class=" form-control-label">Received
                                                 Date</label>
-                                            <div class='input-group date' id='datetimepicker'>
-                                                <input type='text' th:field="*{receivedDate}" class="form-control"/>
-                                                <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                                            </div>
+                                            <input type='date' id="datetimepicker1" th:field="*{receivedDate}" class="form-control"/>
+
                                         </div>
                                     </div>
-                                </div>
+
+                                    </div>
+
 
                                 <div class="row ">
                                     <div class="col-md-12">
@@ -129,19 +130,15 @@
 
         </div>
         <!-- END CONTENT-->
-
         <div th:include="common/footer::footer"></div>
         <!-- END PAGE CONTAINER-->
     </div>
 </div>
 <div th:include="common/commonjs::commonjs"></div>
-<script type="text/javascript"
-        th:src="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/lib/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/CitizenProfileTask/citizenWork/citizenWork.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/CitizenProfileTask/citizenWork/init.js}"></script>
 </body>
-<script th:inline="javascript">
-    $(function () {
-        $('#datetimepicker1').datetimepicker();
-    });
-</script>
 </html>
 <!-- end document-->

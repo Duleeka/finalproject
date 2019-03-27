@@ -28,7 +28,8 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <form th:action="@{/certificatedetailregister/save}" th:object="${certificateDetailRegister}" th:method="post">
+                <form th:action="@{/certificatedetailregister/save}"
+                      th:object="${certificateDetailRegister}" id="frm_certificateregister" th:method="post">
                     <div class="card">
                         <div class="card-body card-block">
 
@@ -50,7 +51,7 @@
                     </div>
                     <div class="card">
                         <div class="card-header">
-                            <strong>Certificate Issuing Detail</strong>
+                            <strong>Certificate Detail Register</strong>
                             <small> Form</small>
                         </div>
                         <div class="card-body card-block">
@@ -69,37 +70,11 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="certificate_type" class=" form-control-label">Type of Certificate</label>
-                                        <input type="text" id="certificate_type" placeholder="" th:field="*{certificateType}"
+                                        <input type="text" id="certificate_type" placeholder="" th:field="*{crCertificateType}"
                                                class="form-control">
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="datetimepicker1" class=" form-control-label">Valid From</label>
-                                        <div class='input-group date' id='datetimepicker1'>
-                                            <input type='text' th:field="*{certificateValidFrom}" class="form-control"/>
-                                            <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="datetimepicker2" class=" form-control-label">Valid Till</label>
-                                        <div class='input-group date' id='datetimepicker2'>
-                                            <input type='text' th:field="*{certificateValidTill}" class="form-control"/>
-                                            <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
                         </div>
 
 
@@ -111,19 +86,15 @@
 
 </div>
 <!-- END CONTENT-->
-
 <div th:include="common/footer::footer"></div>
 <!-- END PAGE CONTAINER-->
 </div>
 </div>
 <div th:include="common/commonjs::commonjs"></div>
-<script type="text/javascript"
-        th:src="@{//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/lib/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/Settings/certificateDetailRegister/certificateRegister.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/Settings/certificateDetailRegister/init.js}"></script>
 </body>
-<script th:inline="javascript">
-    $(function () {
-        $('#datetimepicker1').datetimepicker();
-    });
-</script>
 </html>
 <!-- end document-->

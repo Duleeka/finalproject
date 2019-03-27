@@ -136,13 +136,9 @@ var CertificateDetailRegisterHome = function () {
                 }
             },{
                 data : 'certificateNo'
-            },{
-                data : 'certificateType'
-            },{
-                data :  'certificateValidFrom'
             },
                 {
-                    data : 'certificateValidTill'
+                    data : 'crCertificateType'
                 }  ,              {
                     orderable: false,
                     searchable: false,
@@ -150,7 +146,7 @@ var CertificateDetailRegisterHome = function () {
                 }
             ],
             aoColumnDefs: [{
-                targets: 5,//index of column starting from 0
+                targets: 3,//index of column starting from 0
                 data: "id", //this name should exist in your JSON response
                 render: function ( data, type, full, meta ) {
                     return "<div align='center'>" + ButtonUtil.getHomeBtnWithURL("certificatedetailregister", data);

@@ -101,8 +101,11 @@ public class CertificateDetailServiceImpl implements CertificateDetailService {
         }
 
         private void setCitizen(CertificateDetail certificateDetail, CertificateDetailDTO certificateDetailDTO){
+
+            if(certificateDetailDTO != null && certificateDetailDTO.getCitizenId()!=null) {
+
         certificateDetail.setCitizenDetail(citizenDetailDao.findOne(findCitizenSpecification(certificateDetailDTO.getCitizenId())).get());
-    }
+    }}
 
 
     public Specification<CitizenDetail> findCitizenSpecification(Integer id){
@@ -117,8 +120,11 @@ public class CertificateDetailServiceImpl implements CertificateDetailService {
 
 
     private void setCertificateDetailRegister(CertificateDetail certificateDetail, CertificateDetailDTO certificateDetailDTO){
+
+        if(certificateDetailDTO != null && certificateDetailDTO.getCertificateType()!=null) {
+
         certificateDetail.setCertificateDetailRegister(certificateDetailRegisterDao.findOne(findCertificateDetailRegisterSpecification(certificateDetailDTO.getCertificateId())).get());
-    }
+    }}
 
     public Specification<CertificateDetailRegister> findCertificateDetailRegisterSpecification(Integer id){
         Specification<CertificateDetailRegister> specification = new Specification<CertificateDetailRegister>() {

@@ -13,7 +13,7 @@ public class CertificateDetailDTO extends BaseDTO {
     private String certificateType;
     private String receiverFullName;
     private String nic;
-    private  Date certificateIssuedDate;
+    private String  certificateIssuedDate;
     private String cdDescription;
 
     public Integer getId() {
@@ -72,11 +72,11 @@ public class CertificateDetailDTO extends BaseDTO {
         this.nic = nic;
     }
 
-    public Date getCertificateIssuedDate() {
+    public String getCertificateIssuedDate() {
         return certificateIssuedDate;
     }
 
-    public void setCertificateIssuedDate(Date certificateIssuedDate) {
+    public void setCertificateIssuedDate(String certificateIssuedDate) {
         this.certificateIssuedDate = certificateIssuedDate;
     }
 

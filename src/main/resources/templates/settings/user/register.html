@@ -27,21 +27,22 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <form th:action="@{/user/save}" th:object="${user}" th:method="post">
+                <form th:action="@{/user/save}" th:object="${user}" th:method="post" id="frm_userregister">
                     <div class="card">
                         <div class="card-body card-block">
 
-                            <a  th:href="@{/user/add}" class="btn btn-primary btn-sm">
-                                <i class="fa fa-dot-circle-o"></i> New
+                            <a  th:href="@{/user/add}" class="btn btn-primary ">
+                                <i class=""></i> New
                             </a>
-                            <button type="submit" class="btn btn-success btn-sm">
-                                <i class="fa fa-dot-circle-o"></i> Save
+                            <button type="submit" class="btn btn-primary">
+                                <i class=""></i> Save
                             </button>
-                            <a  th:href="@{/user/delete(id=${user.id})}" th:disabled="${user.id} == null ? 'disabled'" class="btn btn-danger btn-sm">
-                                <i class="fa fa-dot-circle-o"></i> Delete
+                            <a  th:href="@{/user/delete(id=${user.id})}" \
+                                th:disabled="${user.id} == null ? 'disabled'" class="btn btn-primary">
+                                <i class=""></i> Delete
                             </a>
-                            <a  th:href="@{/user/}" class="btn btn-warning btn-sm">
-                                <i class="fa fa-ban"></i> Cancel
+                            <a  th:href="@{/user/}" class="btn btn-primary">
+                                <i class=""></i> Cancel
                             </a>
 
                         </div>
@@ -56,13 +57,13 @@
                         <input type="hidden" id="version" name="id" th:field="*{version}"/>
                     <div class="card-body card-block">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="username" class=" form-control-label">Username</label>
                                     <input type="text" id="username" th:field="*{username}" placeholder="" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="userRole" class=" form-control-label">Role</label>
                                     <select id="userRole" th:field="*{role}" class="search-select" style="width: 100%;">
@@ -71,29 +72,28 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="password" class=" form-control-label">password</label>
-                                    <input type="text" id="password" placeholder="" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="confirm_password" class=" form-control-label">Confirm password</label>
-                                    <input type="text" id="confirm_password"  th:field="*{password}" placeholder="" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="email" class=" form-control-label">Email</label>
                                     <input type="text" id="email"  th:field="*{email}"placeholder="" class="form-control">
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="password" class=" form-control-label">password</label>
+                                    <input type="password" th:field="*{password}" id="password" placeholder="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="confirm_password" class=" form-control-label">Confirm password</label>
+                                    <input type="password" id="confirm_password"  th:field="*{password}" placeholder="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 </form>
@@ -103,14 +103,15 @@
 
     </div>
     <!-- END CONTENT-->
-
     <div th:include="common/footer::footer"></div>
     <!-- END PAGE CONTAINER-->
 </div>
 </div>
-<div th:include="common/commonjs::commonjs">
-    <script type="text/javascript" th:src="@{/js/lib/select2.min.js}"></script>
-</div>
+<div th:include="common/commonjs::commonjs"></div>
+
+<script type="text/javascript" th:src="@{/js/app/Settings/user/userRegister.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/Settings/user/init.js}"></script>
+<script type="text/javascript" th:src="@{/js/lib/select2.min.js}"></script>
 </body>
 </html>
 <!-- end document-->

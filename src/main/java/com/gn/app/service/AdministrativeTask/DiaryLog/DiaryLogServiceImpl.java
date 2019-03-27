@@ -56,7 +56,7 @@ public class DiaryLogServiceImpl implements DiaryLogService {
     public DiaryLogDTO create(DiaryLogDTO diaryLogDTO) {
 
 
-        if(diaryLogDTO.getTaskId() != null){
+        if(diaryLogDTO.getId() != null){
             return update(diaryLogDTO);
         }else{
             return save(diaryLogDTO);
@@ -65,7 +65,7 @@ public class DiaryLogServiceImpl implements DiaryLogService {
 
 
     private DiaryLogDTO  update(DiaryLogDTO diaryLogDTO){
-        DiaryLog diaryLog=findByIdEntity(diaryLogDTO.getTaskId()).get();
+        DiaryLog diaryLog=findByIdEntity(diaryLogDTO.getId()).get();
         try {
             DiaryLogMapper.getInstance().dtoToDomain(diaryLogDTO,diaryLog);
         } catch (Exception e) {
@@ -91,8 +91,8 @@ public class DiaryLogServiceImpl implements DiaryLogService {
 
 
     @Override
-    public DiaryLogDTO findById(Integer taskid) {
-        DiaryLog diaryLog=findByIdEntity(taskid).get();
+    public DiaryLogDTO findById(Integer id) {
+        DiaryLog diaryLog=findByIdEntity(id).get();
         DiaryLogDTO diaryLogDTO=new DiaryLogDTO();
         try {
             diaryLogDTO=DiaryLogMapper.getInstance().domainToDto(diaryLog);
@@ -103,20 +103,20 @@ public class DiaryLogServiceImpl implements DiaryLogService {
     }
 
 
-    public Optional<DiaryLog> findByIdEntity(Integer taskid){
+    public Optional<DiaryLog> findByIdEntity(Integer id){
         Specification<DiaryLog> specification = new Specification<DiaryLog>() {
             @Override
             public Predicate toPredicate(Root<DiaryLog> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-                return cb.equal(root.get("taskid"), taskid);
+                return cb.equal(root.get("id"), id);
             }
         };
         return diaryLogDao.findOne(specification);
     }
 
     @Override
-    public void delete(Integer taskid) {
+    public void delete(Integer id) {
 
-        diaryLogDao.delete(findByIdEntity(taskid).get());
+        diaryLogDao.delete(findByIdEntity(id).get());
     }
 
 

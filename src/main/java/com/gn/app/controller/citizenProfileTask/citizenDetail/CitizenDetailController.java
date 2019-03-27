@@ -3,8 +3,11 @@ package com.gn.app.controller.citizenProfileTask.citizenDetail;
 
 import com.gn.app.constant.*;
 import com.gn.app.dto.citizenProfileTask.CitizenDetail.CitizenDetailDTO;
+import com.gn.app.model.Settings.GnDivisionRegister.GnDivisionRegister;
 import com.gn.app.model.Settings.NationalityRegister.NationalityRegister;
 import com.gn.app.service.citizenProfileTask.CitizenDetail.CitizenDetailService;
+import com.gn.app.service.settings.EducationLevelRegister.EducationLevelRegisterService;
+import com.gn.app.service.settings.GnDivisionRegister.GnDivisionRegisterService;
 import com.gn.app.service.settings.NationalityRegister.NationalityRegisterService;
 import com.gn.app.service.settings.ReligionRegister.ReligionRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +31,12 @@ public class CitizenDetailController {
 
     @Autowired
     ReligionRegisterService religionRegisterService;
+
+    @Autowired
+    GnDivisionRegisterService gnDivisionRegisterService;
+
+    @Autowired
+    EducationLevelRegisterService educationLevelRegisterService;
 
    /* @Autowired
     GnDomainService gnDomainService;
@@ -70,9 +79,11 @@ private void setCommonData(Model model, CitizenDetailDTO dto) {
         model.addAttribute("districts", District.getALLDistrict());
         model.addAttribute("dsOffices", DsOffice.getALLDsOffice());
         model.addAttribute("relationships",Relationship.getALLRelationship());
-        model.addAttribute("domains", citizenDetailService.findAll());
+        model.addAttribute("divisions", gnDivisionRegisterService.findAll());
         model.addAttribute("certificates",citizenDetailService.findAll());
         model.addAttribute("persons", nationalityRegisterService.findAll());
         model.addAttribute("religions",religionRegisterService.findAll());
+        model.addAttribute("educationLevels",educationLevelRegisterService.findAll());
+
     }
 }

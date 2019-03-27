@@ -1,8 +1,12 @@
 package com.gn.app.service.primaryTask.CitizenAsset;
 
+import com.gn.app.dao.citizenProfileTask.CitizenDetail.CitizenDetailDao;
 import com.gn.app.dao.primaryTask.CitizenAsset.CitizenAssetDao;
+import com.gn.app.dao.settings.LandDetailRegister.LandDetailRegisterDao;
 import com.gn.app.dto.primaryTask.CitizenAsset.CitizenAssetDTO;
 import com.gn.app.mappers.primaryTask.CitizenAsset.CitizenAssetMapper;
+import com.gn.app.model.Settings.LandDetailRegister.LandDetailRegister;
+import com.gn.app.model.citizenProfileTask.CitizenDetail.CitizenDetail;
 import com.gn.app.model.primaryTask.CitizenAsset.CitizenAsset;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
@@ -22,6 +26,12 @@ public class CitizenAssetServiceImpl implements CitizenAssetService {
 
    @Autowired
    CitizenAssetDao citizenAssetDao;
+   
+   @Autowired
+    CitizenDetailDao citizenDetailDao;
+   
+   @Autowired
+    LandDetailRegisterDao landDetailRegisterDao;
 
 
     @Override
@@ -80,8 +90,66 @@ public class CitizenAssetServiceImpl implements CitizenAssetService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        setCommonData(citizenAsset, citizenAssetDTO);
         saveOrUpdate(citizenAsset);
         return citizenAssetDTO;
+    }
+
+    private void setCommonData(CitizenAsset citizenAsset, CitizenAssetDTO citizenAssetDTO) {
+        setCitizen(citizenAsset, citizenAssetDTO);
+        setLandDetailRegister(citizenAsset, citizenAssetDTO);
+        /*setRoofDetailRegister(citizenAsset, citizenAssetDTO);
+        setFloorDetailRegister(citizenAsset, citizenAssetDTO);
+        setWallDetailRegister(citizenAsset, citizenAssetDTO);*/
+    }
+
+    /*private void setWallDetailRegister(CitizenAsset citizenAsset, CitizenAssetDTO citizenAssetDTO) {
+
+    }
+
+    private void setFloorDetailRegister(CitizenAsset citizenAsset, CitizenAssetDTO citizenAssetDTO) {
+
+    }
+
+    private void setRoofDetailRegister(CitizenAsset citizenAsset, CitizenAssetDTO citizenAssetDTO) {
+
+    }*/
+
+
+    private void setCitizen(CitizenAsset citizenAsset, CitizenAssetDTO citizenAssetDTO) {
+
+        if(citizenAssetDTO != null && citizenAssetDTO.getCitizenId()!=null) {
+
+        citizenAsset.setCitizenDetail(citizenDetailDao.findOne(findCitizenSpecification
+                (citizenAssetDTO.getCitizenId())).get());
+    }}
+
+    private Specification<CitizenDetail> findCitizenSpecification(Integer citizenId) {
+        Specification<CitizenDetail> specification=new Specification<CitizenDetail>() {
+            @Override
+            public Predicate toPredicate(Root<CitizenDetail> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
+                return cb.equal(root.get("id"), citizenId);
+            }
+        };
+        return specification;
+    }
+
+    private void setLandDetailRegister(CitizenAsset citizenAsset, CitizenAssetDTO citizenAssetDTO) {
+
+        if(citizenAssetDTO != null && citizenAssetDTO.getLandId()!=null) {
+
+        citizenAsset.setLandDetailRegister(landDetailRegisterDao.findOne(findLandDetailRegisterSpecification
+                (citizenAssetDTO.getLandId())).get());
+    }}
+
+    private Specification<LandDetailRegister> findLandDetailRegisterSpecification(Integer landId) {
+        Specification<LandDetailRegister> specification = new Specification<LandDetailRegister>() {
+            @Override
+            public Predicate toPredicate(Root<LandDetailRegister> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
+                return cb.equal(root.get("id"),landId);
+            }
+        };
+        return specification;
     }
 
     private void saveOrUpdate(CitizenAsset citizenAsset){

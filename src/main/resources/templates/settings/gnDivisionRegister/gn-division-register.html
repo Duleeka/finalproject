@@ -28,7 +28,7 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <form th:action="@{/gndivisionregister/save}" th:object="${gnDivisionRegister}" th:method="post">
+                <form th:action="@{/gndivisionregister/save}" th:object="${gnDivisionRegister}" th:method="post" id="frm_gndivisionregister">
                     <div class="card">
                         <div class="card-body card-block">
 
@@ -91,13 +91,15 @@
         </div>
     </div>
     <!-- END CONTENT-->
-
     <div th:include="common/footer::footer"></div>
     <!-- END PAGE CONTAINER-->
 </div>
 </div>
 <div th:include="common/commonjs::commonjs"></div>
-</div>
+
+<script type="text/javascript" th:src="@{/js/lib/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/Settings/gnDivisionRegister/gnDivisionRegister.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/Settings/gnDivisionRegister/init.js}"></script>
 </body>
 </html>
 <!-- end document-->

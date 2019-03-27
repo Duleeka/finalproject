@@ -28,7 +28,7 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <form th:action="@{/serviceregister/save}" th:object="${serviceRegister}" th:method="post">
+                <form th:action="@{/serviceregister/save}" th:object="${serviceRegister}" th:method="post" id="frm_serviceregister">
                     <div class="card">
                         <div class="card-body card-block">
 
@@ -50,7 +50,7 @@
                     </div>
                     <div class="card">
                         <div class="card-header">
-                            <strong>GN Division Registration</strong>
+                            <strong>Citizen Service Registration</strong>
                             <small> Form</small>
                         </div>
 
@@ -63,14 +63,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="service_no" class=" form-control-label">Service No</label>
-                                        <input type="text" id="service_no" placeholder="" th:field="*{cwServiceNo}"
+                                        <input type="text" id="service_no" placeholder="" th:field="*{serviceNo}"
                                                class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="service_type" class=" form-control-label">Service Type</label>
-                                        <input type="text" id="service_type" placeholder="" th:field="*{cwServiceType}"
+                                        <input type="text" id="service_type" placeholder="" th:field="*{serviceType}"
                                                class="form-control">
                                     </div>
                                 </div>
@@ -85,13 +85,15 @@
         </div>
     </div>
     <!-- END CONTENT-->
-
     <div th:include="common/footer::footer"></div>
     <!-- END PAGE CONTAINER-->
 </div>
 </div>
 <div th:include="common/commonjs::commonjs"></div>
-</div>
+
+<script type="text/javascript" th:src="@{/js/lib/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/Settings/serviceRegister/serviceRegister.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/Settings/serviceRegister/init.js}"></script>
 </body>
 </html>
 <!-- end document-->

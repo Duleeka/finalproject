@@ -3,6 +3,7 @@ package com.gn.app.model.citizenProfileTask.DonationDetail;
 import com.gn.app.model.BaseModel;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "tbl_donation")
@@ -23,7 +24,7 @@ public class DonationDetail extends BaseModel {
     private String donationType;
 
     @Column(name = "received_date")
-    private String receivedDate;
+    private Date receivedDate;
 
     @Column(name = "description")
     private String description;
@@ -53,11 +54,11 @@ public class DonationDetail extends BaseModel {
         this.donationType = donationType;
     }
 
-    public String getReceivedDate() {
+    public Date getReceivedDate() {
         return receivedDate;
     }
 
-    public void setReceivedDate(String receivedDate) {
+    public void setReceivedDate(Date receivedDate) {
         this.receivedDate = receivedDate;
     }
 

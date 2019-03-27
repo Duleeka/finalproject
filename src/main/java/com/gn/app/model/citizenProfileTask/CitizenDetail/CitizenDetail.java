@@ -6,6 +6,8 @@ import com.gn.app.constant.Gender;
 import com.gn.app.constant.MaritalStatus;
 import com.gn.app.constant.Relationship;
 import com.gn.app.model.BaseModel;
+import com.gn.app.model.Settings.EducationLevelRegister.EducationLevelRegister;
+import com.gn.app.model.Settings.GnDivisionRegister.GnDivisionRegister;
 import com.gn.app.model.Settings.NationalityRegister.NationalityRegister;
 import com.gn.app.model.Settings.ReligionRegister.ReligionRegister;
 
@@ -51,8 +53,8 @@ public class CitizenDetail extends BaseModel {
     @Column(name = "nic")
     private String nic;
 
-    //@Column(name = "citizen_date_of_birth")
-    //private Date citizenDateOfBirth;
+    @Column(name = "citizen_date_of_birth")
+    private Date citizenDateOfBirth;
 
     @Column(name = "citizen_gender")
     private Gender citizenGender;
@@ -100,14 +102,14 @@ public class CitizenDetail extends BaseModel {
     @Column(name = "highest_education_Level")
     private String highestEducationLevel;
 
-    @Column(name = "language_proficiency")
-    private String languageProficiency;
-
     @Column(name = "death_place")
     private String deathPlace;
 
     @Column(name = "death_reason")
     private String deathReason;
+
+    @Column(name = "date_of_death")
+    private Date dateOfDeath;
 
     @JoinColumn(name = "nationality_id")
     @ManyToOne(targetEntity = NationalityRegister.class,fetch = FetchType.LAZY)
@@ -117,15 +119,17 @@ public class CitizenDetail extends BaseModel {
     @ManyToOne(targetEntity = ReligionRegister.class,fetch = FetchType.LAZY)
     private ReligionRegister religionRegister;
 
-/*
-    @Column(name = "date_of_death")
-*/
-/*
-    @Temporal(TemporalType.DATE)
-*/
-/*
-    private Date dateOfDeath;
-*/
+
+    @JoinColumn(name = "gn_division_id")
+    @ManyToOne(targetEntity = GnDivisionRegister.class,fetch = FetchType.LAZY)
+    private GnDivisionRegister gnDivisionRegister;
+
+    @JoinColumn(name = "education_id")
+    @ManyToOne(targetEntity = EducationLevelRegister.class,fetch = FetchType.LAZY)
+    private EducationLevelRegister educationLevelRegister;
+
+
+
 
 
 
@@ -346,21 +350,6 @@ public class CitizenDetail extends BaseModel {
         this.highestEducationLevel = highestEducationLevel;
     }
 
-    public String getLanguageProficiency() {
-        return languageProficiency;
-    }
-
-    public void setLanguageProficiency(String languageProficiency) {
-        this.languageProficiency = languageProficiency;
-    }
-
-    /*public String getCDomainName() {
-        return cDomainName;
-    }
-
-    public void setCDomainName(String cDomainName) {
-        this.cDomainName = cDomainName;
-    }*/
 
     public String getDeathPlace() {
         return deathPlace;
@@ -397,6 +386,40 @@ public class CitizenDetail extends BaseModel {
     public void setReligionRegister(ReligionRegister religionRegister) {
         this.religionRegister = religionRegister;
     }
+
+    public GnDivisionRegister getGnDivisionRegister() {
+        return gnDivisionRegister;
+    }
+
+    public void setGnDivisionRegister(GnDivisionRegister gnDivisionRegister) {
+        this.gnDivisionRegister = gnDivisionRegister;
+    }
+
+    public EducationLevelRegister getEducationLevelRegister() {
+        return educationLevelRegister;
+    }
+
+    public void setEducationLevelRegister(EducationLevelRegister educationLevelRegister) {
+        this.educationLevelRegister = educationLevelRegister;
+    }
+
+    public Date getCitizenDateOfBirth() {
+        return citizenDateOfBirth;
+    }
+
+    public void setCitizenDateOfBirth(Date citizenDateOfBirth) {
+        this.citizenDateOfBirth = citizenDateOfBirth;
+    }
+
+    public Date getDateOfDeath() {
+        return dateOfDeath;
+    }
+
+    public void setDateOfDeath(Date dateOfDeath) {
+        this.dateOfDeath = dateOfDeath;
+    }
+
+
 }
 
 

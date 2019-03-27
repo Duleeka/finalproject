@@ -4,6 +4,8 @@ import com.gn.app.dto.citizenProfileTask.CitizenDetail.CitizenDetailDTO;
 import com.gn.app.mappers.GenericMapper;
 import com.gn.app.model.citizenProfileTask.CitizenDetail.CitizenDetail;
 
+import java.text.SimpleDateFormat;
+
 public class CitizenDetailMapper extends GenericMapper<CitizenDetail, CitizenDetailDTO> {
 
     private static CitizenDetailMapper instance = null;
@@ -26,39 +28,46 @@ public class CitizenDetailMapper extends GenericMapper<CitizenDetail, CitizenDet
         dto.setCitizenFamilyNo(citizenDetail.getCitizenFamilyNo());
         dto.setIsHouseholder(citizenDetail.getHouseholder());
         dto.setCitizenStatus(citizenDetail.getCitizenStatus());
-        dto.setRelationship(citizenDetail.getRelationship());
+        if (citizenDetail.getRelationship()!=null){
+        dto.setRelationship(citizenDetail.getRelationship());}
         dto.setVersion(citizenDetail.getVersion());
         dto.setCitizenInitials(citizenDetail.getCitizenInitials());
         dto.setCitizenFirstName(citizenDetail.getCitizenFirstName());
         dto.setCitizenMiddleName(citizenDetail.getCitizenMiddleName());
         dto.setCitizenLastName(citizenDetail.getCitizenLastName());
-        dto.setNic(citizenDetail.getNic());
-       // dto.setCitizenDateOfBirth(citizenDetail.getCitizenDateOfBirth());
+        if (citizenDetail.getNic()!=null){
+        dto.setNic(citizenDetail.getNic());}
+        if(citizenDetail.getCitizenDateOfBirth()!=null){
+            dto.setCitizenDateOfBirth(new SimpleDateFormat("yyyy-MM-dd").format(citizenDetail.getCitizenDateOfBirth()));
+        }
         dto.setCitizenGender(citizenDetail.getCitizenGender());
         dto.setMaritalStatus(citizenDetail.getMaritalStatus());
         dto.setPhoneNumber(citizenDetail.getPhoneNumber());
         dto.setCitizenEmailAddress(citizenDetail.getCitizenEmailAddress());
         dto.setCitizenOccupation(citizenDetail.getCitizenOccupation());
         dto.setCitizenIncome(citizenDetail.getCitizenIncome());
-        dto.setCitizenNationality(citizenDetail.getNationalityRegister().getNationalityType());
-        dto.setCitizenReligion(citizenDetail.getReligionRegister().getReligionType());
+        if(citizenDetail.getNationalityRegister()!=null && citizenDetail.getNationalityRegister().getNationalityType()!=null){
+        dto.setCitizenNationality(citizenDetail.getNationalityRegister().getNationalityType());}
+        if (citizenDetail.getReligionRegister()!=null && citizenDetail.getReligionRegister().getReligionType()!=null){
+        dto.setCitizenReligion(citizenDetail.getReligionRegister().getReligionType());}
 
 
         dto.setCitizenAddress(citizenDetail.getCitizenAddress());
         dto.setCitizenBirthDistrict(citizenDetail.getCitizenBirthDistrict());
-        dto.setCitizenGnDivision(citizenDetail.getCitizenGnDivision());
+
+if (citizenDetail.getGnDivisionRegister()!=null && citizenDetail.getGnDivisionRegister().getDivisionName()!=null){
+        dto.setCitizenGnDivision(citizenDetail.getGnDivisionRegister().getDivisionName());}
+
         dto.setPreviousResidentialArea(citizenDetail.getPreviousResidentialArea());
         dto.setReasonToChangeResidentialArea(citizenDetail.getReasonToChangeResidentialArea());
 
         dto.setDeathPlace(citizenDetail.getDeathPlace());
         dto.setDeathReason(citizenDetail.getDeathReason());
-/*
-        dto.setDateOfDeath(citizenDetail.getDateOfDeath());
-*/
-
-
-        dto.setHighestEducationLevel(citizenDetail.getHighestEducationLevel());
-        dto.setLanguageProficiency(citizenDetail.getLanguageProficiency());
+        if (citizenDetail.getDateOfDeath()!=null){
+            dto.setDateOfDeath(new SimpleDateFormat("yyyy-MM-dd").format(citizenDetail.getDateOfDeath()));
+        }
+if (citizenDetail.getEducationLevelRegister()!=null && citizenDetail.getEducationLevelRegister().getEducationLevel()!=null){
+        dto.setHighestEducationLevel(citizenDetail.getEducationLevelRegister().getEducationLevel());}
 
 
         return dto;
@@ -97,9 +106,9 @@ public class CitizenDetailMapper extends GenericMapper<CitizenDetail, CitizenDet
         citizenDetail.setCitizenMiddleName(dto.getCitizenMiddleName());
         citizenDetail.setCitizenLastName(dto.getCitizenLastName());
         citizenDetail.setNic(dto.getNic());
-/*
-        citizenDetail.setCitizenDateOfBirth(dto.getCitizenDateOfBirth());
-*/
+        if (citizenDetail.getCitizenDateOfBirth()!=null) {
+            citizenDetail.setCitizenDateOfBirth(new SimpleDateFormat("yyyy-MM-dd").parse(dto.getCitizenDateOfBirth()));
+        }
         citizenDetail.setCitizenGender(dto.getCitizenGender());
        citizenDetail.setMaritalStatus(dto.getMaritalStatus());
         citizenDetail.setPhoneNumber(dto.getPhoneNumber());
@@ -111,20 +120,18 @@ public class CitizenDetailMapper extends GenericMapper<CitizenDetail, CitizenDet
 
 
         citizenDetail.setCitizenAddress(dto.getCitizenAddress());
-        citizenDetail.setCitizenBirthDistrict(dto.getCitizenBirthDistrict());
         citizenDetail.setCitizenGnDivision(dto.getCitizenGnDivision());
+        citizenDetail.setCitizenBirthDistrict(dto.getCitizenBirthDistrict());
         citizenDetail.setPreviousResidentialArea(dto.getPreviousResidentialArea());
         citizenDetail.setReasonToChangeResidentialArea(dto.getReasonToChangeResidentialArea());
 
         citizenDetail.setDeathPlace(dto.getDeathPlace());
         citizenDetail.setDeathReason(dto.getDeathReason());
-        //citizenDetail.setDateOfDeath(dto.getDateOfDeath());
-
+        if (citizenDetail.getDateOfDeath()!=null) {
+            citizenDetail.setDateOfDeath(new SimpleDateFormat("yyyy-MM-dd").parse(dto.getDateOfDeath()));
+        }
 
         citizenDetail.setHighestEducationLevel(dto.getHighestEducationLevel());
-        citizenDetail.setLanguageProficiency(dto.getLanguageProficiency());
-
-
 
 
     }

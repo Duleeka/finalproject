@@ -22,11 +22,16 @@ public class CitizenAssetMapper extends GenericMapper<CitizenAsset, CitizenAsset
     public CitizenAssetDTO domainToDto(CitizenAsset citizenAsset) throws Exception {
         CitizenAssetDTO dto = new CitizenAssetDTO();
         dto.setId(citizenAsset.getId());
-        dto.setHouseholderId(citizenAsset.getHouseholderId());
-        dto.setAssetId(citizenAsset.getAssetId());
-        dto.setLandName(citizenAsset.getLandName());
+        if (citizenAsset.getCitizenDetail()!=null && citizenAsset.getCitizenDetail().getCitizenFamilyNo()!=null) {
+            dto.setHouseholderId(citizenAsset.getCitizenDetail().getCitizenFamilyNo());
+        }
+        if (citizenAsset.getLandDetailRegister()!=null && citizenAsset.getLandDetailRegister().getLandType()!=null){
+
+            dto.setAssetId(citizenAsset.getLandDetailRegister().getLandType());}
         dto.setLandSize(citizenAsset.getLandSize());
-        dto.setLandType(citizenAsset.getLandType());
+        if (citizenAsset.getLandDetailRegister()!=null && citizenAsset.getLandDetailRegister().getLandName()!=null){
+            dto.setLandName(citizenAsset.getLandDetailRegister().getLandName());
+        }
         dto.setHouseOwnership(citizenAsset.getHouseOwnership());
         dto.setHouseType(citizenAsset.getHouseType());
         dto.setRoofType(citizenAsset.getRoofType());
@@ -44,9 +49,14 @@ public class CitizenAssetMapper extends GenericMapper<CitizenAsset, CitizenAsset
     public CitizenAssetDTO domainToDtoForDataTable(CitizenAsset citizenAsset) throws Exception {
         CitizenAssetDTO dto = new CitizenAssetDTO();
         dto.setId(citizenAsset.getId());
-        dto.setHouseholderId(citizenAsset.getHouseholderId());
-        dto.setAssetId(citizenAsset.getAssetId());
-        dto.setLandName(citizenAsset.getLandName());
+        if (citizenAsset.getLandDetailRegister()!=null && citizenAsset.getLandDetailRegister().getLandType()!=null){
+        dto.setAssetId(citizenAsset.getLandDetailRegister().getLandType());
+        }
+        if (citizenAsset.getLandDetailRegister()!=null && citizenAsset.getLandDetailRegister().getLandName()!=null){
+            dto.setLandName(citizenAsset.getLandDetailRegister().getLandName());
+        }
+        if (citizenAsset.getCitizenDetail()!=null && citizenAsset.getCitizenDetail().getCitizenFamilyNo()!=null){
+        dto.setHouseholderId(citizenAsset.getCitizenDetail().getCitizenFamilyNo());}
         dto.setHouseOwnership(citizenAsset.getHouseOwnership());
         dto.setAssetStatus(citizenAsset.getAssetStatus());
         return dto;
@@ -55,11 +65,8 @@ public class CitizenAssetMapper extends GenericMapper<CitizenAsset, CitizenAsset
     @Override
     public void dtoToDomain(CitizenAssetDTO dto, CitizenAsset citizenAsset) throws Exception {
         citizenAsset.setId(dto.getId());
-        citizenAsset.setHouseholderId(dto.getHouseholderId());
         citizenAsset.setAssetId(dto.getAssetId());
-        citizenAsset.setLandName(dto.getLandName());
         citizenAsset.setLandSize(dto.getLandSize());
-        citizenAsset.setLandType(dto.getLandType());
         citizenAsset.setHouseOwnership(dto.getHouseOwnership());
         citizenAsset.setHouseType(dto.getHouseType());
         citizenAsset.setRoofType(dto.getRoofType());

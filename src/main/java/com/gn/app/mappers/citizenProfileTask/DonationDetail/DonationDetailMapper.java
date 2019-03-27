@@ -4,6 +4,8 @@ import com.gn.app.dto.citizenProfileTask.DonationDetail.DonationDetailDTO;
 import com.gn.app.mappers.GenericMapper;
 import com.gn.app.model.citizenProfileTask.DonationDetail.DonationDetail;
 
+import java.text.SimpleDateFormat;
+
 public class DonationDetailMapper extends GenericMapper<DonationDetail, DonationDetailDTO> {
 
     private static DonationDetailMapper instance = null;
@@ -26,7 +28,10 @@ public class DonationDetailMapper extends GenericMapper<DonationDetail, Donation
         dto.setHouseholderId(donationDetail.getHouseholderId());
         dto.setVersion(donationDetail.getVersion());
         dto.setDonationType(donationDetail.getDonationType());
-        dto.setReceivedDate(donationDetail.getReceivedDate());
+
+        if (donationDetail.getReceivedDate()!=null) {
+            dto.setReceivedDate(new SimpleDateFormat("yyyy-MM-dd").format(donationDetail.getReceivedDate()));
+        }
         dto.setDescription(donationDetail.getDescription());
         return dto;
     }
@@ -37,7 +42,10 @@ public class DonationDetailMapper extends GenericMapper<DonationDetail, Donation
         dto.setId(donationDetail.getId());
         dto.setHouseholderId(donationDetail.getHouseholderId());
         dto.setDonationType(donationDetail.getDonationType());
-        dto.setReceivedDate(donationDetail.getReceivedDate());
+
+        if (donationDetail.getReceivedDate()!=null) {
+            dto.setReceivedDate(new SimpleDateFormat("yyyy-MM-dd").format(donationDetail.getReceivedDate()));
+        }
         dto.setDescription(donationDetail.getDescription());
 
         return dto;
@@ -49,7 +57,7 @@ public class DonationDetailMapper extends GenericMapper<DonationDetail, Donation
         donationDetail.setHouseholderId(dto.getHouseholderId());
         donationDetail.setVersion(dto.getVersion());
         donationDetail.setDonationType(dto.getDonationType());
-        donationDetail.setReceivedDate(dto.getReceivedDate());
+        donationDetail.setReceivedDate(new SimpleDateFormat("yyyy-MM-dd").parse(dto.getReceivedDate()));
         donationDetail.setDescription(dto.getDescription());
     }
 }

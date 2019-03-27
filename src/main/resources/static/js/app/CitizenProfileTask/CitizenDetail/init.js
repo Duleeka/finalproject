@@ -1,6 +1,18 @@
 /**
  * Created by hp on 3/21/2019.
  */
-$(document).ready(function(){
-    DeathCitizenDetails.init();
+
+jQuery(document).ready(function() {
+
+
+    $(function () {
+        $(".date").datetimepicker({
+            Default: true
+        })
+    });
+
+
+    $(document).ready(function(){
+        DeathCitizenDetails.init();
+    });
 });
