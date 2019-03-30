@@ -16,4 +16,5 @@ jQuery(document).ready(function() {
 });
 $(document).ready(function(){
     DonationDetail.init();
+    DonationDetailTab.init();
 });

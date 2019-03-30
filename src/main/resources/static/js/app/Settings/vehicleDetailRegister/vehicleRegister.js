@@ -1,73 +1,48 @@
-var DonationDetail=function () {
+var VehicleRegister=function () {
 
 
-
-    var runHouseholderIdSelect=function () {
-        $("#hh_no").select2({
-            placeholder : "Select a Householder No",
-            allowClear : true,
-        });
-    }
-
-    // var runDonationTypeSelect=function () {
-    //     $("#donation_type").select2({
-    //         placeholder : "Select A Donation Type",
-    //         allowClear : true,
-    //     });
-    // }
-
-
-    var runValidator= function () {
+    var runValidator = function () {
         var form = $('#assetCategoryAddForm');
         var errorHandler = $('.errorHandler', form);
         var successHandler = $('.successHandler', form);
 
-        $('#frm_donationdetail').validate(
+        $('#frm_vehicleregister').validate(
             {
-                errorElement: "span", // contain the error msg in a span tag
-                errorClass: 'help-block',
-                errorPlacement: function (error, element) { // render error placement for each input type
-                    if (element.attr("type") == "radio" || element.attr("type") == "checkbox") { // for chosen elements, need to insert the error after the chosen container
+                errorElement : "span", // contain the error msg in a span tag
+                errorClass : 'help-block',
+                errorPlacement : function(error, element) { // render error placement for each input type
+                    if (element.attr("type") == "radio" || element.attr("type") == "checkbox" ) { // for chosen elements, need to insert the error after the chosen container
                         error.insertAfter($(element).closest('.form-group').children('div').children().last());
                     } else if (element.attr("name") == "dd" || element.attr("name") == "mm" || element.attr("name") == "yyyy" || element.closest('.input-group').has('.input-group-btn').length || element.closest('.form-group').has('.input-group-addon').length) {
                         error.insertAfter($(element).closest('.form-group').children('div'));
-                    } else if (element.closest('.form-group').has('.select2').length) {
+                    } else if (element.closest('.form-group').has('.select2').length ){
                         error.insertAfter($(element).closest('.form-group').children('span'));
                     } else {
                         error.insertAfter(element);
                         // for other inputs, just perform default behavior
                     }
                 },
-                ignore: "",
+                ignore : "",
 
-                rules:
+                rules :
                     {
-                        householderId: {
-
-                            required: true
-                        },
-
-                        receivedDate: {
-                            required: true
-                        },
-                        description: {
+                        vehicleNo: {
                             minlength: 2
-                    },
-                messages: {
-                    householderId: {
+                        },
+                        vehicleType : {
+                            required : true,
+                            minlength: 2
+                        },
+                        messages : {
+                            vehicleNo: {
+                                minlength: "Min Length is 2"
 
-                        required: "Please Select Householder Id"
-                    },
-
-                    receivedDate: {
-                        required: "Please Specify a Received Date"
-                    },
-                    description: {
-                        minlength: "Min Length is 2",
-                    }
-                },
-
-
+                            },
+                            vehicleType : {
+                                required: "Please Specify Vehicle Type",
+                                minlength: "Min Length is 2"
+                            },
+                        },
 
                         invalidHandler: function (event, validator) { //display error alert on form submit
                             successHandler.hide();
@@ -95,7 +70,8 @@ var DonationDetail=function () {
                             // submit form
                             return true;
                         }
-                        }});
+                    }
+            });
 
         /*     jQuery.validator.setDefaults({
                  debug: true,
@@ -112,7 +88,6 @@ var DonationDetail=function () {
     };
     return {
         init: function () {
-            runHouseholderIdSelect();
             runValidator();
         }
     };

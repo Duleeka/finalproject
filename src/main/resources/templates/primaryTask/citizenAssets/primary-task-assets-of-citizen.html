@@ -172,25 +172,36 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="roof_type" class=" form-control-label">Roof Type</label>
-                                                    <select id="roof_type" name="roof_type" th:field="*{roofType}"
+                                                    <select id="roof_type" name="roof_type" th:field="*{roofId}"
                                                             class="form-control">
-                                                        <option value=""></option>
-                                                        <option value=""></option>
-                                                        <option value=""></option>
+                                                        <option th:each="roof:${roofs}"
+                                                                th:value="${roof.id}"
+                                                                th:text="${roof.roofType}"></option>
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="wall_type" class=" form-control-label">Wall Type</label>
-                                                    <select id="wall_type" name="wall_type" th:field="*{wallType}"
+                                                    <select id="wall_type" name="wall_type" th:field="*{wallId}"
                                                             class="form-control">
-                                                        <option value=""></option>
-                                                        <option value=""></option>
-                                                        <option value=""></option>
+                                                        <option th:each="wall:${walls}"
+                                                                th:value="${wall.id}"
+                                                                th:text="${wall.wallType}"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="floor_type" class=" form-control-label">Floor Type</label>
+                                                    <select id="floor_type" name="floor_type" th:field="*{floorId}"
+                                                            class="form-control">
+                                                        <option th:each="floor:${floors}"
+                                                                th:value="${floor.id}"
+                                                                th:text="${floor.floorType}"></option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -288,8 +299,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="datetimepicker1" class=" form-control-label">Registered Date</label>
-                                                    <input type='date' id="datetimepicker1" class="form-control" th:field="*{registerDate}" />
+                                                    <label for="datetimepicker1" class=" form-control-label">Vehicle Registered Date</label>
+                                                    <input type='date' id="datetimepicker1" class="form-control" th:field="*{vehicleRegisteredDate}" />
                                                 </div>
                                             </div>
                                         </div>

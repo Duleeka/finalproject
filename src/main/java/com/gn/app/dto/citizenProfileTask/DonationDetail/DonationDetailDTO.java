@@ -1,14 +1,19 @@
 package com.gn.app.dto.citizenProfileTask.DonationDetail;
 
 import com.gn.app.dto.BaseDTO;
+import com.gn.app.dto.settings.DonationRegister.DonationRegisterDTO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DonationDetailDTO extends BaseDTO {
 
     private Integer id;
-    private String householderId;
+    private Integer citizenId;
     private String donationType;
     private String receivedDate;
     private String description;
+    private List<DonationDetailDonationTypeDTO> donationRegisterDTOS =new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -18,12 +23,12 @@ public class DonationDetailDTO extends BaseDTO {
         this.id = id;
     }
 
-    public String getHouseholderId() {
-        return householderId;
+    public Integer getCitizenId() {
+        return citizenId;
     }
 
-    public void setHouseholderId(String householderId) {
-        this.householderId = householderId;
+    public void setCitizenId(Integer citizenId) {
+        this.citizenId = citizenId;
     }
 
     public String getDonationType() {
@@ -49,5 +54,13 @@ public class DonationDetailDTO extends BaseDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<DonationDetailDonationTypeDTO> getDonationRegisterDTOS() {
+        return donationRegisterDTOS;
+    }
+
+    public void setDonationRegisterDTOS(List<DonationDetailDonationTypeDTO> donationRegisterDTOS) {
+        this.donationRegisterDTOS = donationRegisterDTOS;
     }
 }

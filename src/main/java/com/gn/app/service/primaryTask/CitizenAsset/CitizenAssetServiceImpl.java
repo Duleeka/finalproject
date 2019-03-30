@@ -2,10 +2,16 @@ package com.gn.app.service.primaryTask.CitizenAsset;
 
 import com.gn.app.dao.citizenProfileTask.CitizenDetail.CitizenDetailDao;
 import com.gn.app.dao.primaryTask.CitizenAsset.CitizenAssetDao;
+import com.gn.app.dao.settings.FloorDetailRegister.FloorDetailRegisterDao;
 import com.gn.app.dao.settings.LandDetailRegister.LandDetailRegisterDao;
+import com.gn.app.dao.settings.RoofDetailRegister.RoofDetailRegisterDao;
+import com.gn.app.dao.settings.WallDetailRegister.WallDetailRegisterDao;
 import com.gn.app.dto.primaryTask.CitizenAsset.CitizenAssetDTO;
 import com.gn.app.mappers.primaryTask.CitizenAsset.CitizenAssetMapper;
+import com.gn.app.model.Settings.FloorDetailRegister.FloorDetailRegister;
 import com.gn.app.model.Settings.LandDetailRegister.LandDetailRegister;
+import com.gn.app.model.Settings.RoofDetailRegister.RoofDetailRegister;
+import com.gn.app.model.Settings.WallDetailRegister.WallDetailRegister;
 import com.gn.app.model.citizenProfileTask.CitizenDetail.CitizenDetail;
 import com.gn.app.model.primaryTask.CitizenAsset.CitizenAsset;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +38,15 @@ public class CitizenAssetServiceImpl implements CitizenAssetService {
    
    @Autowired
     LandDetailRegisterDao landDetailRegisterDao;
+
+   @Autowired
+    WallDetailRegisterDao wallDetailRegisterDao;
+
+   @Autowired
+    RoofDetailRegisterDao roofDetailRegisterDao;
+
+   @Autowired
+    FloorDetailRegisterDao floorDetailRegisterDao;
 
 
     @Override
@@ -98,31 +113,18 @@ public class CitizenAssetServiceImpl implements CitizenAssetService {
     private void setCommonData(CitizenAsset citizenAsset, CitizenAssetDTO citizenAssetDTO) {
         setCitizen(citizenAsset, citizenAssetDTO);
         setLandDetailRegister(citizenAsset, citizenAssetDTO);
-        /*setRoofDetailRegister(citizenAsset, citizenAssetDTO);
+        setRoofDetailRegister(citizenAsset, citizenAssetDTO);
         setFloorDetailRegister(citizenAsset, citizenAssetDTO);
-        setWallDetailRegister(citizenAsset, citizenAssetDTO);*/
+        setWallDetailRegister(citizenAsset, citizenAssetDTO);
     }
-
-    /*private void setWallDetailRegister(CitizenAsset citizenAsset, CitizenAssetDTO citizenAssetDTO) {
-
-    }
-
-    private void setFloorDetailRegister(CitizenAsset citizenAsset, CitizenAssetDTO citizenAssetDTO) {
-
-    }
-
-    private void setRoofDetailRegister(CitizenAsset citizenAsset, CitizenAssetDTO citizenAssetDTO) {
-
-    }*/
-
 
     private void setCitizen(CitizenAsset citizenAsset, CitizenAssetDTO citizenAssetDTO) {
 
         if(citizenAssetDTO != null && citizenAssetDTO.getCitizenId()!=null) {
 
-        citizenAsset.setCitizenDetail(citizenDetailDao.findOne(findCitizenSpecification
-                (citizenAssetDTO.getCitizenId())).get());
-    }}
+            citizenAsset.setCitizenDetail(citizenDetailDao.findOne(findCitizenSpecification
+                    (citizenAssetDTO.getCitizenId())).get());
+        }}
 
     private Specification<CitizenDetail> findCitizenSpecification(Integer citizenId) {
         Specification<CitizenDetail> specification=new Specification<CitizenDetail>() {
@@ -133,6 +135,56 @@ public class CitizenAssetServiceImpl implements CitizenAssetService {
         };
         return specification;
     }
+
+    private void setWallDetailRegister(CitizenAsset citizenAsset, CitizenAssetDTO citizenAssetDTO) {
+        if (citizenAssetDTO != null && citizenAssetDTO.getWallId() != null) {
+            citizenAsset.setWallDetailRegister(wallDetailRegisterDao.findOne(findWallDetailRegisterSpecification
+                    (citizenAssetDTO.getWallId())).get());
+        }
+    }
+    private Specification<WallDetailRegister> findWallDetailRegisterSpecification(Integer wallId) {
+        Specification<WallDetailRegister> specification = new Specification<WallDetailRegister>() {
+            @Override
+            public Predicate toPredicate(Root<WallDetailRegister> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
+                return cb.equal(root.get("id"),wallId);
+            }
+        };
+        return  specification;
+    }
+
+    private void setFloorDetailRegister(CitizenAsset citizenAsset, CitizenAssetDTO citizenAssetDTO) {
+        if (citizenAssetDTO != null && citizenAssetDTO.getFloorId() != null) {
+            citizenAsset.setFloorDetailRegister(floorDetailRegisterDao.findOne(findFloorDetailRegisterSpecification
+                    (citizenAssetDTO.getFloorId())).get());
+        }
+    }
+    private Specification<FloorDetailRegister> findFloorDetailRegisterSpecification(Integer floorId) {
+        Specification<FloorDetailRegister> specification = new Specification<FloorDetailRegister>() {
+            @Override
+            public Predicate toPredicate(Root<FloorDetailRegister> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
+                return cb.equal(root.get("id"),floorId);
+            }
+        };
+        return  specification;
+    }
+
+
+    private void setRoofDetailRegister(CitizenAsset citizenAsset, CitizenAssetDTO citizenAssetDTO) {
+        if (citizenAssetDTO != null && citizenAssetDTO.getRoofId() != null) {
+            citizenAsset.setRoofDetailRegister(roofDetailRegisterDao.findOne(findRoofDetailRegisterSpecification
+                    (citizenAssetDTO.getRoofId())).get());
+        }
+    }
+    private Specification<RoofDetailRegister> findRoofDetailRegisterSpecification(Integer roofId) {
+        Specification<RoofDetailRegister> specification = new Specification<RoofDetailRegister>() {
+            @Override
+            public Predicate toPredicate(Root<RoofDetailRegister> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
+                return cb.equal(root.get("id"),roofId);
+            }
+        };
+        return specification;
+    }
+
 
     private void setLandDetailRegister(CitizenAsset citizenAsset, CitizenAssetDTO citizenAssetDTO) {
 

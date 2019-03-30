@@ -1,9 +1,12 @@
 package com.gn.app.model.citizenProfileTask.DonationDetail;
 
 import com.gn.app.model.BaseModel;
+import com.gn.app.model.Settings.DonationRegister.DonationRegister;
+import com.gn.app.model.citizenProfileTask.CitizenDetail.CitizenDetail;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "tbl_donation")
@@ -17,17 +20,20 @@ public class DonationDetail extends BaseModel {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "householder_id")
-    private String householderId;
-
-    @Column(name = "donation_type")
-    private String donationType;
+    @JoinColumn(name = "citizen_id")
+    @ManyToOne(targetEntity = CitizenDetail.class,fetch = FetchType.LAZY)
+    private CitizenDetail citizenDetail;
 
     @Column(name = "received_date")
     private Date receivedDate;
 
-    @Column(name = "description")
+    @Column(name = "donation_description")
     private String description;
+
+
+    @OneToMany(mappedBy = "donationDetail",fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<DonationDetailsDonationType> donationDetailsDonationTypes;
+
 
 
     public Integer getId() {
@@ -38,20 +44,12 @@ public class DonationDetail extends BaseModel {
         this.id = id;
     }
 
-    public String getHouseholderId() {
-        return householderId;
+    public CitizenDetail getCitizenDetail() {
+        return citizenDetail;
     }
 
-    public void setHouseholderId(String householderId) {
-        this.householderId = householderId;
-    }
-
-    public String getDonationType() {
-        return donationType;
-    }
-
-    public void setDonationType(String donationType) {
-        this.donationType = donationType;
+    public void setCitizenDetail(CitizenDetail citizenDetail) {
+        this.citizenDetail = citizenDetail;
     }
 
     public Date getReceivedDate() {
@@ -70,4 +68,11 @@ public class DonationDetail extends BaseModel {
         this.description = description;
     }
 
+    public Set<DonationDetailsDonationType> getDonationDetailsDonationTypes() {
+        return donationDetailsDonationTypes;
+    }
+
+    public void setDonationDetailsDonationTypes(Set<DonationDetailsDonationType> donationDetailsDonationTypes) {
+        this.donationDetailsDonationTypes = donationDetailsDonationTypes;
+    }
 }

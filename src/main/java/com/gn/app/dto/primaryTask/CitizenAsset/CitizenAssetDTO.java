@@ -3,26 +3,36 @@ package com.gn.app.dto.primaryTask.CitizenAsset;
 import com.gn.app.constant.HouseOwnership;
 import com.gn.app.dto.BaseDTO;
 
+import java.util.Date;
+
 public class CitizenAssetDTO extends BaseDTO {
 
     private Integer id;
     private String householderId;
     private Integer landId;
     private Integer citizenId;
+    private Integer roofId;
+    private Integer wallId;
+    private Integer floorId;
     private String assetId;
+
     private String landName;
     private Integer landSize;
-    private String landAssetType;
+    private String mainCultivation;
+
     private HouseOwnership houseOwnership;
     private String houseType;
-    private String roofType;
-    private String wallType;
-    private String assetDescription;
-    private String mainCultivation;
+    private String houseRoofType;
+    private String houseWallType;
+    private String houseFloorType;
     private Boolean waterFacility=Boolean.FALSE;
     private Boolean electricity=Boolean.FALSE;
     private Boolean toiletFacility=Boolean.FALSE;
+
+    private String assetDescription;
     private String assetStatus;
+
+    private String vehicleRegisteredDate;
 
 
     public Integer getId() {
@@ -47,6 +57,30 @@ public class CitizenAssetDTO extends BaseDTO {
 
     public void setCitizenId(Integer citizenId) {
         this.citizenId = citizenId;
+    }
+
+    public Integer getRoofId() {
+        return roofId;
+    }
+
+    public void setRoofId(Integer roofId) {
+        this.roofId = roofId;
+    }
+
+    public Integer getWallId() {
+        return wallId;
+    }
+
+    public void setWallId(Integer wallId) {
+        this.wallId = wallId;
+    }
+
+    public Integer getFloorId() {
+        return floorId;
+    }
+
+    public void setFloorId(Integer floorId) {
+        this.floorId = floorId;
     }
 
     public String getHouseholderId() {
@@ -81,13 +115,6 @@ public class CitizenAssetDTO extends BaseDTO {
         this.landSize = landSize;
     }
 
-    public String getLandAssetType() {
-        return landAssetType;
-    }
-
-    public void setLandAssetType(String landAssetType) {
-        this.landAssetType = landAssetType;
-    }
 
     public HouseOwnership getHouseOwnership() {
         return houseOwnership;
@@ -105,20 +132,28 @@ public class CitizenAssetDTO extends BaseDTO {
         this.houseType = houseType;
     }
 
-    public String getRoofType() {
-        return roofType;
+    public String getHouseRoofType() {
+        return houseRoofType;
     }
 
-    public void setRoofType(String roofType) {
-        this.roofType = roofType;
+    public void setHouseRoofType(String houseRoofType) {
+        this.houseRoofType = houseRoofType;
     }
 
-    public String getWallType() {
-        return wallType;
+    public String getHouseWallType() {
+        return houseWallType;
     }
 
-    public void setWallType(String wallType) {
-        this.wallType = wallType;
+    public void setHouseWallType(String houseWallType) {
+        this.houseWallType = houseWallType;
+    }
+
+    public String getHouseFloorType() {
+        return houseFloorType;
+    }
+
+    public void setHouseFloorType(String houseFloorType) {
+        this.houseFloorType = houseFloorType;
     }
 
     public String getAssetDescription() {
@@ -167,5 +202,13 @@ public class CitizenAssetDTO extends BaseDTO {
 
     public void setAssetStatus(String assetStatus) {
         this.assetStatus = assetStatus;
+    }
+
+    public String getVehicleRegisteredDate() {
+        return vehicleRegisteredDate;
+    }
+
+    public void setVehicleRegisteredDate(String vehicleRegisteredDate) {
+        this.vehicleRegisteredDate = vehicleRegisteredDate;
     }
 }

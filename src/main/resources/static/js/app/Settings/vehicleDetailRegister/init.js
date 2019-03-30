@@ -4,7 +4,7 @@
 jQuery(document).ready(function() {
 
     $(document).ready(function(){
-        RoofRegister.init();
+        VehicleRegister.init();
     });
 
 

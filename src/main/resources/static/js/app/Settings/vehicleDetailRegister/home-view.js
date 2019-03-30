@@ -1,7 +1,7 @@
 /**
  * Created by hp on 2/10/2019.
  */
-var DonationDetailHome = function () {
+var VehicleDetailRegisterHome = function () {
 
     //
     // Pipelining function for DataTables. To be used to the `ajax` option of DataTables
@@ -120,12 +120,12 @@ var DonationDetailHome = function () {
     } );
 
     var runDataTable = function () {
-        var assetTable = $('#tbl_donation_detail').DataTable({
+        var assetTable = $('#tbl_vehicle_detail').DataTable({
             "bAutoWidth": false,
             "processing": true,
             "serverSide": true,
             "ajax": $.fn.dataTable.pipeline( {
-                url: "../restapi/donationdetail/",
+                url: "../restapi/vehicledetailregister/",
                 pages: 5
             } ),
             columns : [ {
@@ -135,29 +135,21 @@ var DonationDetailHome = function () {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 }
             },{
-                data : 'citizenId',
-                orderable: false,
-                searchable: false,
+                data : 'vehicleNo'
             },{
-                data : 'donationType',
-                orderable: false,
-                searchable: false,
-            },{
-                data :  'receivedDate'
+                data :  'vehicleType'
             },
                 {
-                    data : 'description'
-                }  ,              {
                     orderable: false,
                     searchable: false,
                     data : 'id'
                 }
             ],
             aoColumnDefs: [{
-                targets: 5,//index of column starting from 0
+                targets: 3,//index of column starting from 0
                 data: "id", //this name should exist in your JSON response
                 render: function ( data, type, full, meta ) {
-                    return "<div align='center'>" + ButtonUtil.getHomeBtnWithURL("donationdetail", data);
+                    return "<div align='center'>" + ButtonUtil.getHomeBtnWithURL("vehicledetailregister", data);
                 }
             }],
             oLanguage: {
@@ -181,13 +173,13 @@ var DonationDetailHome = function () {
             sPaging: 'pagination',
 
         });
-        $('#tbl_donation_detail_wrapper .dataTables_filter input').addClass("form-control input-sm").attr("placeholder", "Search");
+        $('#tbl_vehicle_detail_wrapper .dataTables_filter input').addClass("form-control input-sm").attr("placeholder", "Search");
         // modify table search input
-        $('#tbl_donation_detail_wrapper .dataTables_length select').addClass("m-wrap small");
+        $('#tbl_vehicle_detail_wrapper .dataTables_length select').addClass("m-wrap small");
         // modify table per page dropdown
-        $('#tbl_donation_detail_wrapper .dataTables_length select').select2();
+        $('#tbl_vehicle_detail_wrapper .dataTables_length select').select2();
         // initialzie select2 dropdown
-        $('#tbl_donation_detail_column_toggler input[type="checkbox"]').change(function () {
+        $('#tbl_vehicle_detail_column_toggler input[type="checkbox"]').change(function () {
             /* Get the DataTables object again - this is not a recreation, just a get of the object */
             var iCol = parseInt($(this).attr("data-column"));
             var bVis = assetTable.fnSettings().aoColumns[iCol].bVisible;

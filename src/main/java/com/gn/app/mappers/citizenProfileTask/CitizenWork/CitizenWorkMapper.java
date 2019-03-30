@@ -52,7 +52,7 @@ public class CitizenWorkMapper extends GenericMapper<CitizenWork,CitizenWorkDTO>
         CitizenWorkDTO dto = new CitizenWorkDTO();
         dto.setId(citizenWork.getId());
         if (citizenWork.getServiceRegister()!=null && citizenWork.getServiceRegister().getServiceNo()!=null) {
-            dto.setCwServiceNo(citizenWork.getServiceRegister().getServiceType());
+            dto.setCwServiceNo(citizenWork.getServiceRegister().getServiceNo());
         }
 
         if (citizenWork.getServiceRegister()!=null && citizenWork.getServiceRegister().getServiceType()!=null) {

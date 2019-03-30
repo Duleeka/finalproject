@@ -33,7 +33,8 @@
 
                 <!--START OF CITIZEN DETAIL FORM-->
                 <div class="card">
-                    <form th:action="@{/donationdetail/save}" th:object="${donationDetail}" th:method="post" id="frm_donationdetail">
+                    <form th:action="@{/donationdetail/save}" th:object="${donationDetail}" th:method="post"
+                          id="frm_donationdetail">
                         <div class="card">
                             <div class="card-body card-block">
 
@@ -61,24 +62,14 @@
                             <div class="card-body card-block">
 
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="hh_no" class=" form-control-label">Householder No</label>
-                                            <select id="hh_no" name="hh_no" th:field="*{householderId}"
+                                            <select id="hh_no" name="hh_no" th:field="*{citizenId}"
                                                     class="form-control">
                                                 <option th:each="householder:${householders}"
-                                                        th:value="${householder.id}" th:text="${householder.citizenFamilyNo}">
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="donation_type" class=" form-control-label">Donation Type</label>
-                                            <select id="donation_type" name="donation_type" th:field="*{donationType}"
-                                                    class="form-control">
-                                                <option th:each="donation:${donations}"
-                                                        th:value="${donation.id}" th:text="${donation.donationType}">
+                                                        th:value="${householder.id}"
+                                                        th:text="${householder.citizenFamilyNo}">
                                                 </option>
                                             </select>
                                         </div>
@@ -101,11 +92,61 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!--END OF CITIZEN PUBLIC DONATION DETAIL-->
 
+                                <div class="card-body card-block">
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <ul class="nav nav-tabs">
+                                                <li class="nav-item"><a class="nav-link " data-toggle="tab"
+                                                                        href="#tab_donations">Donations</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="tab-content">
+
+                                            <div id="tab_donations" class="tab-pane fade in active">
+                                                <div class="card-body card-block">
+
+                                                    <div class="row ">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="donation_type" class=" form-control-label">Donation
+                                                                    Type</label>
+                                                                <select id="donation_type" name="donation_type"
+                                                                        th:field="*{donationType}"
+                                                                        class="form-control">
+                                                                    <option th:each="donation:${donations}"
+                                                                            th:value="${donation.id}"
+                                                                            th:text="${donation.donationType}">
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <table class="table table-borderless table-striped table-earning"
+                                                               id="tbl_donation_tab">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="first-th"> #</th>
+                                                                <th class="hidden-xs">Donation Type</th>
+                                                                <th class="hidden-xs">Description</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <!--END OF CITIZEN PUBLIC DONATION DETAIL-->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </form>
+                </div>
                 </div>
             </div>
 
@@ -122,6 +163,10 @@
 <script type="text/javascript" th:src="@{/js/lib/bootstrap-datetimepicker.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/app/CitizenProfileTask/donationDetail/donationDetail.js}"></script>
 <script type="text/javascript" th:src="@{/js/app/CitizenProfileTask/donationDetail/init.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/CitizenProfileTask/donationDetail/tab/tab-donation-type.js}"></script>
+<script th:inline="javascript">
+    var donationTypeList=[];
+</script>
 </body>
 </html>
 <!-- end document-->

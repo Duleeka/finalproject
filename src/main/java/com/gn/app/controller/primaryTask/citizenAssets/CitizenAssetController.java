@@ -5,7 +5,10 @@ import com.gn.app.constant.HouseOwnership;
 import com.gn.app.dto.primaryTask.CitizenAsset.CitizenAssetDTO;
 import com.gn.app.service.citizenProfileTask.CitizenDetail.CitizenDetailService;
 import com.gn.app.service.primaryTask.CitizenAsset.CitizenAssetService;
+import com.gn.app.service.settings.FloorDetailRegister.FloorDetailRegisterService;
 import com.gn.app.service.settings.LandDetailRegister.LandDetailRegisterService;
+import com.gn.app.service.settings.RoofDetailRegister.RoofDetailRegisterService;
+import com.gn.app.service.settings.WallDetailRegister.WallDetailRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +30,15 @@ public class CitizenAssetController {
 
     @Autowired
     CitizenDetailService citizenDetailService;
+
+    @Autowired
+    WallDetailRegisterService wallDetailRegisterService;
+
+    @Autowired
+    FloorDetailRegisterService floorDetailRegisterService;
+
+    @Autowired
+    RoofDetailRegisterService roofDetailRegisterService;
 
 
 
@@ -65,6 +77,9 @@ public class CitizenAssetController {
         model.addAttribute("houseOwnerships", HouseOwnership.getALLHouseOwnership());
         model.addAttribute("lands",landDetailRegisterService.findAll());
         model.addAttribute("citizens",citizenDetailService.findAll());
+        model.addAttribute("roofs",roofDetailRegisterService.findAll());
+        model.addAttribute("walls",wallDetailRegisterService.findAll());
+        model.addAttribute("floors",floorDetailRegisterService.findAll());
 
     }
 }

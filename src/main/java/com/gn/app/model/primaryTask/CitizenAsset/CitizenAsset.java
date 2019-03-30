@@ -2,10 +2,16 @@ package com.gn.app.model.primaryTask.CitizenAsset;
 
 import com.gn.app.constant.HouseOwnership;
 import com.gn.app.model.BaseModel;
+import com.gn.app.model.Settings.FloorDetailRegister.FloorDetailRegister;
 import com.gn.app.model.Settings.LandDetailRegister.LandDetailRegister;
+import com.gn.app.model.Settings.RoofDetailRegister.RoofDetailRegister;
+import com.gn.app.model.Settings.WallDetailRegister.WallDetailRegister;
 import com.gn.app.model.citizenProfileTask.CitizenDetail.CitizenDetail;
+import org.hibernate.exception.DataException;
 
 import javax.persistence.*;
+import java.util.Date;
+import java.util.Optional;
 
 /**
  * Created by hp on 1/7/2019.
@@ -35,11 +41,14 @@ public class CitizenAsset extends BaseModel {
     @Column(name = "house_type")
     private String houseType;
 
-    @Column(name = "roof_type")
-    private String roofType;
+    @Column(name = "house_roof_type")
+    private String houseRoofType;
 
-    @Column(name = "wall_type")
-    private String wallType;
+    @Column(name = "house_wall_type")
+    private String houseWallType;
+
+    @Column(name = "house_floor_type")
+    private String houseFloorType;
 
     @Column(name = "asset_description")
     private String assetDescription;
@@ -59,6 +68,9 @@ public class CitizenAsset extends BaseModel {
     @Column(name = "asset_status")
     private String assetStatus;
 
+    @Column(name = "vehicle_registered_date")
+    private Date vehicleRegisteredDate;
+
 
     @JoinColumn(name = "citizen_id")
     @ManyToOne(targetEntity = CitizenDetail.class,fetch = FetchType.LAZY)
@@ -67,6 +79,18 @@ public class CitizenAsset extends BaseModel {
     @JoinColumn(name = "land_id")
     @ManyToOne(targetEntity = LandDetailRegister.class,fetch = FetchType.LAZY)
     private LandDetailRegister landDetailRegister;
+
+    @JoinColumn(name = "wall_id")
+    @ManyToOne(targetEntity = WallDetailRegister.class,fetch = FetchType.LAZY)
+    private WallDetailRegister wallDetailRegister;
+
+    @JoinColumn(name = "roof_id")
+    @ManyToOne(targetEntity = RoofDetailRegister.class,fetch = FetchType.LAZY)
+    private RoofDetailRegister roofDetailRegister;
+
+    @JoinColumn(name = "floor_id")
+    @ManyToOne(targetEntity = FloorDetailRegister.class,fetch = FetchType.LAZY)
+    private FloorDetailRegister floorDetailRegister;
 
     public Integer getId() {
         return id;
@@ -91,6 +115,30 @@ public class CitizenAsset extends BaseModel {
 
     public void setLandDetailRegister(LandDetailRegister landDetailRegister) {
         this.landDetailRegister = landDetailRegister;
+    }
+
+    public WallDetailRegister getWallDetailRegister() {
+        return wallDetailRegister;
+    }
+
+    public void setWallDetailRegister(WallDetailRegister wallDetailRegister) {
+        this.wallDetailRegister = wallDetailRegister;
+    }
+
+    public RoofDetailRegister getRoofDetailRegister() {
+        return roofDetailRegister;
+    }
+
+    public void setRoofDetailRegister(RoofDetailRegister roofDetailRegister) {
+        this.roofDetailRegister = roofDetailRegister;
+    }
+
+    public FloorDetailRegister getFloorDetailRegister() {
+        return floorDetailRegister;
+    }
+
+    public void setFloorDetailRegister(FloorDetailRegister floorDetailRegister) {
+        this.floorDetailRegister = floorDetailRegister;
     }
 
     public String getAssetId() {
@@ -126,20 +174,28 @@ public class CitizenAsset extends BaseModel {
         this.houseType = houseType;
     }
 
-    public String getRoofType() {
-        return roofType;
+    public String getHouseRoofType() {
+        return houseRoofType;
     }
 
-    public void setRoofType(String roofType) {
-        this.roofType = roofType;
+    public void setHouseRoofType(String houseRoofType) {
+        this.houseRoofType = houseRoofType;
     }
 
-    public String getWallType() {
-        return wallType;
+    public String getHouseWallType() {
+        return houseWallType;
     }
 
-    public void setWallType(String wallType) {
-        this.wallType = wallType;
+    public void setHouseWallType(String houseWallType) {
+        this.houseWallType = houseWallType;
+    }
+
+    public String getHouseFloorType() {
+        return houseFloorType;
+    }
+
+    public void setHouseFloorType(String houseFloorType) {
+        this.houseFloorType = houseFloorType;
     }
 
     public String getAssetDescription() {
@@ -188,5 +244,14 @@ public class CitizenAsset extends BaseModel {
 
     public void setAssetStatus(String assetStatus) {
         this.assetStatus = assetStatus;
+    }
+
+
+    public Date getVehicleRegisteredDate() {
+        return vehicleRegisteredDate;
+    }
+
+    public void setVehicleRegisteredDate(Date vehicleRegisteredDate) {
+        this.vehicleRegisteredDate = vehicleRegisteredDate;
     }
 }

@@ -4,6 +4,7 @@ package com.gn.app.controller.citizenProfileTask.donationDetail;
 import com.gn.app.dto.citizenProfileTask.DonationDetail.DonationDetailDTO;
 import com.gn.app.service.citizenProfileTask.CitizenDetail.CitizenDetailService;
 import com.gn.app.service.citizenProfileTask.DonationDetail.DonationDetailService;
+import com.gn.app.service.settings.DonationRegister.DonationRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,9 @@ public class DonationDetailController {
 
     @Autowired
     DonationDetailService donationDetailService;
+
+    @Autowired
+    DonationRegisterService donationRegisterService;
 
     @Autowired
     CitizenDetailService citizenDetailService;
@@ -59,6 +63,6 @@ public class DonationDetailController {
 
         model.addAttribute("donationDetail", dto);
         model.addAttribute("householders", citizenDetailService.findAll());
-        model.addAttribute("donations", donationDetailService.findAll());
+        model.addAttribute("donations", donationRegisterService.findAll());
     }
 }

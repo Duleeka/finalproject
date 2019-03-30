@@ -2,7 +2,6 @@ package com.gn.app.service.citizenProfileTask.CitizenWork;
 
 import com.gn.app.dao.citizenProfileTask.CitizenDetail.CitizenDetailDao;
 import com.gn.app.dao.citizenProfileTask.CitizenWork.CitizenWorkDao;
-import com.gn.app.dao.settings.NationalityRegister.NationalityRegisterDao;
 import com.gn.app.dao.settings.ServiceRegister.ServiceRegisterDao;
 import com.gn.app.dto.citizenProfileTask.CitizenWork.CitizenWorkDTO;
 import com.gn.app.mappers.citizenProfileTask.CitizenWork.CitizenWorkMapper;
