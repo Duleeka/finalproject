@@ -1,6 +1,5 @@
 package com.gn.app.controller.settings.WallDetailRegister;
 
-import com.gn.app.dto.settings.LandDetailRegister.LandDetailRegisterDTO;
 import com.gn.app.dto.settings.WallDetailRegister.WallDetailRegisterDTO;
 import com.gn.app.service.settings.WallDetailRegister.WallDetailRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class WallDetailRegisterController {
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String newWallDetailRegister (Model model){
+    public String newWallDetailRegister(Model model) {
         setCommonData(model, new WallDetailRegisterDTO());
 
         return "settings/wallDetailRegister/settings-wall-detail-register";
@@ -34,8 +33,8 @@ public class WallDetailRegisterController {
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String editWallDetailRegister (Model model, Integer id){
-        setCommonData(model,wallDetailRegisterService.findById(id));
+    public String editWallDetailRegister(Model model, Integer id) {
+        setCommonData(model, wallDetailRegisterService.findById(id));
 
         return "settings/wallDetailRegister/settings-wall-detail-register";
 
@@ -43,7 +42,7 @@ public class WallDetailRegisterController {
 
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveWallDetailRegister(Model model, @ModelAttribute WallDetailRegisterDTO dto){
+    public String saveWallDetailRegister(Model model, @ModelAttribute WallDetailRegisterDTO dto) {
         wallDetailRegisterService.create(dto);
         setCommonData(model, dto);
         return "settings/wallDetailRegister/settings-wall-detail-register";
@@ -51,13 +50,14 @@ public class WallDetailRegisterController {
     }
 
 
-    @RequestMapping(value = "/delete",method = RequestMethod.GET)
-    public String deleteWallDetailRegister(Model model, Integer id){
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String deleteWallDetailRegister(Model model, Integer id) {
         wallDetailRegisterService.delete(id);
         return "redirect/walldetailregister/";
     }
 
 
     private void setCommonData(Model model, WallDetailRegisterDTO dto) {
-        model.addAttribute("wallDetailRegister",dto);    }
+        model.addAttribute("wallDetailRegister", dto);
+    }
 }

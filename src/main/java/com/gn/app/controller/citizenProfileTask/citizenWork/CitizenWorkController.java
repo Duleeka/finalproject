@@ -34,7 +34,7 @@ public class CitizenWorkController {
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String newCitizenWork (Model model){
+    public String newCitizenWork(Model model) {
         setCommonData(model, new CitizenWorkDTO());
 
         return "citizenProfileTask/citizenWork/primary-task-citizen-services";
@@ -42,7 +42,7 @@ public class CitizenWorkController {
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String editCitizenWork(Model model, Integer id){
+    public String editCitizenWork(Model model, Integer id) {
         setCommonData(model, citizenWorkService.findById(id));
         return "citizenProfileTask/citizenWork/primary-task-citizen-services";
 
@@ -50,29 +50,28 @@ public class CitizenWorkController {
 
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveCitizenWork(Model model, @ModelAttribute CitizenWorkDTO dto){
+    public String saveCitizenWork(Model model, @ModelAttribute CitizenWorkDTO dto) {
         citizenWorkService.create(dto);
-        setCommonData(model,dto);
+        setCommonData(model, dto);
         return "citizenProfileTask/citizenWork/primary-task-citizen-services";
 
     }
 
 
-    @RequestMapping(value = "/delete",method = RequestMethod.GET)
-    public String deleteCitizenWork(Model model, Integer id){
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String deleteCitizenWork(Model model, Integer id) {
         citizenWorkService.delete(id);
         return "redirect/citizenservices/";
     }
 
 
     private void setCommonData(Model model, CitizenWorkDTO dto) {
-        model.addAttribute("citizenWork",dto);
-        model.addAttribute("services",serviceRegisterService.findAll());
-        model.addAttribute("serviceNo","1234");
-        model.addAttribute("citizens",  citizenDetailService.findAll());
+        model.addAttribute("citizenWork", dto);
+        model.addAttribute("services", serviceRegisterService.findAll());
+        model.addAttribute("serviceNo", "1234");
+        model.addAttribute("citizens", citizenDetailService.findAll());
 
     }
-
 
 
 }

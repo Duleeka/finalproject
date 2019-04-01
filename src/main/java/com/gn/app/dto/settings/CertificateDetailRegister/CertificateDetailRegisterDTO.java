@@ -2,13 +2,10 @@ package com.gn.app.dto.settings.CertificateDetailRegister;
 
 import com.gn.app.dto.BaseDTO;
 
-import java.util.Date;
-
 public class CertificateDetailRegisterDTO extends BaseDTO {
     private Integer id;
     private String certificateNo;
     private String crCertificateType;
-
 
 
     public Integer getId() {

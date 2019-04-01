@@ -233,6 +233,7 @@ public class CitizenAssetServiceImpl implements CitizenAssetService {
 
     @Override
     public void delete(Integer id) {
+
         citizenAssetDao.delete(findByIdEntity(id).get());
     }
 

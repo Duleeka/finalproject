@@ -26,7 +26,7 @@ public class ServiceRegisterController {
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String newServiceRegister (Model model){
+    public String newServiceRegister(Model model) {
         setCommonData(model, new ServiceRegisterDTO());
 
         return "settings/serviceRegister/service-register";
@@ -34,7 +34,7 @@ public class ServiceRegisterController {
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String editServiceRegister(Model model, Integer id){
+    public String editServiceRegister(Model model, Integer id) {
         setCommonData(model, serviceRegisterService.findById(id));
         return "settings/serviceRegister/service-register";
 
@@ -42,23 +42,24 @@ public class ServiceRegisterController {
 
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveServiceRegister(Model model, @ModelAttribute ServiceRegisterDTO dto){
+    public String saveServiceRegister(Model model, @ModelAttribute ServiceRegisterDTO dto) {
         serviceRegisterService.create(dto);
-        setCommonData(model,dto);
+        setCommonData(model, dto);
         return "settings/serviceRegister/service-register";
 
     }
 
 
-    @RequestMapping(value = "/delete",method = RequestMethod.GET)
-    public String deleteServiceRegister(Model model, Integer id){
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String deleteServiceRegister(Model model, Integer id) {
         serviceRegisterService.delete(id);
         return "redirect/serviceregister/";
     }
 
 
     private void setCommonData(Model model, ServiceRegisterDTO dto) {
-        model.addAttribute("serviceRegister",dto);    }
+        model.addAttribute("serviceRegister", dto);
+    }
 
 
 }

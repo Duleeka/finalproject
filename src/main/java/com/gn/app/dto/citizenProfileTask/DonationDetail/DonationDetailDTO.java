@@ -1,7 +1,6 @@
 package com.gn.app.dto.citizenProfileTask.DonationDetail;
 
 import com.gn.app.dto.BaseDTO;
-import com.gn.app.dto.settings.DonationRegister.DonationRegisterDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,7 @@ public class DonationDetailDTO extends BaseDTO {
     private String donationType;
     private String receivedDate;
     private String description;
-    private List<DonationDetailDonationTypeDTO> donationRegisterDTOS =new ArrayList<>();
+    private List<DonationDetailDonationTypeDTO> donationRegisterDTOS = new ArrayList<>();
 
     public Integer getId() {
         return id;

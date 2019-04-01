@@ -6,8 +6,6 @@ import com.gn.app.constant.MaritalStatus;
 import com.gn.app.constant.Relationship;
 import com.gn.app.dto.BaseDTO;
 
-import java.util.Date;
-
 
 public class CitizenDetailDTO extends BaseDTO {
 
@@ -18,14 +16,14 @@ public class CitizenDetailDTO extends BaseDTO {
     private Integer educationId;
     private Boolean isHouseholder;
     private String citizenFamilyNo;
-    private Boolean citizenStatus=Boolean.FALSE;
+    private Boolean citizenStatus = Boolean.FALSE;
     private Relationship relationship;
     private String citizenInitials;
     private String citizenFirstName;
     private String citizenMiddleName;
     private String citizenLastName;
     private String nic;
-    private String  citizenDateOfBirth;
+    private String citizenDateOfBirth;
     private Gender citizenGender;
     private MaritalStatus maritalStatus;
     private Integer phoneNumber;
@@ -45,8 +43,7 @@ public class CitizenDetailDTO extends BaseDTO {
 
     private String deathPlace;
     private String deathReason;
-    private String  dateOfDeath;
-
+    private String dateOfDeath;
 
 
     public Integer getId() {
@@ -64,7 +61,6 @@ public class CitizenDetailDTO extends BaseDTO {
     public void setNationalityId(Integer nationalityId) {
         this.nationalityId = nationalityId;
     }
-
 
     public Integer getReligionId() {
         return religionId;

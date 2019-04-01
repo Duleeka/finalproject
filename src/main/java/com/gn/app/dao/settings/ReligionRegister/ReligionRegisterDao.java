@@ -6,5 +6,5 @@ import org.springframework.data.jpa.datatables.repository.DataTablesRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ReligionRegisterDao extends DataTablesRepository<ReligionRegister,Integer> {
+public interface ReligionRegisterDao extends DataTablesRepository<ReligionRegister, Integer> {
 }

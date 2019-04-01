@@ -26,7 +26,7 @@ public class EducationLevelRegisterController {
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String newEducationLevelRegister (Model model){
+    public String newEducationLevelRegister(Model model) {
         setCommonData(model, new EducationLevelRegisterDTO());
 
         return "settings/educationLevelRegister/settings-education-level-register";
@@ -34,8 +34,8 @@ public class EducationLevelRegisterController {
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String editEducationLevelRegister (Model model, Integer id){
-        setCommonData(model,educationLevelRegisterService.findById(id));
+    public String editEducationLevelRegister(Model model, Integer id) {
+        setCommonData(model, educationLevelRegisterService.findById(id));
 
         return "settings/educationLevelRegister/settings-education-level-register";
 
@@ -43,22 +43,22 @@ public class EducationLevelRegisterController {
 
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveEducationLevelRegister (Model model, @ModelAttribute EducationLevelRegisterDTO dto){
+    public String saveEducationLevelRegister(Model model, @ModelAttribute EducationLevelRegisterDTO dto) {
         educationLevelRegisterService.create(dto);
-        setCommonData(model,dto);
+        setCommonData(model, dto);
         return "settings/educationLevelRegister/settings-education-level-register";
 
     }
 
 
-    @RequestMapping(value = "/delete",method = RequestMethod.GET)
-    public String deleteEducationLevelRegister(Model model, Integer id){
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String deleteEducationLevelRegister(Model model, Integer id) {
         educationLevelRegisterService.delete(id);
         return "redirect/educationlevelregister/";
     }
 
 
     private void setCommonData(Model model, EducationLevelRegisterDTO dto) {
-        model.addAttribute("educationLevel",dto);
+        model.addAttribute("educationLevel", dto);
     }
 }

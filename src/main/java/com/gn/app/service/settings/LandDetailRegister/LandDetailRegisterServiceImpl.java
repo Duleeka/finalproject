@@ -107,6 +107,7 @@ public class LandDetailRegisterServiceImpl implements LandDetailRegisterService 
     }
 
     @Override
-    public void delete(Integer id) {landDetailRegisterDao.delete(findByIdEntity(id).get());
+    public void delete(Integer id) {
+        landDetailRegisterDao.delete(findByIdEntity(id).get());
     }
 }

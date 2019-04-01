@@ -59,11 +59,11 @@ public class DonationDetailServiceImpl implements DonationDetailService {
     @Override
     public List<DonationDetailDTO> findAll() {
         List<DonationDetailDTO> profiles=null;
-       try {
-           profiles=DonationDetailMapper.getInstance().domainToDTOList(donationDetailDao.findAll());
-       }catch (Exception e){
-           e.printStackTrace();
-       }
+        try {
+            profiles=DonationDetailMapper.getInstance().domainToDTOList(donationDetailDao.findAll());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return profiles;
     }
 
@@ -99,7 +99,8 @@ public class DonationDetailServiceImpl implements DonationDetailService {
         } catch (Exception e) {
             e.printStackTrace();
         }
- /*create object for DonationDetailDTO class*/
+        /*create object for DonationDetailDTO class*/
+
         setCommonData(donationDetail, donationDetailDTO);
         saveOrUpdate(donationDetail);
         return donationDetailDTO;
@@ -207,5 +208,5 @@ public class DonationDetailServiceImpl implements DonationDetailService {
         donationDetailDao.delete(findByIdEntity(id).get());
     }
 
-    }
+}
 

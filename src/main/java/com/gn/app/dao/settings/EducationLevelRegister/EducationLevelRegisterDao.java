@@ -5,5 +5,5 @@ import org.springframework.data.jpa.datatables.repository.DataTablesRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EducationLevelRegisterDao extends DataTablesRepository<EducationLevelRegister,Integer> {
+public interface EducationLevelRegisterDao extends DataTablesRepository<EducationLevelRegister, Integer> {
 }

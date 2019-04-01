@@ -2,16 +2,13 @@ package com.gn.app.dto.citizenProfileTask.CitizenWork;
 
 import com.gn.app.dto.BaseDTO;
 
-import java.util.Date;
-
-
 public class CitizenWorkDTO extends BaseDTO {
 
     private Integer id;
     private Integer citizenId;
     private Integer serviceId;
     private String cwServiceNo;
-    private String  cwServiceType;
+    private String cwServiceType;
     private String nic;
     private String receivedDate;
     private String serviceDescription;
@@ -44,7 +41,7 @@ public class CitizenWorkDTO extends BaseDTO {
         return cwServiceType;
     }
 
-    public void setCwServiceType(String  cwServiceType) {
+    public void setCwServiceType(String cwServiceType) {
         this.cwServiceType = cwServiceType;
     }
 

@@ -5,7 +5,7 @@ import com.gn.app.dto.BaseDTO;
 /**
  * Created by hp on 1/31/2019.
  */
-public class GnProfileDTO extends BaseDTO{
+public class GnProfileDTO extends BaseDTO {
 
     private Integer id;
     private String gnId;

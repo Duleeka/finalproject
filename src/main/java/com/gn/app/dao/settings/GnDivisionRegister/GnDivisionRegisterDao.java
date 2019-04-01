@@ -5,5 +5,5 @@ import org.springframework.data.jpa.datatables.repository.DataTablesRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface GnDivisionRegisterDao extends DataTablesRepository<GnDivisionRegister,Integer> {
+public interface GnDivisionRegisterDao extends DataTablesRepository<GnDivisionRegister, Integer> {
 }

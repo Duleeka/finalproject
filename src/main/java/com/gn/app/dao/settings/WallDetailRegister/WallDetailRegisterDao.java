@@ -5,5 +5,5 @@ import org.springframework.data.jpa.datatables.repository.DataTablesRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface WallDetailRegisterDao extends DataTablesRepository<WallDetailRegister,Integer> {
+public interface WallDetailRegisterDao extends DataTablesRepository<WallDetailRegister, Integer> {
 }

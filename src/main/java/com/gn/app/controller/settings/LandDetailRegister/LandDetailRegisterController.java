@@ -26,7 +26,7 @@ public class LandDetailRegisterController {
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String newLandDetailRegister (Model model){
+    public String newLandDetailRegister(Model model) {
         setCommonData(model, new LandDetailRegisterDTO());
 
         return "settings/landDetailRegister/land-detail-register";
@@ -34,8 +34,8 @@ public class LandDetailRegisterController {
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String editLandDetailRegister (Model model, Integer id){
-        setCommonData(model,landDetailRegisterService.findById(id));
+    public String editLandDetailRegister(Model model, Integer id) {
+        setCommonData(model, landDetailRegisterService.findById(id));
 
         return "settings/landDetailRegister/land-detail-register";
 
@@ -43,21 +43,22 @@ public class LandDetailRegisterController {
 
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveLandDetailRegister (Model model, @ModelAttribute LandDetailRegisterDTO dto){
+    public String saveLandDetailRegister(Model model, @ModelAttribute LandDetailRegisterDTO dto) {
         landDetailRegisterService.create(dto);
-        setCommonData(model,dto);
+        setCommonData(model, dto);
         return "settings/landDetailRegister/land-detail-register";
 
     }
 
 
-    @RequestMapping(value = "/delete",method = RequestMethod.GET)
-    public String deleteLandDetailRegister(Model model, Integer id){
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String deleteLandDetailRegister(Model model, Integer id) {
         landDetailRegisterService.delete(id);
         return "redirect/landdetailregister/";
     }
 
 
     private void setCommonData(Model model, LandDetailRegisterDTO dto) {
-        model.addAttribute("landDetailRegister",dto);    }
+        model.addAttribute("landDetailRegister", dto);
+    }
 }

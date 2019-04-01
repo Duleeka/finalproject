@@ -5,5 +5,5 @@ import org.springframework.data.jpa.datatables.repository.DataTablesRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RoofDetailRegisterDao extends DataTablesRepository<RoofDetailRegister,Integer> {
+public interface RoofDetailRegisterDao extends DataTablesRepository<RoofDetailRegister, Integer> {
 }

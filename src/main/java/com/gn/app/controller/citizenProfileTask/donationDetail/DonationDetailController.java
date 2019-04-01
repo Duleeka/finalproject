@@ -26,39 +26,40 @@ public class DonationDetailController {
 
     @Autowired
     CitizenDetailService citizenDetailService;
-   /* @Autowired
-    GnDomainService gnDomainService;
-*/
+
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String homePage(Model model) { return "citizenProfileTask/donationDetail/home-view";}
+    public String homePage(Model model) {
+        return "citizenProfileTask/donationDetail/home-view";
+    }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String newDonationDetail(Model model){
+    public String newDonationDetail(Model model) {
         setCommonData(model, new DonationDetailDTO());
         return "citizenProfileTask/donationDetail/citizen-profile-task-donation-detail";
     }
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String editDonationDetail(Model model, Integer id ) {
-        setCommonData(model,donationDetailService.findById(id));
+    public String editDonationDetail(Model model, Integer id) {
+        setCommonData(model, donationDetailService.findById(id));
         return "citizenProfileTask/donationDetail/citizen-profile-task-donation-detail";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveDonationDetail(Model model, @ModelAttribute DonationDetailDTO dto) {
         donationDetailService.create(dto);
-        setCommonData(model,dto);
+        setCommonData(model, dto);
 
         return "citizenProfileTask/donationDetail/citizen-profile-task-donation-detail";
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    public String deleteDonationDetail(Model model, Integer id){
+    public String deleteDonationDetail(Model model, Integer id) {
         donationDetailService.delete(id);
         return "redirect:/donationdetail/";
     }
+
     private void setCommonData(Model model, DonationDetailDTO dto) {
 
         model.addAttribute("donationDetail", dto);

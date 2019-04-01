@@ -25,7 +25,7 @@ public class FloorDetailRegisterController {
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String newFloorDetailRegister (Model model){
+    public String newFloorDetailRegister(Model model) {
         setCommonData(model, new FloorDetailRegisterDTO());
 
         return "settings/floorDetailRegister/settings-floor-detail-register";
@@ -33,8 +33,8 @@ public class FloorDetailRegisterController {
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String editLandDetailRegister (Model model, Integer id){
-        setCommonData(model,floorDetailRegisterService.findById(id));
+    public String editLandDetailRegister(Model model, Integer id) {
+        setCommonData(model, floorDetailRegisterService.findById(id));
 
         return "settings/floorDetailRegister/settings-floor-detail-register";
 
@@ -42,23 +42,23 @@ public class FloorDetailRegisterController {
 
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveFloorDetailRegister (Model model, @ModelAttribute FloorDetailRegisterDTO dto){
+    public String saveFloorDetailRegister(Model model, @ModelAttribute FloorDetailRegisterDTO dto) {
         floorDetailRegisterService.create(dto);
-        setCommonData(model,dto);
+        setCommonData(model, dto);
         return "settings/floorDetailRegister/settings-floor-detail-register";
 
     }
 
 
-    @RequestMapping(value = "/delete",method = RequestMethod.GET)
-    public String deleteFloorDetailRegister(Model model, Integer id){
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String deleteFloorDetailRegister(Model model, Integer id) {
         floorDetailRegisterService.delete(id);
         return "redirect/floordetailregister/";
     }
 
 
     private void setCommonData(Model model, FloorDetailRegisterDTO dto) {
-        model.addAttribute("floorDetailRegister",dto);
+        model.addAttribute("floorDetailRegister", dto);
 
     }
 }

@@ -25,7 +25,7 @@ public class RoofDetailRegisterController {
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String newRoofDetailRegister (Model model){
+    public String newRoofDetailRegister(Model model) {
         setCommonData(model, new RoofDetailRegisterDTO());
 
         return "settings/roofDetailRegister/settings-roof-detail-register";
@@ -33,8 +33,8 @@ public class RoofDetailRegisterController {
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String editRoofDetailRegister(Model model, Integer id){
-        setCommonData(model,roofDetailRegisterService.findById(id));
+    public String editRoofDetailRegister(Model model, Integer id) {
+        setCommonData(model, roofDetailRegisterService.findById(id));
 
         return "settings/roofDetailRegister/settings-roof-detail-register";
 
@@ -42,16 +42,16 @@ public class RoofDetailRegisterController {
 
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveRoofDetailRegister (Model model, @ModelAttribute RoofDetailRegisterDTO dto){
+    public String saveRoofDetailRegister(Model model, @ModelAttribute RoofDetailRegisterDTO dto) {
         roofDetailRegisterService.create(dto);
-        setCommonData(model,dto);
+        setCommonData(model, dto);
         return "settings/roofDetailRegister/settings-roof-detail-register";
 
     }
 
 
-    @RequestMapping(value = "/delete",method = RequestMethod.GET)
-    public String deleteRoofDetailRegister(Model model, Integer id){
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String deleteRoofDetailRegister(Model model, Integer id) {
         roofDetailRegisterService.delete(id);
         return "redirect/roofdetailregister/";
     }

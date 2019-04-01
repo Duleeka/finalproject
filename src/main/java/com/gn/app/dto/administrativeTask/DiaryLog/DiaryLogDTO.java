@@ -2,7 +2,6 @@ package com.gn.app.dto.administrativeTask.DiaryLog;
 
 import com.gn.app.dto.BaseDTO;
 
-import java.util.Date;
 
 /**
  * Created by hp on 1/31/2019.
@@ -25,13 +24,21 @@ public class DiaryLogDTO extends BaseDTO {
         this.id = id;
     }
 
-    public String getTaskName() { return taskName;}
+    public String getTaskName() {
+        return taskName;
+    }
 
-    public void setTaskName(String taskName) { this.taskName= taskName;}
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
 
-    public String getDescription() { return description;}
+    public String getDescription() {
+        return description;
+    }
 
-    public void setDescription( String description)  { this.description= description;}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String getStatus() {
         return status;

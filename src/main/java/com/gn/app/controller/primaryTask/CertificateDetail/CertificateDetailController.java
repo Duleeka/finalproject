@@ -33,37 +33,37 @@ public class CertificateDetailController {
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String newBasicDetail(Model model){
-        setCommonData(model, new CertificateDetailDTO() );
+    public String newBasicDetail(Model model) {
+        setCommonData(model, new CertificateDetailDTO());
         return "primaryTask/certificateDetail/certificate-issuing-task-basic-detail";
     }
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String editBasicDetail(Model model, Integer id){
-        setCommonData(model,certificateDetailService.findById(id));
+    public String editBasicDetail(Model model, Integer id) {
+        setCommonData(model, certificateDetailService.findById(id));
         return "primaryTask/certificateDetail/certificate-issuing-task-basic-detail";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveBasicDetail(Model model, @ModelAttribute CertificateDetailDTO dto) {
         certificateDetailService.create(dto);
-        setCommonData(model,dto);
+        setCommonData(model, dto);
 
         return "primaryTask/certificateDetail/certificate-issuing-task-basic-detail";
 
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    public String deleteBasicDetail(Model model, Integer id){
+    public String deleteBasicDetail(Model model, Integer id) {
         certificateDetailService.delete(id);
         return "redirect:/certificatedetail/";
     }
-    private void setCommonData(Model model, CertificateDetailDTO dto)
-    {
-        model.addAttribute("certificateDetail",dto);
+
+    private void setCommonData(Model model, CertificateDetailDTO dto) {
+        model.addAttribute("certificateDetail", dto);
         model.addAttribute("certificates", certificateDetailRegisterService.findAll());
-        model.addAttribute("citizens",citizenDetailService.findAll());
+        model.addAttribute("citizens", citizenDetailService.findAll());
 
     }
 

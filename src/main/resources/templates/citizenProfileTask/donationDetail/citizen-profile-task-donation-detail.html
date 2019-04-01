@@ -33,23 +33,26 @@
 
                 <!--START OF CITIZEN DETAIL FORM-->
                 <div class="card">
+                    <div class="card">
+                        <div class="card-body card-block">
+
+                            <a th:href="@{/donationdetail/add}" class="btn btn-primary"><i class=""></i> New</a>
+
+                            <button type="submit" id="btn_submit" class="btn btn-primary"><i class=""></i> Save</button>
+
+                            <a th:href="@{/donationdetail/delete(id=${donationDetail.id})}"
+                               th:disabled="${donationDetail.id} ==null ? 'disabled'" class="btn btn-primary">
+                                <i class=""></i> Delete</a>
+
+                            <a th:href="@{/donationdetail/}" class="btn btn-primary"><i class=""></i> Cancel</a>
+
+                        </div>
+                    </div>
                     <form th:action="@{/donationdetail/save}" th:object="${donationDetail}" th:method="post"
                           id="frm_donationdetail">
-                        <div class="card">
-                            <div class="card-body card-block">
+                        <button type="submit" style="display: none" id="submit"></button>
 
-                                <a th:href="@{/donationdetail/add}" class="btn btn-primary"><i class=""></i> New</a>
 
-                                <button type="submit" class="btn btn-primary"><i class=""></i> Save</button>
-
-                                <a th:href="@{/donationdetail/delete(id=${donationDetail.id})}"
-                                   th:disabled="${donationDetail.id} ==null ? 'disabled'" class="btn btn-primary">
-                                    <i class=""></i> Delete</a>
-
-                                <a th:href="@{/donationdetail/}" class="btn btn-primary"><i class=""></i> Cancel</a>
-
-                            </div>
-                        </div>
                         <div class="card">
                             <div class="card-header">
                                 <strong>Donation Detail</strong>
@@ -129,6 +132,8 @@
                                                                 <th class="first-th"> #</th>
                                                                 <th class="hidden-xs">Donation Type</th>
                                                                 <th class="hidden-xs">Description</th>
+                                                                <th class="hidden-xs">Remove</th>
+
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -147,17 +152,17 @@
                         </div>
                     </form>
                 </div>
-                </div>
             </div>
-
         </div>
 
-
-        <!-- END CONTENT-->
-        <div th:include="common/footer::footer"></div>
-        <!-- END PAGE CONTAINER-->
     </div>
+
+
+    <!-- END CONTENT-->
+    <div th:include="common/footer::footer"></div>
+    <!-- END PAGE CONTAINER-->
 </div>
+
 <div th:include="common/commonjs::commonjs"></div>
 
 <script type="text/javascript" th:src="@{/js/lib/bootstrap-datetimepicker.min.js}"></script>
@@ -165,7 +170,7 @@
 <script type="text/javascript" th:src="@{/js/app/CitizenProfileTask/donationDetail/init.js}"></script>
 <script type="text/javascript" th:src="@{/js/app/CitizenProfileTask/donationDetail/tab/tab-donation-type.js}"></script>
 <script th:inline="javascript">
-    var donationTypeList=[];
+    var donationTypeList = [];
 </script>
 </body>
 </html>

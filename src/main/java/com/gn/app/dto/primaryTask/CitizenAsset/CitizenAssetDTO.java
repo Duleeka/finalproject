@@ -3,8 +3,6 @@ package com.gn.app.dto.primaryTask.CitizenAsset;
 import com.gn.app.constant.HouseOwnership;
 import com.gn.app.dto.BaseDTO;
 
-import java.util.Date;
-
 public class CitizenAssetDTO extends BaseDTO {
 
     private Integer id;
@@ -25,9 +23,9 @@ public class CitizenAssetDTO extends BaseDTO {
     private String houseRoofType;
     private String houseWallType;
     private String houseFloorType;
-    private Boolean waterFacility=Boolean.FALSE;
-    private Boolean electricity=Boolean.FALSE;
-    private Boolean toiletFacility=Boolean.FALSE;
+    private Boolean waterFacility = Boolean.FALSE;
+    private Boolean electricity = Boolean.FALSE;
+    private Boolean toiletFacility = Boolean.FALSE;
 
     private String assetDescription;
     private String assetStatus;

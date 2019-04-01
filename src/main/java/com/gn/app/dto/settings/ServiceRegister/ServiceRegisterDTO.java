@@ -2,9 +2,9 @@ package com.gn.app.dto.settings.ServiceRegister;
 
 import com.gn.app.dto.BaseDTO;
 
-public class ServiceRegisterDTO  extends BaseDTO {
+public class ServiceRegisterDTO extends BaseDTO {
 
-    private  Integer id;
+    private Integer id;
     private String serviceNo;
     private String serviceType;
 

@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping(ReligionRegisterController.REQUEST_MAPPING_URL)
-public class ReligionRegisterController{
+public class ReligionRegisterController {
 
-    public static final String REQUEST_MAPPING_URL ="/religionregister";
+    public static final String REQUEST_MAPPING_URL = "/religionregister";
 
     @Autowired
-    ReligionRegisterService religionRegisterService ;
+    ReligionRegisterService religionRegisterService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String homepage(Model model) {
@@ -25,7 +25,7 @@ public class ReligionRegisterController{
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String newReligionRegister (Model model){
+    public String newReligionRegister(Model model) {
         setCommonData(model, new ReligionRegisterDTO());
 
         return "settings/religionRegister/religion-register";
@@ -33,7 +33,7 @@ public class ReligionRegisterController{
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String editReligionRegister (Model model, Integer id){
+    public String editReligionRegister(Model model, Integer id) {
         setCommonData(model, religionRegisterService.findById(id));
         return "settings/religionRegister/religion-register";
 
@@ -41,23 +41,24 @@ public class ReligionRegisterController{
 
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveReligionRegister (Model model, @ModelAttribute ReligionRegisterDTO dto){
+    public String saveReligionRegister(Model model, @ModelAttribute ReligionRegisterDTO dto) {
         religionRegisterService.create(dto);
-        setCommonData(model,dto);
+        setCommonData(model, dto);
         return "settings/religionRegister/religion-register";
 
     }
 
 
-    @RequestMapping(value = "/delete",method = RequestMethod.GET)
-    public String deleteReligionRegister(Model model, Integer id){
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String deleteReligionRegister(Model model, Integer id) {
         religionRegisterService.delete(id);
         return "redirect/religionregister/";
     }
 
 
     private void setCommonData(Model model, ReligionRegisterDTO dto) {
-        model.addAttribute("religionRegister",dto);    }
+        model.addAttribute("religionRegister", dto);
+    }
 
 
 }

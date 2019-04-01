@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
  * Created by hp on 1/7/2019.
  */
 @Repository
-public interface GnProfileDao extends DataTablesRepository<GnProfile,Integer> {
+public interface GnProfileDao extends DataTablesRepository<GnProfile, Integer> {
 
 }

@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
  * Created by hp on 1/7/2019.
  */
 @Repository
-public interface DiaryLogDao extends DataTablesRepository<DiaryLog,Integer> {
+public interface DiaryLogDao extends DataTablesRepository<DiaryLog, Integer> {
 
 }

@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(NationalityRegisterController.REQUEST_MAPPING_URL)
 public class NationalityRegisterController {
 
-    public static final String REQUEST_MAPPING_URL ="/nationalityregister";
+    public static final String REQUEST_MAPPING_URL = "/nationalityregister";
 
     @Autowired
-NationalityRegisterService nationalityRegisterService ;
+    NationalityRegisterService nationalityRegisterService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String homepage(Model model) {
@@ -25,7 +25,7 @@ NationalityRegisterService nationalityRegisterService ;
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String newNationalityRegister (Model model){
+    public String newNationalityRegister(Model model) {
         setCommonData(model, new NationalityRegisterDTO());
 
         return "settings/nationalityRegister/nationality-register";
@@ -33,31 +33,32 @@ NationalityRegisterService nationalityRegisterService ;
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String editNationalityRegister (Model model, Integer id){
-        setCommonData(model,nationalityRegisterService. findById(id));
+    public String editNationalityRegister(Model model, Integer id) {
+        setCommonData(model, nationalityRegisterService.findById(id));
         return "settings/nationalityRegister/nationality-register";
 
     }
 
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveNationalityRegister (Model model, @ModelAttribute NationalityRegisterDTO dto){
+    public String saveNationalityRegister(Model model, @ModelAttribute NationalityRegisterDTO dto) {
         nationalityRegisterService.create(dto);
-        setCommonData(model,dto);
+        setCommonData(model, dto);
         return "settings/nationalityRegister/nationality-register";
 
     }
 
 
-    @RequestMapping(value = "/delete",method = RequestMethod.GET)
-    public String deleteNationalityRegister(Model model, Integer id){
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String deleteNationalityRegister(Model model, Integer id) {
         nationalityRegisterService.delete(id);
         return "redirect/nationalityregister/";
     }
 
 
     private void setCommonData(Model model, NationalityRegisterDTO dto) {
-        model.addAttribute("nationalityRegister",dto);    }
+        model.addAttribute("nationalityRegister", dto);
+    }
 
 
 }

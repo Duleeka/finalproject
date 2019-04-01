@@ -2,8 +2,6 @@ package com.gn.app.dto.primaryTask.CertificateDetail;
 
 import com.gn.app.dto.BaseDTO;
 
-import java.util.Date;
-
 public class CertificateDetailDTO extends BaseDTO {
 
     private Integer id;
@@ -13,7 +11,7 @@ public class CertificateDetailDTO extends BaseDTO {
     private String certificateType;
     private String receiverFullName;
     private String nic;
-    private String  certificateIssuedDate;
+    private String certificateIssuedDate;
     private String cdDescription;
 
     public Integer getId() {
