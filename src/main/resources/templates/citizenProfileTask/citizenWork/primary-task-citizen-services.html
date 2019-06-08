@@ -61,7 +61,7 @@
                             <div class="card-body card-block">
 
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="service_no" class=" form-control-label">Service No</label>
                                             <select id="service_no" name="service_type"  th:field="*{serviceId}"
@@ -73,22 +73,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="service_type" class=" form-control-label">Service Type</label>
-                                            <select id="service_type" name="service_type" th:field="*{cwServiceType}"
-                                                    class="form-control">
-                                                <option th:each="service:${services}"
-                                                        th:value="${service.id}" th:text="${service.serviceType}">
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="c_nic" class=" form-control-label">NIC</label>
                                             <select id="c_nic" placeholder="" th:field="*{citizenId}"
@@ -99,7 +84,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="datetimepicker1" class=" form-control-label">Received
                                                 Date</label>
@@ -117,6 +102,57 @@
                                             <label for="description" class=" form-control-label">Description</label>
                                             <textarea id="description" placeholder="" th:field="*{serviceDescription}"
                                                       class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="card-body card-block">
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <ul class="nav nav-tabs">
+                                                <li class="nav-item"><a class="nav-link " data-toggle="tab"
+                                                                        href="#tab_services">Services</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="tab-content">
+
+                                            <div id="tab_services" class="tab-pane fade in active">
+                                                <div class="card-body card-block">
+
+                                                    <div class="row ">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="service_type" class=" form-control-label">Service Type</label>
+                                                                <select id="service_type" name="service_type" th:field="*{cwServiceType}"
+                                                                        class="form-control">
+                                                                    <option th:each="service:${services}"
+                                                                            th:value="${service.id}" th:text="${service.serviceType}">
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <table class="table table-borderless table-striped table-earning"
+                                                               id="tbl_service_tab">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="first-th"> #</th>
+                                                                <th class="hidden-xs">Service Type</th>
+                                                                <th class="hidden-xs">Description</th>
+                                                                <th class="hidden-xs">Remove</th>
+
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <!--END OF CITIZEN PUBLIC DONATION DETAIL-->
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -139,6 +175,10 @@
 <script type="text/javascript" th:src="@{/js/lib/bootstrap-datetimepicker.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/app/CitizenProfileTask/citizenWork/citizenWork.js}"></script>
 <script type="text/javascript" th:src="@{/js/app/CitizenProfileTask/citizenWork/init.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/CitizenProfileTask/citizenWork/tab/tab-service-type.js}"></script>
+<script th:inline="javascript">
+    var serviceTypeList = [];
+</script>
 </body>
 </html>
 <!-- end document-->

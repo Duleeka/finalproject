@@ -12,6 +12,7 @@ jQuery(document).ready(function() {
 
     $(document).ready(function(){
         CitizenService.init();
+        CitizenServiceTab.init();
     });
 
 

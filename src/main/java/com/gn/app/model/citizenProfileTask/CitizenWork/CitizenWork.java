@@ -3,9 +3,12 @@ package com.gn.app.model.citizenProfileTask.CitizenWork;
 import com.gn.app.model.BaseModel;
 import com.gn.app.model.Settings.ServiceRegister.ServiceRegister;
 import com.gn.app.model.citizenProfileTask.CitizenDetail.CitizenDetail;
+import com.gn.app.model.citizenProfileTask.DonationDetail.DonationDetailsDonationType;
 
 import javax.persistence.*;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.Set;
 
 
 @Entity
@@ -32,9 +35,8 @@ public class CitizenWork extends BaseModel {
     @ManyToOne(targetEntity = CitizenDetail.class ,fetch = FetchType.LAZY)
     private CitizenDetail citizenDetail;
 
-    @JoinColumn(name ="service_id" )
-    @ManyToOne(targetEntity = ServiceRegister.class ,fetch = FetchType.LAZY)
-    private ServiceRegister serviceRegister;
+    @OneToMany(mappedBy = "citizenWork",fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<CitizenWorksCitizenWorkType> citizenWorksCitizenWorkTypes;
 
 
     public Integer getId() {
@@ -69,11 +71,12 @@ public class CitizenWork extends BaseModel {
         this.citizenDetail = citizenDetail;
     }
 
-    public ServiceRegister getServiceRegister() {
-        return serviceRegister;
+    public Set<CitizenWorksCitizenWorkType> getCitizenWorksCitizenWorkTypes() {
+        return citizenWorksCitizenWorkTypes;
     }
 
-    public void setServiceRegister(ServiceRegister serviceRegister) {
-        this.serviceRegister = serviceRegister;
+    public void setCitizenWorksCitizenWorkTypes(Set<CitizenWorksCitizenWorkType> citizenWorksCitizenWorkTypes) {
+        this.citizenWorksCitizenWorkTypes = citizenWorksCitizenWorkTypes;
     }
+
 }

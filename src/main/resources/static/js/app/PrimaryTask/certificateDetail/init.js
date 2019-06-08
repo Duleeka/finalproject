@@ -12,6 +12,7 @@ jQuery(document).ready(function() {
 
     $(document).ready(function(){
         CertificateDetail.init();
+        CertificateDetailTab.init();
     });
 
 

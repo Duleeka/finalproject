@@ -2,6 +2,9 @@ package com.gn.app.dto.primaryTask.CertificateDetail;
 
 import com.gn.app.dto.BaseDTO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CertificateDetailDTO extends BaseDTO {
 
     private Integer id;
@@ -13,6 +16,8 @@ public class CertificateDetailDTO extends BaseDTO {
     private String nic;
     private String certificateIssuedDate;
     private String cdDescription;
+
+    private List<CertificateDetailCertificateTypeDTO> certificateRegisterDTOS = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -84,5 +89,13 @@ public class CertificateDetailDTO extends BaseDTO {
 
     public void setCdDescription(String cdDescription) {
         this.cdDescription = cdDescription;
+    }
+
+    public List<CertificateDetailCertificateTypeDTO> getCertificateRegisterDTOS() {
+        return certificateRegisterDTOS;
+    }
+
+    public void setCertificateRegisterDTOS(List<CertificateDetailCertificateTypeDTO> certificateRegisterDTOS) {
+        this.certificateRegisterDTOS = certificateRegisterDTOS;
     }
 }

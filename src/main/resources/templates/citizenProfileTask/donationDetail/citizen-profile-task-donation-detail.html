@@ -33,25 +33,24 @@
 
                 <!--START OF CITIZEN DETAIL FORM-->
                 <div class="card">
-                    <div class="card">
-                        <div class="card-body card-block">
 
-                            <a th:href="@{/donationdetail/add}" class="btn btn-primary"><i class=""></i> New</a>
+                    <form th:action="@{/donationdetail/save}" th:object="${donationDetail}" th:method="post" id="frm_donationdetail">
+                        <!--<button type="submit" style="display: none" id="submit"></button>-->
+                        <div class="card">
+                            <div class="card-body card-block">
 
-                            <button type="submit" id="btn_submit" class="btn btn-primary"><i class=""></i> Save</button>
+                                <a th:href="@{/donationdetail/add}" class="btn btn-primary"><i class=""></i> New</a>
 
-                            <a th:href="@{/donationdetail/delete(id=${donationDetail.id})}"
-                               th:disabled="${donationDetail.id} ==null ? 'disabled'" class="btn btn-primary">
-                                <i class=""></i> Delete</a>
+                                <button type="submit" id="btn_submit" class="btn btn-primary"><i class=""></i> Save</button>
 
-                            <a th:href="@{/donationdetail/}" class="btn btn-primary"><i class=""></i> Cancel</a>
+                                <a th:href="@{/donationdetail/delete(id=${donationDetail.id})}"
+                                   th:disabled="${donationDetail.id} ==null ? 'disabled'" class="btn btn-primary">
+                                    <i class=""></i> Delete</a>
 
+                                <a th:href="@{/donationdetail/}" class="btn btn-primary"><i class=""></i> Cancel</a>
+
+                            </div>
                         </div>
-                    </div>
-                    <form th:action="@{/donationdetail/save}" th:object="${donationDetail}" th:method="post"
-                          id="frm_donationdetail">
-                        <button type="submit" style="display: none" id="submit"></button>
-
 
                         <div class="card">
                             <div class="card-header">
@@ -131,7 +130,6 @@
                                                             <tr>
                                                                 <th class="first-th"> #</th>
                                                                 <th class="hidden-xs">Donation Type</th>
-                                                                <th class="hidden-xs">Description</th>
                                                                 <th class="hidden-xs">Remove</th>
 
                                                             </tr>

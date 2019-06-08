@@ -1,5 +1,6 @@
 package com.gn.app.controller.admnistrativeTask.diaryLog;
 
+import com.gn.app.constant.StateOfTasks;
 import com.gn.app.dto.administrativeTask.DiaryLog.DiaryLogDTO;
 import com.gn.app.service.AdministrativeTask.DiaryLog.DiaryLogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,9 @@ public class DiaryLogController {
         return "redirect:/diarylog/";
     }
 
-    private void setCommonData(Model model, DiaryLogDTO dto) {
+    private void setCommonData(Model model, DiaryLogDTO dto)
+    {
         model.addAttribute("diaryLog", dto);
+        model.addAttribute("states" , StateOfTasks.getAllStateOfTasks());
     }
 }

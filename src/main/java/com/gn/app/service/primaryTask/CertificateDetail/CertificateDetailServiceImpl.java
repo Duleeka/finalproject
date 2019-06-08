@@ -4,11 +4,17 @@ package com.gn.app.service.primaryTask.CertificateDetail;
 import com.gn.app.dao.citizenProfileTask.CitizenDetail.CitizenDetailDao;
 import com.gn.app.dao.primaryTask.CertificateDetail.CertificateDetailDao;
 import com.gn.app.dao.settings.CertificateDetailRegister.CertificateDetailRegisterDao;
+import com.gn.app.dto.citizenProfileTask.DonationDetail.DonationDetailDTO;
+import com.gn.app.dto.citizenProfileTask.DonationDetail.DonationDetailDonationTypeDTO;
+import com.gn.app.dto.primaryTask.CertificateDetail.CertificateDetailCertificateTypeDTO;
 import com.gn.app.dto.primaryTask.CertificateDetail.CertificateDetailDTO;
 import com.gn.app.mappers.primaryTask.CertificateDetail.CertificateDetailMapper;
 import com.gn.app.model.Settings.CertificateDetailRegister.CertificateDetailRegister;
 import com.gn.app.model.citizenProfileTask.CitizenDetail.CitizenDetail;
+import com.gn.app.model.citizenProfileTask.DonationDetail.DonationDetail;
+import com.gn.app.model.citizenProfileTask.DonationDetail.DonationDetailsDonationType;
 import com.gn.app.model.primaryTask.CertificateDetail.CertificateDetail;
+import com.gn.app.model.primaryTask.CertificateDetail.CertificateDetailsCertificateType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
@@ -19,8 +25,10 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class CertificateDetailServiceImpl implements CertificateDetailService {
@@ -94,6 +102,10 @@ public class CertificateDetailServiceImpl implements CertificateDetailService {
         return certificateDetailDTO;
         }
 
+    private void saveOrUpdate(CertificateDetail certificateDetail) {
+        certificateDetailDao.save(certificateDetail);
+    }
+
 
         private void setCommonData(CertificateDetail certificateDetail,CertificateDetailDTO certificateDetailDTO){
             setCitizen(certificateDetail,certificateDetailDTO);
@@ -119,13 +131,34 @@ public class CertificateDetailServiceImpl implements CertificateDetailService {
     }
 
 
-    private void setCertificateDetailRegister(CertificateDetail certificateDetail, CertificateDetailDTO certificateDetailDTO){
+    //    List Relationship to multiple certificate type for one citizen
 
-        if(certificateDetailDTO != null && certificateDetailDTO.getCertificateType()!=null) {
+    private void setCertificateDetailRegister(CertificateDetail certificateDetail, CertificateDetailDTO certificateDetailDTO) {
+        Set<CertificateDetailsCertificateType> certificateDetailsCertificateTypes = new HashSet<>();
+        CertificateDetailsCertificateType certificateDetailsCertificateType;
 
-        certificateDetail.setCertificateDetailRegister(certificateDetailRegisterDao.findOne(findCertificateDetailRegisterSpecification(certificateDetailDTO.getCertificateId())).get());
-    }}
+        for(CertificateDetailCertificateTypeDTO certificateDetailRegisterDTO:certificateDetailDTO.getCertificateRegisterDTOS()){
+            if(certificateDetailDTO!= null && certificateDetailDTO.getId()!=null && certificateDetailDTO.getCertificateRegisterDTOS() != null ){
+                Optional<CertificateDetailsCertificateType>
+                        optional=certificateDetail.getCertificateDetailsCertificateTypes().stream().filter((x)-> x.getId().equals(certificateDetailRegisterDTO.getId())).findAny();
 
+                if(optional.isPresent()){
+                    certificateDetailsCertificateType=optional.get();
+                }else{
+                    certificateDetailsCertificateType=new CertificateDetailsCertificateType();
+                }
+            }else {
+                certificateDetailsCertificateType=new CertificateDetailsCertificateType();
+            }
+
+            certificateDetailsCertificateType.setCertificateDetailRegister(certificateDetailRegisterDao.findOne(findCertificateDetailRegisterSpecification(certificateDetailRegisterDTO.getCertificateRegisterId())).get());
+            certificateDetailsCertificateType.setCertificateDetail(certificateDetail);
+            certificateDetailsCertificateType.setId(certificateDetailDTO.getId());
+            certificateDetailsCertificateType.setVersion(certificateDetailDTO.getVersion());
+            certificateDetailsCertificateTypes.add(certificateDetailsCertificateType);
+        }
+        certificateDetail.setCertificateDetailsCertificateTypes(certificateDetailsCertificateTypes);
+    }
     public Specification<CertificateDetailRegister> findCertificateDetailRegisterSpecification(Integer id){
         Specification<CertificateDetailRegister> specification = new Specification<CertificateDetailRegister>() {
             @Override
@@ -136,9 +169,7 @@ public class CertificateDetailServiceImpl implements CertificateDetailService {
         return specification;
     }
 
-    private void saveOrUpdate(CertificateDetail certificateDetail) {
-        certificateDetailDao.save(certificateDetail);
-    }
+
 
     @Override
     public CertificateDetailDTO findById(Integer id) {

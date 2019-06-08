@@ -137,7 +137,9 @@ var DiaryLogHome = function () {
             },{
                 data : 'taskName'
             },{
-                data : 'status'
+                data : 'status',
+                orderable: false,
+                searchable: false
             },{
 
                 data : 'startDate'

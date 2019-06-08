@@ -8,13 +8,13 @@ var CitizenService=function () {
     }
 
 
-    var runServiceTypeSelect=function () {
+    /*var runServiceTypeSelect=function () {
         $("#service_type").select2({
             placeholder : "Select Specific Service Type",
             allowClear : true,
         });
     }
-
+*/
     var runNICSelect=function () {
         $("#c_nic").select2({
             placeholder : "Select",
@@ -133,8 +133,7 @@ var CitizenService=function () {
     }
     return {
         init: function () {
-            runServiceNoSelect()
-            runServiceTypeSelect();
+            runServiceNoSelect();
             runNICSelect();
             runValidator()
         }

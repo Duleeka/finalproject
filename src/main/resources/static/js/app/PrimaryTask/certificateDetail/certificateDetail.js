@@ -8,12 +8,12 @@ var CertificateDetail = function () {
         });
     }
 
-    var runCertificateTypeSelect = function () {
+   /* var runCertificateTypeSelect = function () {
         $("#certificate_type").select2({
             placeholder: "Select Specific Certificate Type",
             allowClear: true,
         });
-    }
+    }*/
 
     var runNICSelect = function () {
         $("#nic").select2({
@@ -126,7 +126,6 @@ var CertificateDetail = function () {
     return {
         init: function () {
             runCertificateNoSelect();
-            runCertificateTypeSelect();
             runNICSelect();
             runValidator();
         }

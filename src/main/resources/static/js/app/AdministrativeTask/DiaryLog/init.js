@@ -9,10 +9,9 @@ jQuery(document).ready(function() {
             Default: true
         })
     });
+    $(document).ready(function(){
+        DiaryLog.init();
 
-    /*$(document).ready(function(){
-        CitizenService.init();
-    });*/
-
+    });
 
 });

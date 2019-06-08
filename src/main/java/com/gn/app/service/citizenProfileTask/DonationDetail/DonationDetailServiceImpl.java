@@ -65,6 +65,7 @@ public class DonationDetailServiceImpl implements DonationDetailService {
             e.printStackTrace();
         }
         return profiles;
+
     }
 
     @Override
@@ -107,6 +108,7 @@ public class DonationDetailServiceImpl implements DonationDetailService {
     }
 
     private void saveOrUpdate(DonationDetail donationDetail){
+
         donationDetailDao.save(donationDetail);
     }
 

@@ -1,8 +1,12 @@
 package com.gn.app.mappers.citizenProfileTask.CitizenWork;
 
+import com.gn.app.dto.citizenProfileTask.CitizenWork.CitizenWorkCitizenWorkTypeDTO;
 import com.gn.app.dto.citizenProfileTask.CitizenWork.CitizenWorkDTO;
+import com.gn.app.dto.citizenProfileTask.DonationDetail.DonationDetailDonationTypeDTO;
 import com.gn.app.mappers.GenericMapper;
 import com.gn.app.model.citizenProfileTask.CitizenWork.CitizenWork;
+import com.gn.app.model.citizenProfileTask.CitizenWork.CitizenWorksCitizenWorkType;
+import com.gn.app.model.citizenProfileTask.DonationDetail.DonationDetailsDonationType;
 
 import java.text.SimpleDateFormat;
 
@@ -24,16 +28,10 @@ public class CitizenWorkMapper extends GenericMapper<CitizenWork,CitizenWorkDTO>
     @Override
     public CitizenWorkDTO domainToDto(CitizenWork citizenWork) throws Exception {
         CitizenWorkDTO dto = new CitizenWorkDTO();
+
         dto.setId(citizenWork.getId());
         dto.setVersion(citizenWork.getVersion());
 
-        if (citizenWork.getServiceRegister()!=null && citizenWork.getServiceRegister().getServiceNo()!=null) {
-            dto.setCwServiceNo(citizenWork.getServiceRegister().getServiceNo());
-        }
-
-        if (citizenWork.getServiceRegister()!=null && citizenWork.getServiceRegister().getServiceType()!=null) {
-            dto.setCwServiceType(citizenWork.getServiceRegister().getServiceType());
-        }
 
         if (citizenWork.getReceivedDate()!=null){
             dto.setReceivedDate(new SimpleDateFormat("yyyy-MM-dd").format(citizenWork.getReceivedDate()));
@@ -44,20 +42,40 @@ public class CitizenWorkMapper extends GenericMapper<CitizenWork,CitizenWorkDTO>
         }
 
         dto.setServiceDescription(citizenWork.getServiceDescription());
+        setServiceRegisters(citizenWork,dto);
         return dto;
+    }
+
+
+    private void setServiceRegisters(CitizenWork citizenWork, CitizenWorkDTO citizenWorkDTO){
+        for (CitizenWorksCitizenWorkType citizenWorkCitizenWorkType : citizenWork.getCitizenWorksCitizenWorkTypes()) {
+            CitizenWorkCitizenWorkTypeDTO citizenWorkCitizenWorkTypeDTO = new CitizenWorkCitizenWorkTypeDTO();
+            citizenWorkCitizenWorkTypeDTO.setId(citizenWorkCitizenWorkType.getId());
+            citizenWorkCitizenWorkTypeDTO.setVersion(citizenWorkCitizenWorkType.getVersion());
+
+
+            if (citizenWorkCitizenWorkTypeDTO != null && citizenWorkCitizenWorkType.getServiceRegister() != null && citizenWorkCitizenWorkType.getServiceRegister().getServiceType() != null) {
+                citizenWorkCitizenWorkTypeDTO.setServiceType(citizenWorkCitizenWorkType.getServiceRegister().getServiceType());
+            }
+
+            if (citizenWorkCitizenWorkTypeDTO != null && citizenWorkCitizenWorkType.getServiceRegister() != null && citizenWorkCitizenWorkType.getServiceRegister().getServiceNo() != null) {
+                citizenWorkCitizenWorkTypeDTO.setServiceNo(citizenWorkCitizenWorkType.getServiceRegister().getServiceNo());
+            }
+
+            if (citizenWorkCitizenWorkTypeDTO != null && citizenWorkCitizenWorkType.getServiceRegister() != null && citizenWorkCitizenWorkType.getServiceRegister().getId() != null) {
+                citizenWorkCitizenWorkTypeDTO.setServiceRegisterID(citizenWorkCitizenWorkType.getId());
+            }
+
+            citizenWorkDTO.getServiceRegisterDTOS().add(citizenWorkCitizenWorkTypeDTO);
+        }
     }
 
     @Override
     public CitizenWorkDTO domainToDtoForDataTable(CitizenWork citizenWork) throws Exception {
         CitizenWorkDTO dto = new CitizenWorkDTO();
-        dto.setId(citizenWork.getId());
-        if (citizenWork.getServiceRegister()!=null && citizenWork.getServiceRegister().getServiceNo()!=null) {
-            dto.setCwServiceNo(citizenWork.getServiceRegister().getServiceNo());
-        }
+        CitizenWorkCitizenWorkTypeDTO citizenWorkCitizenWorkTypeDTO = new CitizenWorkCitizenWorkTypeDTO();
 
-        if (citizenWork.getServiceRegister()!=null && citizenWork.getServiceRegister().getServiceType()!=null) {
-            dto.setCwServiceType(citizenWork.getServiceRegister().getServiceType());
-        }
+        dto.setId(citizenWork.getId());
 
         if (citizenWork.getCitizenDetail()!=null && citizenWork.getCitizenDetail().getNic()!=null) {
             dto.setNic(citizenWork.getCitizenDetail().getNic());

@@ -27,6 +27,7 @@ public class DonationDetailMapper extends GenericMapper<DonationDetail, Donation
     @Override
     public DonationDetailDTO domainToDto(DonationDetail donationDetail) throws Exception {
         DonationDetailDTO dto = new DonationDetailDTO();
+
         dto.setId(donationDetail.getId());
         dto.setVersion(donationDetail.getVersion());
 

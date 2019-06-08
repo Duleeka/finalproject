@@ -4,16 +4,16 @@ var DonationDetailTab = function () {
     var runDonationTypeSelect = function () {
         $("#donation_type").select2({
             placeholder: "Select A Donation Type",
-            allowClear: true,
+            allowClear: true
         });
-    }
+    };
     var selectDonationType = function () {
         $('#donation_type').on("select2:select", function (e) {
             var value = e.currentTarget.value;
             var text = e.currentTarget.textContent;
             addDataTotable(value, text)
         });
-    }
+    };
     var addDataTotable = function (value, text) {
         var obj = {
             id: "",
@@ -22,29 +22,10 @@ var DonationDetailTab = function () {
             donationRegisterId: value,
             donationType: text
         }
-        donationTypeList.push(obj)
+        donationTypeList.push(obj);
         populateTable()
-    }
+    };
 
-    var isItemAlreadyAdd = function (value, text) {
-        for (row = 0; row < donationTypeList.length; row++) {
-            if (donationTypeList[row].itemIndex != item.itemIndex) {
-
-                return true;
-
-            }
-        }
-    }
-
-    var itemAdd = function (obj) {
-        if (isItemAlreadyAdd(obj)) {
-            alert("Item already Added.Please change it");
-        } else {
-            donationTypeList.push(obj);
-            populateTable();
-
-        }
-    }
 
 
     var populateTable = function () {
@@ -66,14 +47,14 @@ var DonationDetailTab = function () {
 
             }
         }
-    }
+    };
 
     var deleteDonationType = function () {
-        console.log(donationTypeList)
+        console.log(donationTypeList);
         donationTypeList.splice(0, 1);
         console.log(donationTypeList)
 
-    }
+    };
 
 
     return {
@@ -83,11 +64,8 @@ var DonationDetailTab = function () {
         },
         deleteDonations: function () {
             deleteDonationType();
-        },
-
-        itemAdd: function () {
-            itemAdd();
         }
+
 
 
     };

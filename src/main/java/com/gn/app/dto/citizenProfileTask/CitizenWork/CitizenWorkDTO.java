@@ -2,6 +2,9 @@ package com.gn.app.dto.citizenProfileTask.CitizenWork;
 
 import com.gn.app.dto.BaseDTO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CitizenWorkDTO extends BaseDTO {
 
     private Integer id;
@@ -12,6 +15,7 @@ public class CitizenWorkDTO extends BaseDTO {
     private String nic;
     private String receivedDate;
     private String serviceDescription;
+    private List<CitizenWorkCitizenWorkTypeDTO> serviceRegisterDTOS = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -75,5 +79,13 @@ public class CitizenWorkDTO extends BaseDTO {
 
     public void setServiceId(Integer serviceId) {
         this.serviceId = serviceId;
+    }
+
+    public List<CitizenWorkCitizenWorkTypeDTO> getServiceRegisterDTOS() {
+        return serviceRegisterDTOS;
+    }
+
+    public void setServiceRegisterDTOS(List<CitizenWorkCitizenWorkTypeDTO> serviceRegisterDTOS) {
+        this.serviceRegisterDTOS = serviceRegisterDTOS;
     }
 }

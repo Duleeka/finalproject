@@ -59,7 +59,7 @@
                             <input type="hidden" id="version" name="id" th:field="*{version}"/>
 
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="certificate_no" class=" form-control-label">Certificate
                                             No</label>
@@ -71,23 +71,8 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="certificate_type" class=" form-control-label">Type of
-                                            Certificate</label>
-                                        <select id="certificate_type" name="certificate_type"
-                                                th:field="*{certificateType}" class="form-control">
-                                            <option th:each="certificate:${certificates}"
-                                                    th:value="${certificate.id}" th:text="${certificate.crCertificateType}">
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
 
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="nic" class=" form-control-label">NIC</label>
                                         <select id="nic" name="nic"
@@ -98,7 +83,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="datetimepicker1" class=" form-control-label">Issued Date</label>
                                             <input type='date' id="datetimepicker1" th:field="*{certificateIssuedDate}"
@@ -116,6 +101,57 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="card-body card-block">
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <ul class="nav nav-tabs">
+                                            <li class="nav-item"><a class="nav-link " data-toggle="tab"
+                                                                    href="#tab_certificates">Certificates</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content">
+
+                                        <div id="tab_certificates" class="tab-pane fade in active">
+                                            <div class="card-body card-block">
+
+                                                <div class="row ">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="certificate_type" class=" form-control-label">Type of
+                                                                Certificate</label>
+                                                            <select id="certificate_type" name="certificate_type"
+                                                                    th:field="*{certificateType}" class="form-control">
+                                                                <option th:each="certificate:${certificates}"
+                                                                        th:value="${certificate.id}" th:text="${certificate.crCertificateType}">
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <table class="table table-borderless table-striped table-earning"
+                                                           id="tbl_certificate_tab">
+                                                        <thead>
+                                                        <tr>
+                                                            <th class="first-th"> #</th>
+                                                            <th class="hidden-xs">Certificate Type</th>
+                                                            <th class="hidden-xs">Remove</th>
+
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!--END OF Certificate DETAIL-->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
@@ -135,6 +171,10 @@
 <script type="text/javascript" th:src="@{/js/lib/bootstrap-datetimepicker.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/app/PrimaryTask/certificateDetail/certificateDetail.js}"></script>
 <script type="text/javascript" th:src="@{/js/app/PrimaryTask/certificateDetail/init.js}"></script>
+<script type="text/javascript" th:src="@{/js/app/PrimaryTask/certificateDetail/tab/tab-certificate-type.js}"></script>
+<script th:inline="javascript">
+    var certificateTypeList = [];
+</script>
 </body>
 </html>
 <!-- end document-->

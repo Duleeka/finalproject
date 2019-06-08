@@ -4,10 +4,11 @@ package com.gn.app.model.primaryTask.CertificateDetail;
 import com.gn.app.model.BaseModel;
 import com.gn.app.model.Settings.CertificateDetailRegister.CertificateDetailRegister;
 import com.gn.app.model.citizenProfileTask.CitizenDetail.CitizenDetail;
+import com.gn.app.model.citizenProfileTask.DonationDetail.DonationDetailsDonationType;
 
 import javax.persistence.*;
 import java.util.Date;
-
+import java.util.Set;
 
 
 @Entity
@@ -25,8 +26,8 @@ public class CertificateDetail extends BaseModel {
     @Column(name = "certificate_no")
     private String certificateNo;
 
-    @Column(name = "certificate_type")
-    private String certificateType;
+   /* @Column(name = "certificate_type")
+    private String certificateType;*/
 
 
     @Column(name = "certificate_issued_date")
@@ -40,9 +41,8 @@ public class CertificateDetail extends BaseModel {
     @ManyToOne(targetEntity = CitizenDetail.class , fetch = FetchType.LAZY)
     private CitizenDetail citizenDetail;
 
-    @JoinColumn(name = "certificate_id")
-    @ManyToOne(targetEntity = CertificateDetailRegister.class , fetch = FetchType.LAZY)
-    private CertificateDetailRegister certificateDetailRegister;
+    @OneToMany(mappedBy = "certificateDetail",fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<CertificateDetailsCertificateType> certificateDetailsCertificateTypes;
 
 
     public Integer getId() {
@@ -60,15 +60,6 @@ public class CertificateDetail extends BaseModel {
     public void setCertificateNo(String certificateNo) {
         this.certificateNo = certificateNo;
     }
-
-    public String getCertificateType() {
-        return certificateType;
-    }
-
-    public void setCertificateType(String certificateType) {
-        this.certificateType = certificateType;
-    }
-
 
     public Date getCertificateIssuedDate() {
         return certificateIssuedDate;
@@ -94,11 +85,11 @@ public class CertificateDetail extends BaseModel {
         this.citizenDetail = citizenDetail;
     }
 
-    public CertificateDetailRegister getCertificateDetailRegister() {
-        return certificateDetailRegister;
+    public Set<CertificateDetailsCertificateType> getCertificateDetailsCertificateTypes() {
+        return certificateDetailsCertificateTypes;
     }
 
-    public void setCertificateDetailRegister(CertificateDetailRegister certificateDetailRegister) {
-        this.certificateDetailRegister = certificateDetailRegister;
+    public void setCertificateDetailsCertificateTypes(Set<CertificateDetailsCertificateType> certificateDetailsCertificateTypes) {
+        this.certificateDetailsCertificateTypes = certificateDetailsCertificateTypes;
     }
 }
